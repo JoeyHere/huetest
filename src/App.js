@@ -1,28 +1,102 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+// import ReactDOM from "react-dom"
+import Game from "./containers/Game"
+import "./App.css"
 
-class App extends Component {
+class App extends React.Component {
+  state = {
+    levelBoard: [
+      [
+        { color: "darkgrey" },
+        { color: "darkgrey" },
+        { color: "lightgrey" },
+        { color: "darkgrey" },
+        { color: "darkgrey" },
+        { color: "darkgrey" },
+        { color: "darkgrey" },
+        { color: "darkgrey" }
+      ],
+      [
+        { color: "darkgrey" },
+        { color: "blue" },
+        { color: "lightgrey" },
+        { color: "blue" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "darkgrey" }
+      ],
+      [
+        { color: "darkgrey" },
+        { color: "blue" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "darkgrey" }
+      ],
+      [
+        { color: "darkgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "darkgrey" }
+      ],
+      [
+        { color: "darkgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "blue" },
+        { color: "blue" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "darkgrey" }
+      ],
+      [
+        { color: "darkgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "darkgrey" }
+      ],
+      [
+        { color: "darkgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "lightgrey" },
+        { color: "white" },
+        { color: "darkgrey" }
+      ],
+
+      [
+        { color: "darkgrey" },
+        { color: "darkgrey" },
+        { color: "darkgrey" },
+        { color: "darkgrey" },
+        { color: "darkgrey" },
+        { color: "darkgrey" },
+        { color: "darkgrey" },
+        { color: "darkgrey" }
+      ]
+    ]
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Game board={this.state.levelBoard} />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
