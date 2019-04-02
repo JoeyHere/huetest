@@ -10,7 +10,8 @@ const COLORS = {
   orange: "orange",
   wall: "darkgrey",
   floor: "lightgrey",
-  player: "white"
+  player: "white",
+  explode: "explode"
 }
 
 export default class Game extends React.Component {
@@ -30,6 +31,7 @@ export default class Game extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     let newBoard = this.updatePlayerOnBoard(prevState)
     if (newBoard) {
+      newBoard = this.checkBoardForThrees(newBoard)
       this.setState({
         boardDataArray: [...newBoard]
       })
@@ -52,31 +54,31 @@ export default class Game extends React.Component {
   }
 
   movePlayer = (dx, dy) => {
-    const newSquare = {
+    const newBlock = {
       x: this.state.playerPosition.x + dx,
       y: this.state.playerPosition.y + dy
     }
-    const secondSquare = {
-      x: newSquare.x + dx,
-      y: newSquare.y + dy
+    const secondBlock = {
+      x: newBlock.x + dx,
+      y: newBlock.y + dy
     }
     let movingBlocks = this.checkMove(
       this.state.playerPosition.x,
       this.state.playerPosition.y,
-      newSquare.x,
-      newSquare.y
+      newBlock.x,
+      newBlock.y
     )
     if (movingBlocks) {
       let newBoard = this.moveBlocks(movingBlocks, dx, dy)
       this.setState({
-        playerPosition: newSquare,
+        playerPosition: newBlock,
         boardDataArray: [...newBoard]
       })
     } else {
-      if (this.combineBlocks(newSquare, secondSquare)) {
-        let newBoard = this.combineBlocks(newSquare, secondSquare)
+      if (this.combineBlocks(newBlock, secondBlock)) {
+        let newBoard = this.combineBlocks(newBlock, secondBlock)
         this.setState({
-          playerPosition: newSquare,
+          playerPosition: newBlock,
           boardDataArray: [...newBoard]
         })
       }
@@ -84,22 +86,22 @@ export default class Game extends React.Component {
   }
 
   combineBlocks = (blockA, blockB) => {
-    if (!this.checkSquareExists(blockA.x, blockB.y)) {
+    if (!this.checkBlockExists(blockA.x, blockB.y)) {
       return false
     }
-    if (!this.checkSquareExists(blockB.x, blockB.y)) {
+    if (!this.checkBlockExists(blockB.x, blockB.y)) {
       return false
     }
     let newArray = [...this.state.boardDataArray.map(array => [...array])]
     if (
       this.blocksCanCombine(
-        this.getSquare(blockA.x, blockA.y),
-        this.getSquare(blockB.x, blockB.y)
+        this.getBlock(blockA.x, blockA.y),
+        this.getBlock(blockB.x, blockB.y)
       )
     ) {
       let color = this.blocksCanCombine(
-        this.getSquare(blockA.x, blockA.y),
-        this.getSquare(blockB.x, blockB.y)
+        this.getBlock(blockA.x, blockA.y),
+        this.getBlock(blockB.x, blockB.y)
       )
       newArray[blockB.y][blockB.x] = color
       return newArray
@@ -120,9 +122,10 @@ export default class Game extends React.Component {
       dx: newx - oldx,
       dy: newy - oldy
     }
-    if (!this.checkSquareExists(newx, newy)) return false
-    if (this.getSquare(newx, newy) === COLORS.wall) return false
-    if (this.getSquare(newx, newy) === COLORS.floor) return movingBlocks
+    if (!this.checkBlockExists(newx, newy)) return false
+    if (this.getBlock(newx, newy) === COLORS.wall) return false
+    if (this.getBlock(newx, newy) === COLORS.explode) return false
+    if (this.getBlock(newx, newy) === COLORS.floor) return movingBlocks
     movingBlocks = [...movingBlocks, { x: newx, y: newy }]
     return this.checkMove(
       newx,
@@ -155,27 +158,27 @@ export default class Game extends React.Component {
     return false
   }
 
-  getSquare = (x, y) => this.state.boardDataArray[y][x]
+  getBlock = (x, y, array = this.state.boardDataArray) => array[y][x]
 
-  changeSquareColor = (array, x, y, color) => {
+  changeBlockColor = (array, x, y, color) => {
     let newArray = [...array]
     newArray[y][x] = color
     return newArray
   }
 
-  checkSquareExists = (x, y) =>
-    this.state.boardDataArray[y] && this.state.boardDataArray[y][x]
+  checkBlockExists = (x, y, array = this.state.boardDataArray) =>
+    array[y] && array[y][x]
 
   updatePlayerOnBoard = prevState => {
     if (prevState.playerPosition.x) {
       let newArray = [...this.state.boardDataArray.map(array => [...array])]
-      newArray = this.changeSquareColor(
+      newArray = this.changeBlockColor(
         newArray,
         this.state.playerPosition.x,
         this.state.playerPosition.y,
         COLORS.player
       )
-      newArray = this.changeSquareColor(
+      newArray = this.changeBlockColor(
         newArray,
         prevState.playerPosition.x,
         prevState.playerPosition.y,
@@ -200,8 +203,51 @@ export default class Game extends React.Component {
     return { x: columnIndex, y: rowIndex }
   }
 
+  checkBoardForThrees = inputArray => {
+    let checkHorisontalyForThrees = this.checkHorisontalyForThrees(inputArray)
+
+    let newArray = inputArray.map((row, rowi) => {
+      return row.map((block, columni) =>
+        checkHorisontalyForThrees[rowi][columni] ? COLORS.floor : block
+      )
+    })
+    return newArray
+  }
+
+  checkHorisontalyForThrees = inputArray => {
+    let threesArray = inputArray.map((row, yi, array) => {
+      return row.map((block, i) => {
+        let prevBlock = this.checkBlockExists(i - 1, yi, array)
+          ? this.getBlock(i - 1, yi, array)
+          : undefined
+        let prevPrevBlock = this.checkBlockExists(i - 2, yi, array)
+          ? this.getBlock(i - 2, yi, array)
+          : undefined
+        let nextBlock = this.checkBlockExists(i + 1, yi, array)
+          ? this.getBlock(i + 1, yi, array)
+          : undefined
+        let nextNextBlock = this.checkBlockExists(i + 2, yi, array)
+          ? this.getBlock(i + 2, yi, array)
+          : undefined
+        if (block === COLORS.wall) return false
+        if (block === COLORS.floor) return false
+        if (nextBlock === block && nextNextBlock === block) {
+          return true
+        }
+        if (prevBlock === block && nextBlock === block) {
+          return true
+        }
+        if (prevBlock === block && prevPrevBlock === block) {
+          return true
+        }
+        return false
+      })
+    })
+    return threesArray
+  }
+
   render() {
-    const width = this.state.boardDataArray.length * 30
+    const width = this.state.boardDataArray.length * 35
     return <GameBoard board={this.state.boardDataArray} width={width} />
   }
 }

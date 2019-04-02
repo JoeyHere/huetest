@@ -97,21 +97,7 @@ class App extends React.Component {
         "lightgrey",
         "lightgrey",
         "lightgrey",
-        "lightgrey",
-        "lightgrey",
-        "lightgrey",
-        "lightgrey",
-        "lightgrey",
-        "darkgrey"
-      ],
-      [
-        "darkgrey",
-        "lightgrey",
-        "lightgrey",
-        "lightgrey",
-        "lightgrey",
-        "lightgrey",
-        "lightgrey",
+        "blue",
         "lightgrey",
         "lightgrey",
         "lightgrey",
@@ -124,6 +110,20 @@ class App extends React.Component {
         "lightgrey",
         "lightgrey",
         "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "blue",
+        "lightgrey",
+        "darkgrey"
+      ],
+      [
+        "darkgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "blue",
         "darkgrey",
         "darkgrey",
         "darkgrey",
@@ -181,6 +181,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <h2>HUEman</h2>
         <Game board={this.state.levelBoard} />
       </div>
     )
