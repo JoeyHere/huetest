@@ -37,16 +37,16 @@ export default class Game extends React.Component {
   }
 
   handleKeyDown = event => {
-    if (event.key === "a") {
+    if (event.key === "a" || event.key === "ArrowLeft") {
       this.movePlayer(-1, 0)
     }
-    if (event.key === "d") {
+    if (event.key === "d" || event.key === "ArrowRight") {
       this.movePlayer(1, 0)
     }
-    if (event.key === "w") {
+    if (event.key === "w" || event.key === "ArrowUp") {
       this.movePlayer(0, -1)
     }
-    if (event.key === "s") {
+    if (event.key === "s" || event.key === "ArrowDown") {
       this.movePlayer(0, 1)
     }
   }

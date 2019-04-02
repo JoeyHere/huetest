@@ -9,9 +9,11 @@ class App extends React.Component {
       [
         "darkgrey",
         "darkgrey",
+        "darkgrey",
+        "darkgrey",
+        "darkgrey",
+        "darkgrey",
         "lightgrey",
-        "darkgrey",
-        "darkgrey",
         "darkgrey",
         "darkgrey",
         "darkgrey",
@@ -20,6 +22,8 @@ class App extends React.Component {
       ],
       [
         "darkgrey",
+        "lightgrey",
+        "lightgrey",
         "lightgrey",
         "lightgrey",
         "lightgrey",
@@ -40,6 +44,8 @@ class App extends React.Component {
         "lightgrey",
         "lightgrey",
         "lightgrey",
+        "lightgrey",
+        "lightgrey",
         "darkgrey"
       ],
       [
@@ -48,6 +54,8 @@ class App extends React.Component {
         "lightgrey",
         "lightgrey",
         "green",
+        "lightgrey",
+        "lightgrey",
         "lightgrey",
         "purple",
         "lightgrey",
@@ -64,6 +72,8 @@ class App extends React.Component {
         "lightgrey",
         "lightgrey",
         "lightgrey",
+        "lightgrey",
+        "lightgrey",
         "darkgrey"
       ],
       [
@@ -71,7 +81,9 @@ class App extends React.Component {
         "lightgrey",
         "lightgrey",
         "lightgrey",
-        "darkgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
         "red",
         "lightgrey",
         "lightgrey",
@@ -88,6 +100,36 @@ class App extends React.Component {
         "lightgrey",
         "lightgrey",
         "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "darkgrey"
+      ],
+      [
+        "darkgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "darkgrey"
+      ],
+      [
+        "darkgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "darkgrey",
+        "darkgrey",
+        "darkgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
         "darkgrey"
       ],
       [
@@ -100,10 +142,14 @@ class App extends React.Component {
         "lightgrey",
         "lightgrey",
         "lightgrey",
+        "lightgrey",
+        "lightgrey",
         "darkgrey"
       ],
       [
         "darkgrey",
+        "lightgrey",
+        "lightgrey",
         "lightgrey",
         "lightgrey",
         "lightgrey",
@@ -116,6 +162,8 @@ class App extends React.Component {
       ],
 
       [
+        "darkgrey",
+        "darkgrey",
         "darkgrey",
         "darkgrey",
         "darkgrey",
