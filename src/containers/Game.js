@@ -56,21 +56,55 @@ export default class Game extends React.Component {
       x: this.state.playerPosition.x + dx,
       y: this.state.playerPosition.y + dy
     }
-
+    const secondSquare = {
+      x: newSquare.x + dx,
+      y: newSquare.y + dy
+    }
     let movingBlocks = this.checkMove(
       this.state.playerPosition.x,
       this.state.playerPosition.y,
       newSquare.x,
       newSquare.y
     )
-
     if (movingBlocks) {
       let newBoard = this.moveBlocks(movingBlocks, dx, dy)
       this.setState({
         playerPosition: newSquare,
         boardDataArray: [...newBoard]
       })
+    } else {
+      if (this.combineBlocks(newSquare, secondSquare)) {
+        let newBoard = this.combineBlocks(newSquare, secondSquare)
+        this.setState({
+          playerPosition: newSquare,
+          boardDataArray: [...newBoard]
+        })
+      }
     }
+  }
+
+  combineBlocks = (blockA, blockB) => {
+    if (!this.checkSquareExists(blockA.x, blockB.y)) {
+      return false
+    }
+    if (!this.checkSquareExists(blockB.x, blockB.y)) {
+      return false
+    }
+    let newArray = [...this.state.boardDataArray.map(array => [...array])]
+    if (
+      this.blocksCanCombine(
+        this.getSquare(blockA.x, blockA.y),
+        this.getSquare(blockB.x, blockB.y)
+      )
+    ) {
+      let color = this.blocksCanCombine(
+        this.getSquare(blockA.x, blockA.y),
+        this.getSquare(blockB.x, blockB.y)
+      )
+      newArray[blockB.y][blockB.x] = color
+      return newArray
+    }
+    return false
   }
 
   moveBlocks = (array, dx, dy) => {
@@ -82,7 +116,10 @@ export default class Game extends React.Component {
   }
 
   checkMove = (oldx, oldy, newx, newy, movingBlocks = []) => {
-    const dir = { dx: newx - oldx, dy: newy - oldy }
+    const dir = {
+      dx: newx - oldx,
+      dy: newy - oldy
+    }
     if (!this.checkSquareExists(newx, newy)) return false
     if (this.getSquare(newx, newy) === COLORS.floor) return movingBlocks
     movingBlocks = [...movingBlocks, { x: newx, y: newy }]
@@ -93,6 +130,28 @@ export default class Game extends React.Component {
       newy + dir.dy,
       movingBlocks
     )
+  }
+
+  blocksCanCombine = (blockA, blockB) => {
+    if (blockA === COLORS.yellow && blockB === COLORS.blue) {
+      return "green"
+    }
+    if (blockA === COLORS.blue && blockB === COLORS.yellow) {
+      return "green"
+    }
+    if (blockA === COLORS.yellow && blockB === COLORS.red) {
+      return "orange"
+    }
+    if (blockA === COLORS.red && blockB === COLORS.yellow) {
+      return "orange"
+    }
+    if (blockA === COLORS.red && blockB === COLORS.blue) {
+      return "purple"
+    }
+    if (blockA === COLORS.blue && blockB === COLORS.red) {
+      return "purple"
+    }
+    return false
   }
 
   getSquare = (x, y) => this.state.boardDataArray[y][x]

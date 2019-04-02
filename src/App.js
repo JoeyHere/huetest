@@ -20,19 +20,7 @@ class App extends React.Component {
       ],
       [
         "darkgrey",
-        "blue",
         "lightgrey",
-        "blue",
-        "lightgrey",
-        "lightgrey",
-        "lightgrey",
-        "lightgrey",
-        "lightgrey",
-        "darkgrey"
-      ],
-      [
-        "darkgrey",
-        "blue",
         "lightgrey",
         "lightgrey",
         "lightgrey",
@@ -48,6 +36,18 @@ class App extends React.Component {
         "lightgrey",
         "lightgrey",
         "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "darkgrey"
+      ],
+      [
+        "darkgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "green",
         "lightgrey",
         "lightgrey",
         "lightgrey",
