@@ -7,85 +7,85 @@ class App extends React.Component {
   state = {
     levelBoard: [
       [
-        { color: "darkgrey" },
-        { color: "darkgrey" },
-        { color: "lightgrey" },
-        { color: "darkgrey" },
-        { color: "darkgrey" },
-        { color: "darkgrey" },
-        { color: "darkgrey" },
-        { color: "darkgrey" }
+        "darkgrey",
+        "darkgrey",
+        "lightgrey",
+        "darkgrey",
+        "darkgrey",
+        "darkgrey",
+        "darkgrey",
+        "darkgrey"
       ],
       [
-        { color: "darkgrey" },
-        { color: "blue" },
-        { color: "lightgrey" },
-        { color: "blue" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "darkgrey" }
+        "darkgrey",
+        "blue",
+        "lightgrey",
+        "blue",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "darkgrey"
       ],
       [
-        { color: "darkgrey" },
-        { color: "blue" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "darkgrey" }
+        "darkgrey",
+        "blue",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "darkgrey"
       ],
       [
-        { color: "darkgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "darkgrey" }
+        "darkgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "darkgrey"
       ],
       [
-        { color: "darkgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "blue" },
-        { color: "blue" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "darkgrey" }
+        "darkgrey",
+        "lightgrey",
+        "lightgrey",
+        "blue",
+        "blue",
+        "lightgrey",
+        "lightgrey",
+        "darkgrey"
       ],
       [
-        { color: "darkgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "darkgrey" }
+        "darkgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "darkgrey"
       ],
       [
-        { color: "darkgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "lightgrey" },
-        { color: "white" },
-        { color: "darkgrey" }
+        "darkgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "lightgrey",
+        "white",
+        "darkgrey"
       ],
 
       [
-        { color: "darkgrey" },
-        { color: "darkgrey" },
-        { color: "darkgrey" },
-        { color: "darkgrey" },
-        { color: "darkgrey" },
-        { color: "darkgrey" },
-        { color: "darkgrey" },
-        { color: "darkgrey" }
+        "darkgrey",
+        "darkgrey",
+        "darkgrey",
+        "darkgrey",
+        "darkgrey",
+        "darkgrey",
+        "darkgrey",
+        "darkgrey"
       ]
     ]
   }

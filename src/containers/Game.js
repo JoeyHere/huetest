@@ -28,7 +28,7 @@ export default class Game extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    let newBoard = this.updateBoard(prevState)
+    let newBoard = this.updatePlayerOnBoard(prevState)
     if (newBoard) {
       this.setState({
         boardDataArray: [...newBoard]
@@ -64,20 +64,19 @@ export default class Game extends React.Component {
       newSquare.y
     )
 
-    console.log(movingBlocks)
-
     if (movingBlocks) {
       let newBoard = this.moveBlocks(movingBlocks, dx, dy)
-      this.setState({ playerPosition: newSquare, boardDataArray: newBoard })
+      this.setState({
+        playerPosition: newSquare,
+        boardDataArray: [...newBoard]
+      })
     }
   }
 
   moveBlocks = (array, dx, dy) => {
     let newArray = [...this.state.boardDataArray.map(array => [...array])]
     array.forEach(block => {
-      newArray[block.y + dy][block.x + dx] = {
-        color: newArray[block.y][block.x].color
-      }
+      newArray[block.y + dy][block.x + dx] = newArray[block.y][block.x]
     })
     return newArray
   }
@@ -86,8 +85,8 @@ export default class Game extends React.Component {
     const dir = { dx: newx - oldx, dy: newy - oldy }
 
     if (!this.checkSquareExists(newx, newy)) return false
-    if (this.getSquare(newx, newy).color === COLORS.wall) return false
-    if (this.getSquare(newx, newy).color === COLORS.floor) return movingBlocks
+    if (this.getSquare(newx, newy) === COLORS.wall) return false
+    if (this.getSquare(newx, newy) === COLORS.floor) return movingBlocks
     movingBlocks = [...movingBlocks, { x: newx, y: newy }]
     return this.checkMove(
       newx,
@@ -102,16 +101,16 @@ export default class Game extends React.Component {
 
   changeSquareColor = (array, x, y, color) => {
     let mutatedArray = [...array]
-    mutatedArray[y][x] = { color: color }
+    mutatedArray[y][x] = color
     return mutatedArray
   }
 
   checkSquareExists = (x, y) =>
     this.state.boardDataArray[y] && this.state.boardDataArray[y][x]
 
-  updateBoard = prevState => {
+  updatePlayerOnBoard = prevState => {
     if (prevState.playerPosition.x) {
-      let newArray = [...this.state.boardDataArray]
+      let newArray = [...this.state.boardDataArray.map(array => [...array])]
       newArray = this.changeSquareColor(
         newArray,
         this.state.playerPosition.x,
@@ -135,12 +134,10 @@ export default class Game extends React.Component {
   getPlayerPositionFromBoard = array => {
     let columnIndex = undefined
     let rowIndex = array.findIndex(row =>
-      row.find(cell => cell.color === COLORS.player)
+      row.find(cell => cell === COLORS.player)
     )
     if (rowIndex) {
-      columnIndex = array[rowIndex].findIndex(
-        cell => cell.color === COLORS.player
-      )
+      columnIndex = array[rowIndex].findIndex(cell => cell === COLORS.player)
     }
     return { x: columnIndex, y: rowIndex }
   }

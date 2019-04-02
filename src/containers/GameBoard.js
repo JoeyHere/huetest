@@ -7,7 +7,7 @@ const GameBoard = props => (
       row.map((cell, cellIndex) => (
         <GameCell
           key={1000 * (cellIndex + 1) + 10 * (rowIndex + 1)}
-          cellColor={cell.color}
+          cellColor={cell}
         />
       ))
     )}
