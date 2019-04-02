@@ -19,23 +19,38 @@
 }
 
 .lightgrey {
-  background-color: lightgray;
+  background-color: rgb(206, 206, 206);
 }
 
 .darkgrey {
-  background-color: grey;
+  background-color: rgb(180, 175, 175);
 }
 
 .blue {
-  background-color: blue;
+  background-color: rgb(81, 81, 243);
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: rgb(238, 238, 102);
+}
+.red {
+  background-color: rgb(223, 85, 85);
 }
 
 .green {
-  background-color: green;
+  background-color: rgb(100, 192, 100);
+}
+
+.purple {
+  background-color: rgb(161, 89, 161);
+}
+
+.orange {
+  background-color: rgb(250, 180, 51);
+}
+
+.white {
+  background-color: rgb(255, 240, 240);
 }
 
 h1,

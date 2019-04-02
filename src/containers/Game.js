@@ -121,6 +121,7 @@ export default class Game extends React.Component {
       dy: newy - oldy
     }
     if (!this.checkSquareExists(newx, newy)) return false
+    if (this.getSquare(newx, newy) === COLORS.wall) return false
     if (this.getSquare(newx, newy) === COLORS.floor) return movingBlocks
     movingBlocks = [...movingBlocks, { x: newx, y: newy }]
     return this.checkMove(
