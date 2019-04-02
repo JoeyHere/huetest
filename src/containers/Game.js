@@ -56,30 +56,53 @@ export default class Game extends React.Component {
       x: this.state.playerPosition.x + dx,
       y: this.state.playerPosition.y + dy
     }
-    if (
-      this.checkMove(
-        this.state.playerPosition.x,
-        this.state.playerPosition.y,
-        newSquare.x,
-        newSquare.y
-      )
+
+    let movingBlocks = this.checkMove(
+      this.state.playerPosition.x,
+      this.state.playerPosition.y,
+      newSquare.x,
+      newSquare.y
     )
-      this.setState({ playerPosition: newSquare })
+
+    console.log(movingBlocks)
+
+    if (movingBlocks) {
+      let newBoard = this.moveBlocks(movingBlocks, dx, dy)
+      this.setState({ playerPosition: newSquare, boardDataArray: newBoard })
+    }
   }
 
-  checkMove = (oldx, oldy, newx, newy) => {
+  moveBlocks = (array, dx, dy) => {
+    let newArray = [...this.state.boardDataArray.map(array => [...array])]
+    array.forEach(block => {
+      newArray[block.y + dy][block.x + dx] = {
+        color: newArray[block.y][block.x].color
+      }
+    })
+    return newArray
+  }
+
+  checkMove = (oldx, oldy, newx, newy, movingBlocks = []) => {
     const dir = { dx: newx - oldx, dy: newy - oldy }
+
     if (!this.checkSquareExists(newx, newy)) return false
-    if (this.getSquare(newx, newy).color === COLORS.floor) return true
     if (this.getSquare(newx, newy).color === COLORS.wall) return false
-    return this.checkMove(newx, newy, newx + dir.dx, newy + dir.dy)
+    if (this.getSquare(newx, newy).color === COLORS.floor) return movingBlocks
+    movingBlocks = [...movingBlocks, { x: newx, y: newy }]
+    return this.checkMove(
+      newx,
+      newy,
+      newx + dir.dx,
+      newy + dir.dy,
+      movingBlocks
+    )
   }
 
   getSquare = (x, y) => this.state.boardDataArray[y][x]
 
   changeSquareColor = (array, x, y, color) => {
     let mutatedArray = [...array]
-    mutatedArray[y][x].color = color
+    mutatedArray[y][x] = { color: color }
     return mutatedArray
   }
 
