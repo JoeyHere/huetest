@@ -24,7 +24,7 @@ export default class Game extends React.Component {
       playerPosition: this.getPlayerPositionFromBoard(this.props.board),
       boardDataArray: this.props.board
     })
-    document.addEventListener("keypress", this.handleKeyDown)
+    document.addEventListener("keydown", this.handleKeyDown)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -75,7 +75,7 @@ export default class Game extends React.Component {
 
   moveBlocks = (array, dx, dy) => {
     let newArray = [...this.state.boardDataArray.map(array => [...array])]
-    array.forEach(block => {
+    array.reverse().forEach(block => {
       newArray[block.y + dy][block.x + dx] = newArray[block.y][block.x]
     })
     return newArray
@@ -83,9 +83,7 @@ export default class Game extends React.Component {
 
   checkMove = (oldx, oldy, newx, newy, movingBlocks = []) => {
     const dir = { dx: newx - oldx, dy: newy - oldy }
-
     if (!this.checkSquareExists(newx, newy)) return false
-    if (this.getSquare(newx, newy) === COLORS.wall) return false
     if (this.getSquare(newx, newy) === COLORS.floor) return movingBlocks
     movingBlocks = [...movingBlocks, { x: newx, y: newy }]
     return this.checkMove(
@@ -100,9 +98,9 @@ export default class Game extends React.Component {
   getSquare = (x, y) => this.state.boardDataArray[y][x]
 
   changeSquareColor = (array, x, y, color) => {
-    let mutatedArray = [...array]
-    mutatedArray[y][x] = color
-    return mutatedArray
+    let newArray = [...array]
+    newArray[y][x] = color
+    return newArray
   }
 
   checkSquareExists = (x, y) =>
