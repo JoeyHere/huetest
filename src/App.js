@@ -139,7 +139,7 @@ class App extends React.Component {
         "lightgrey",
         "lightgrey",
         "lightgrey",
-        "lightgrey",
+        "brown",
         "lightgrey",
         "lightgrey",
         "lightgrey",
