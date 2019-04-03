@@ -2,16 +2,17 @@ import React from "react"
 import GameBoard from "./GameBoard.js"
 
 const BLOCKS = {
-  red: "red",
-  blue: "blue",
-  yellow: "yellow",
-  green: "green",
-  purple: "purple",
-  orange: "orange",
-  wall: "darkgrey",
-  floor: "lightgrey",
-  player: "white",
-  floorflash: "flash"
+  player: 1,
+  red: 2,
+  blue: 3,
+  yellow: 4,
+  green: 5,
+  purple: 6,
+  orange: 7,
+  brown: 8,
+  wall: 9,
+  floor: 10,
+  floorflash: 11
 }
 
 export default class Game extends React.Component {
@@ -95,6 +96,7 @@ export default class Game extends React.Component {
     dy,
     inputArray = [...this.state.currentBoard.map(array => [...array])]
   ) => {
+    console.log(inputArray)
     let blockB = { x: blockA.x + dx, y: blockA.y + dy }
 
     if (!this.checkBlockExists(blockA.x, blockA.y)) {
@@ -106,13 +108,13 @@ export default class Game extends React.Component {
 
     if (
       this.blocksCanCombine(
-        this.getBlock(blockA.x, blockA.y),
-        this.getBlock(blockB.x, blockB.y)
+        this.getBlock(blockA.x, blockA.y, inputArray),
+        this.getBlock(blockB.x, blockB.y, inputArray)
       )
     ) {
       let color = this.blocksCanCombine(
-        this.getBlock(blockA.x, blockA.y),
-        this.getBlock(blockB.x, blockB.y)
+        this.getBlock(blockA.x, blockA.y, inputArray),
+        this.getBlock(blockB.x, blockB.y, inputArray)
       )
       inputArray[blockA.y][blockA.x] = this.getBlock(
         blockA.x - dx,
@@ -120,6 +122,8 @@ export default class Game extends React.Component {
         inputArray
       )
       inputArray[blockB.y][blockB.x] = color
+      console.log("return")
+      console.log(inputArray)
       return inputArray
     } else {
       inputArray[blockA.y][blockA.x] = this.getBlock(

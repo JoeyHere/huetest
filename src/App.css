@@ -21,7 +21,7 @@
 
 .lightgrey {
   background-color: rgb(206, 206, 206);
-  transition: background-color 150ms ease;
+  /* transition: background-color 150ms ease; */
 }
 
 .darkgrey {
