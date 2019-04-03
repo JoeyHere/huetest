@@ -58,10 +58,6 @@ export default class Game extends React.Component {
       x: this.state.playerPosition.x + dx,
       y: this.state.playerPosition.y + dy
     }
-    const secondBlock = {
-      x: newBlock.x + dx,
-      y: newBlock.y + dy
-    }
     let movingBlocks = this.checkMove(
       this.state.playerPosition.x,
       this.state.playerPosition.y,
@@ -75,8 +71,8 @@ export default class Game extends React.Component {
         boardDataArray: [...newBoard]
       })
     } else {
-      if (this.combineBlocks(newBlock, secondBlock)) {
-        let newBoard = this.combineBlocks(newBlock, secondBlock)
+      let newBoard = this.combineBlocks(newBlock, dx, dy)
+      if (newBoard) {
         this.setState({
           playerPosition: newBlock,
           boardDataArray: [...newBoard]
@@ -85,14 +81,21 @@ export default class Game extends React.Component {
     }
   }
 
-  combineBlocks = (blockA, blockB) => {
-    if (!this.checkBlockExists(blockA.x, blockB.y)) {
+  combineBlocks = (
+    blockA,
+    dx,
+    dy,
+    inputArray = [...this.state.boardDataArray.map(array => [...array])]
+  ) => {
+    let blockB = { x: blockA.x + dx, y: blockA.y + dy }
+
+    if (!this.checkBlockExists(blockA.x, blockA.y)) {
       return false
     }
     if (!this.checkBlockExists(blockB.x, blockB.y)) {
       return false
     }
-    let newArray = [...this.state.boardDataArray.map(array => [...array])]
+    let newArray = inputArray
     if (
       this.blocksCanCombine(
         this.getBlock(blockA.x, blockA.y),
@@ -103,10 +106,14 @@ export default class Game extends React.Component {
         this.getBlock(blockA.x, blockA.y),
         this.getBlock(blockB.x, blockB.y)
       )
+      newArray[blockA.y][blockA.x] = this.getBlock(blockA.x - dx, blockA.y - dy)
       newArray[blockB.y][blockB.x] = color
       return newArray
+    } else {
+      newArray[blockA.y][blockA.x] = this.getBlock(blockA.x, blockA.y)
+      newArray[blockB.y][blockB.x] = this.getBlock(blockB.x, blockB.y)
     }
-    return false
+    return this.combineBlocks(blockB, dx, dy, newArray)
   }
 
   moveBlocks = (array, dx, dy) => {
@@ -204,11 +211,11 @@ export default class Game extends React.Component {
   }
 
   clearBoardOfThrees = inputArray => {
-    let checkHorisontalyForThrees = this.checkArrayForThrees(inputArray)
+    let threesArray = this.checkArrayForThrees(inputArray)
 
     let newArray = inputArray.map((row, rowi) => {
       return row.map((block, columni) =>
-        checkHorisontalyForThrees[rowi][columni] ? COLORS.floor : block
+        threesArray[rowi][columni] ? COLORS.floor : block
       )
     })
     return newArray
