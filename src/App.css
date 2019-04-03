@@ -4,8 +4,8 @@
   height: 35px;
   /* border-color: white;
   border-style: solid;
-  border-width: 0.5px;
-  border-radius: 5%; */
+  border-width: 1px;
+  border-radius: 10%; */
 }
 
 /* @keyframes fade {
@@ -34,7 +34,7 @@
   line-height: 0;
   margin: auto;
   box-shadow: 0px 0px 30px black;
-  margin-top: 100px;
+  margin-top: 175px;
 }
 
 .lightgrey {
@@ -51,7 +51,7 @@
 }
 
 .yellow {
-  background-color: rgb(238, 238, 102);
+  background-color: rgb(240, 240, 94);
 }
 .red {
   background-color: rgb(223, 85, 85);
@@ -70,7 +70,7 @@
 }
 
 .white {
-  background-color: white;
+  background-color: rgb(248, 242, 242);
 }
 
 .explode {

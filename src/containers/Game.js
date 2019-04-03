@@ -31,7 +31,7 @@ export default class Game extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     let newBoard = this.updatePlayerOnBoard(prevState)
     if (newBoard) {
-      newBoard = this.checkBoardForThrees(newBoard)
+      newBoard = this.clearBoardOfThrees(newBoard)
       this.setState({
         boardDataArray: [...newBoard]
       })
@@ -203,8 +203,8 @@ export default class Game extends React.Component {
     return { x: columnIndex, y: rowIndex }
   }
 
-  checkBoardForThrees = inputArray => {
-    let checkHorisontalyForThrees = this.checkHorisontalyForThrees(inputArray)
+  clearBoardOfThrees = inputArray => {
+    let checkHorisontalyForThrees = this.checkArrayForThrees(inputArray)
 
     let newArray = inputArray.map((row, rowi) => {
       return row.map((block, columni) =>
@@ -214,7 +214,7 @@ export default class Game extends React.Component {
     return newArray
   }
 
-  checkHorisontalyForThrees = inputArray => {
+  checkArrayForThrees = inputArray => {
     let threesArray = inputArray.map((row, yi, array) => {
       return row.map((block, i) => {
         let prevBlock = this.checkBlockExists(i - 1, yi, array)
@@ -229,6 +229,18 @@ export default class Game extends React.Component {
         let nextNextBlock = this.checkBlockExists(i + 2, yi, array)
           ? this.getBlock(i + 2, yi, array)
           : undefined
+        let downBlock = this.checkBlockExists(i, yi + 1, array)
+          ? this.getBlock(i, yi + 1, array)
+          : undefined
+        let downDownBlock = this.checkBlockExists(i, yi + 2, array)
+          ? this.getBlock(i, yi + 2, array)
+          : undefined
+        let upBlock = this.checkBlockExists(i, yi - 1, array)
+          ? this.getBlock(i, yi - 1, array)
+          : undefined
+        let upUpBlock = this.checkBlockExists(i, yi - 2, array)
+          ? this.getBlock(i, yi - 2, array)
+          : undefined
         if (block === COLORS.wall) return false
         if (block === COLORS.floor) return false
         if (nextBlock === block && nextNextBlock === block) {
@@ -238,6 +250,15 @@ export default class Game extends React.Component {
           return true
         }
         if (prevBlock === block && prevPrevBlock === block) {
+          return true
+        }
+        if (downBlock === block && downDownBlock === block) {
+          return true
+        }
+        if (upBlock === block && downBlock === block) {
+          return true
+        }
+        if (upBlock === block && upUpBlock === block) {
           return true
         }
         return false
