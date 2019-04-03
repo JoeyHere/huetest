@@ -1,19 +1,6 @@
 import React from "react"
 import GameBoard from "./GameBoard.js"
-
-const BLOCKS = {
-  player: 1,
-  red: 2,
-  blue: 3,
-  yellow: 4,
-  green: 5,
-  purple: 6,
-  orange: 7,
-  brown: 8,
-  wall: 9,
-  floor: 10,
-  floorflash: 11
-}
+import { BLOCKS } from "./Config.js"
 
 export default class Game extends React.Component {
   state = {
@@ -63,6 +50,7 @@ export default class Game extends React.Component {
   }
 
   movePlayer = (dx, dy) => {
+    let currentBoard = [...this.state.currentBoard.map(array => [...array])]
     const newBlock = {
       x: this.state.playerPosition.x + dx,
       y: this.state.playerPosition.y + dy
@@ -74,7 +62,7 @@ export default class Game extends React.Component {
       newBlock.y
     )
     if (movingBlocks) {
-      let newBoard = this.moveBlocks(movingBlocks, dx, dy)
+      let newBoard = this.moveBlocks(movingBlocks, dx, dy, currentBoard)
       this.setState({
         playerPosition: newBlock,
         currentBoard: [...newBoard]
@@ -90,13 +78,8 @@ export default class Game extends React.Component {
     }
   }
 
-  combineBlocks = (
-    blockA,
-    dx,
-    dy,
-    inputArray = [...this.state.currentBoard.map(array => [...array])]
-  ) => {
-    console.log(inputArray)
+  combineBlocks = (blockA, dx, dy, movingBlocks = []) => {
+    let inputArray = [...this.state.currentBoard.map(array => [...array])]
     let blockB = { x: blockA.x + dx, y: blockA.y + dy }
 
     if (!this.checkBlockExists(blockA.x, blockA.y)) {
@@ -105,7 +88,6 @@ export default class Game extends React.Component {
     if (!this.checkBlockExists(blockB.x, blockB.y)) {
       return false
     }
-
     if (
       this.blocksCanCombine(
         this.getBlock(blockA.x, blockA.y, inputArray),
@@ -116,36 +98,21 @@ export default class Game extends React.Component {
         this.getBlock(blockA.x, blockA.y, inputArray),
         this.getBlock(blockB.x, blockB.y, inputArray)
       )
-      inputArray[blockA.y][blockA.x] = this.getBlock(
-        blockA.x - dx,
-        blockA.y - dy,
-        inputArray
-      )
-      inputArray[blockB.y][blockB.x] = color
-      console.log("return")
-      console.log(inputArray)
-      return inputArray
+      movingBlocks = [...movingBlocks, { x: blockA.x, y: blockA.y }]
+      let newArray = this.moveBlocks(movingBlocks, dx, dy, inputArray)
+      newArray[blockB.y][blockB.x] = color
+      return newArray
     } else {
-      inputArray[blockA.y][blockA.x] = this.getBlock(
-        blockA.x,
-        blockA.y,
-        inputArray
-      )
-      inputArray[blockB.y][blockB.x] = this.getBlock(
-        blockB.x,
-        blockB.y,
-        inputArray
-      )
+      movingBlocks = [...movingBlocks, { x: blockA.x, y: blockA.y }]
     }
-    return this.combineBlocks(blockB, dx, dy, inputArray)
+    return this.combineBlocks(blockB, dx, dy, movingBlocks)
   }
 
-  moveBlocks = (array, dx, dy) => {
-    let newArray = [...this.state.currentBoard.map(array => [...array])]
+  moveBlocks = (array, dx, dy, board) => {
     array.reverse().forEach(block => {
-      newArray[block.y + dy][block.x + dx] = newArray[block.y][block.x]
+      board[block.y + dy][block.x + dx] = board[block.y][block.x]
     })
-    return newArray
+    return board
   }
 
   checkMove = (oldx, oldy, newx, newy, movingBlocks = []) => {
