@@ -1,6 +1,7 @@
 import React from "react"
 import GameBoard from "./GameBoard.js"
 import { BLOCKS } from "./Config.js"
+import Controller from "./Controller.js"
 
 export default class Game extends React.Component {
   state = {
@@ -16,9 +17,14 @@ export default class Game extends React.Component {
     document.addEventListener("keydown", this.handleKeyDown)
   }
 
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyDown)
+  }
+
   componentDidUpdate(prevProps, prevState) {
     let newBoard = this.updatePlayerOnBoard(prevState)
     newBoard = newBoard ? (newBoard = this.removeFlashBlocks(newBoard)) : false
+
     if (newBoard) {
       newBoard = this.clearBoardOfThrees(newBoard)
       this.setState({
@@ -42,9 +48,13 @@ export default class Game extends React.Component {
     }
   }
 
+  handleBlockClick = (blockx, blocky) => {
+    return null
+  }
+
   removeFlashBlocks = array => {
     let newArray = array.map(row =>
-      row.map(block => (block === BLOCKS.floorflash ? BLOCKS.floor : block))
+      row.map(block => (block === BLOCKS.flash ? BLOCKS.floor : block))
     )
     return newArray
   }
@@ -55,7 +65,7 @@ export default class Game extends React.Component {
       x: this.state.playerPosition.x + dx,
       y: this.state.playerPosition.y + dy
     }
-    let movingBlocks = this.checkMove(
+    let movingBlocks = this.getMovingBlocks(
       this.state.playerPosition.x,
       this.state.playerPosition.y,
       newBlock.x,
@@ -115,7 +125,7 @@ export default class Game extends React.Component {
     return board
   }
 
-  checkMove = (oldx, oldy, newx, newy, movingBlocks = []) => {
+  getMovingBlocks = (oldx, oldy, newx, newy, movingBlocks = []) => {
     const dir = {
       dx: newx - oldx,
       dy: newy - oldy
@@ -124,11 +134,11 @@ export default class Game extends React.Component {
     if (this.getBlock(newx, newy) === BLOCKS.wall) return false
     if (
       this.getBlock(newx, newy) === BLOCKS.floor ||
-      this.getBlock(newx, newy) === BLOCKS.floorflash
+      this.getBlock(newx, newy) === BLOCKS.flash
     )
       return movingBlocks
     movingBlocks = [...movingBlocks, { x: newx, y: newy }]
-    return this.checkMove(
+    return this.getMovingBlocks(
       newx,
       newy,
       newx + dir.dx,
@@ -209,7 +219,7 @@ export default class Game extends React.Component {
 
     let newArray = inputArray.map((row, rowi) => {
       return row.map((block, columni) =>
-        threesArray[rowi][columni] ? BLOCKS.floorflash : block
+        threesArray[rowi][columni] ? BLOCKS.flash : block
       )
     })
     return newArray
@@ -244,6 +254,7 @@ export default class Game extends React.Component {
           : undefined
         if (block === BLOCKS.wall) return false
         if (block === BLOCKS.floor) return false
+        if (block === BLOCKS.brown) return false
         if (nextBlock === block && nextNextBlock === block) {
           return true
         }
@@ -270,6 +281,18 @@ export default class Game extends React.Component {
 
   render() {
     const width = this.state.currentBoard.length * 35
-    return <GameBoard board={this.state.currentBoard} width={width} />
+    return (
+      <div>
+        <GameBoard
+          board={this.state.currentBoard}
+          width={width}
+          handleBlockClick={this.handleBlockClick}
+        />
+        {/* <Controller
+          handleBlockClick={this.handlePaletteCLick}
+          selectedBlock={this.state.selectedColor}
+        /> */}
+      </div>
+    )
   }
 }
