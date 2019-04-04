@@ -6,7 +6,9 @@ import { BLOCKS } from "./Config.js"
 export default class Game extends React.Component {
   state = {
     currentBoard: [],
-    playerPosition: { x: undefined, y: undefined }
+    playerPosition: { x: undefined, y: undefined },
+    levelName: "TEST",
+    keydown: false
   }
 
   componentDidMount() {
@@ -14,15 +16,18 @@ export default class Game extends React.Component {
       let levelData = JSON.parse(level.level_data)
       this.setState({
         playerPosition: this.getPlayerPositionFromBoard(levelData),
-        currentBoard: levelData
+        currentBoard: levelData,
+        levelName: level.name
       })
     })
 
     document.addEventListener("keydown", this.handleKeyDown)
+    document.addEventListener("keyup", this.handleKeyUp)
   }
 
   componentWillUnmount() {
     document.removeEventListener("keydown", this.handleKeyDown)
+    document.removeEventListener("keyup", this.handleKeyUp)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -38,18 +43,28 @@ export default class Game extends React.Component {
   }
 
   handleKeyDown = event => {
-    if (event.key === "a" || event.key === "ArrowLeft") {
-      this.movePlayer(-1, 0)
+    if (!this.state.keydown) {
+      if (event.key === "a" || event.key === "ArrowLeft") {
+        this.movePlayer(-1, 0)
+      }
+      if (event.key === "d" || event.key === "ArrowRight") {
+        this.movePlayer(1, 0)
+      }
+      if (event.key === "w" || event.key === "ArrowUp") {
+        this.movePlayer(0, -1)
+      }
+      if (event.key === "s" || event.key === "ArrowDown") {
+        this.movePlayer(0, 1)
+      }
+      setTimeout(this.handleKeyUp, 100)
     }
-    if (event.key === "d" || event.key === "ArrowRight") {
-      this.movePlayer(1, 0)
-    }
-    if (event.key === "w" || event.key === "ArrowUp") {
-      this.movePlayer(0, -1)
-    }
-    if (event.key === "s" || event.key === "ArrowDown") {
-      this.movePlayer(0, 1)
-    }
+    this.setState({
+      keydown: true
+    })
+  }
+
+  handleKeyUp = () => {
+    this.setState({ keydown: false })
   }
 
   getLevelFromId = id => {
@@ -59,7 +74,7 @@ export default class Game extends React.Component {
   }
 
   handleBlockClick = (blockx, blocky) => {
-    return null
+    console.log("stop clicking on the blocks and solve the puzzle!")
   }
 
   removeFlashBlocks = array => {
@@ -182,14 +197,14 @@ export default class Game extends React.Component {
   getBlock = (x, y, array = this.state.currentBoard) => array[y][x]
 
   changeBlockColor = (array, x, y, color) => {
-    let newArray = [...array]
-    newArray[y][x] = color
-    return newArray
+    array[y][x] = color
+    return array
   }
 
   checkBlockExists = (x, y, array = this.state.currentBoard) =>
     array[y] && array[y][x]
 
+  // * look into improving this method and removing the component did update. it should look cleaner.
   updatePlayerOnBoard = prevState => {
     if (prevState.playerPosition.x) {
       let newArray = [...this.state.currentBoard.map(array => [...array])]
@@ -293,6 +308,7 @@ export default class Game extends React.Component {
     const width = this.state.currentBoard.length * 35
     return (
       <div>
+        <h1>{this.state.levelName}</h1>
         <GameBoard
           board={this.state.currentBoard}
           width={width}

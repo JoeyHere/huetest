@@ -19,7 +19,6 @@ export default class LevelEditor extends React.Component {
       [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 1, 10],
       [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
     ],
-    playerPosition: { x: undefined, y: undefined },
     selectedColor: 2
   }
 
