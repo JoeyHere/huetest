@@ -1,7 +1,7 @@
 import React from "react"
 import GameBoard from "./GameBoard.js"
 import { BLOCKS } from "./Config.js"
-import Controller from "./Controller.js"
+// import Controller from "./Controller.js"
 
 export default class Game extends React.Component {
   state = {
@@ -10,10 +10,14 @@ export default class Game extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      playerPosition: this.getPlayerPositionFromBoard(this.props.board),
-      currentBoard: this.props.board
+    this.getLevelFromId(this.props.id).then(level => {
+      let levelData = JSON.parse(level.level_data)
+      this.setState({
+        playerPosition: this.getPlayerPositionFromBoard(levelData),
+        currentBoard: levelData
+      })
     })
+
     document.addEventListener("keydown", this.handleKeyDown)
   }
 
@@ -46,6 +50,12 @@ export default class Game extends React.Component {
     if (event.key === "s" || event.key === "ArrowDown") {
       this.movePlayer(0, 1)
     }
+  }
+
+  getLevelFromId = id => {
+    const API = `http://localhost:3000/levels/${id}`
+
+    return fetch(API).then(res => res.json())
   }
 
   handleBlockClick = (blockx, blocky) => {

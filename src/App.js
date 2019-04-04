@@ -1,26 +1,14 @@
 import React from "react"
 // import ReactDOM from "react-dom"
 import Game from "./containers/Game"
-import LevilEditor from "./containers/LevelEditor"
 import "./App.css"
+import LevelIndex from "./containers/LevelIndex"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import LevelEditor from "./containers/LevelEditor"
 
 class App extends React.Component {
   state = {
-    levelEditor: false,
-    levelBoard: [
-      [10, 10, 10, 10, 10, 9, 10, 10, 10, 10, 10, 10],
-      [10, 9, 9, 10, 10, 5, 5, 9, 10, 10, 10, 10],
-      [10, 9, 8, 10, 10, 10, 10, 9, 10, 10, 10, 10],
-      [10, 9, 8, 10, 10, 10, 4, 9, 4, 10, 10, 10],
-      [10, 9, 8, 3, 10, 5, 10, 9, 10, 10, 10, 10],
-      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
-      [10, 9, 9, 3, 10, 5, 10, 9, 5, 5, 10, 10],
-      [10, 9, 9, 10, 10, 10, 10, 9, 10, 10, 10, 10],
-      [10, 9, 9, 4, 9, 10, 4, 9, 4, 10, 10, 10],
-      [10, 9, 9, 3, 9, 9, 9, 9, 9, 9, 9, 10],
-      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 1, 10],
-      [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
-    ]
+    savedBoard: []
   }
 
   handleSave = board =>
@@ -37,18 +25,22 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {this.state.levelEditor ? (
-          <LevilEditor
-            board={this.state.levelBoard}
-            handleSave={this.handleSave}
-            tryLevel={this.tryLevel}
-          />
-        ) : (
-          <Game board={this.state.levelBoard} />
-        )}
-        <button onClick={this.tryLevel}>
-          {this.state.levelEditor ? "Test Level" : "Edit Level"}
-        </button>
+        <Router>
+          <Switch>
+            <Route exact path="/levels" component={LevelIndex} />
+
+            <Route
+              path="/levels/:id"
+              component={routerProps => {
+                return (
+                  <Game id={routerProps.match.params.id} {...routerProps} />
+                )
+              }}
+            />
+
+            <Route exact path="/create" component={LevelEditor} />
+          </Switch>
+        </Router>
       </div>
     )
   }

@@ -5,15 +5,31 @@ import { BLOCKS } from "./Config.js"
 
 export default class LevelEditor extends React.Component {
   state = {
-    currentBoard: [],
+    currentBoard: [
+      [10, 10, 10, 10, 10, 9, 10, 10, 10, 10, 10, 10],
+      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 1, 10],
+      [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+    ],
     playerPosition: { x: undefined, y: undefined },
     selectedColor: 2
   }
 
   componentDidMount() {
-    this.setState({
-      currentBoard: this.props.board
-    })
+    // this.getLevelFromId(1).then(level => {
+    //   let levelData = JSON.parse(level.level_data)
+    //   this.setState({
+    //     currentBoard: levelData
+    //   })
+    // })
   }
 
   handleBlockClick = (blockx, blocky) => {
@@ -28,6 +44,12 @@ export default class LevelEditor extends React.Component {
     this.setState({
       selectedColor: BLOCKS[cell]
     })
+
+  getLevelFromId = id => {
+    const API = `http://localhost:3000/levels/${id}`
+
+    return fetch(API).then(res => res.json())
+  }
 
   render() {
     const width = this.state.currentBoard.length * 35
