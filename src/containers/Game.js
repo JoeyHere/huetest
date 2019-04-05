@@ -7,8 +7,8 @@ export default class Game extends React.Component {
   state = {
     currentBoard: [],
     playerPosition: { x: undefined, y: undefined },
-    levelName: "TEST",
-    keydown: false
+    levelName: "TEST"
+    // keydown: false
   }
 
   componentDidMount() {
@@ -22,24 +22,12 @@ export default class Game extends React.Component {
     })
 
     document.addEventListener("keydown", this.handleKeyDown)
-    document.addEventListener("keyup", this.handleKeyUp)
+    // document.addEventListener("keyup", this.handleKeyUp)
   }
 
   componentWillUnmount() {
     document.removeEventListener("keydown", this.handleKeyDown)
-    document.removeEventListener("keyup", this.handleKeyUp)
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    let newBoard = this.updatePlayerOnBoard(prevState)
-    newBoard = newBoard ? (newBoard = this.removeFlashBlocks(newBoard)) : false
-
-    if (newBoard) {
-      newBoard = this.clearBoardOfThrees(newBoard)
-      this.setState({
-        currentBoard: [...newBoard]
-      })
-    }
+    // document.removeEventListener("keyup", this.handleKeyUp)
   }
 
   handleKeyDown = event => {
@@ -56,11 +44,11 @@ export default class Game extends React.Component {
       if (event.key === "s" || event.key === "ArrowDown") {
         this.movePlayer(0, 1)
       }
-      setTimeout(this.handleKeyUp, 100)
+      // setTimeout(this.handleKeyUp, 100)
     }
-    this.setState({
-      keydown: true
-    })
+    // this.setState({
+    //   keydown: true
+    // })
   }
 
   handleKeyUp = () => {
@@ -97,19 +85,23 @@ export default class Game extends React.Component {
       newBlock.y
     )
     if (movingBlocks) {
-      let newBoard = this.moveBlocks(movingBlocks, dx, dy, currentBoard)
+      currentBoard = this.moveBlocks(movingBlocks, dx, dy, currentBoard)
+    } else {
+      currentBoard = this.combineBlocks(newBlock, dx, dy)
+    }
+
+    if (currentBoard) {
+      currentBoard = this.updatePlayerOnBoard(
+        this.state.playerPosition,
+        newBlock,
+        currentBoard
+      )
+      currentBoard = this.removeFlashBlocks(currentBoard)
+      currentBoard = this.clearBoardOfThrees(currentBoard)
       this.setState({
         playerPosition: newBlock,
-        currentBoard: [...newBoard]
+        currentBoard: currentBoard
       })
-    } else {
-      let newBoard = this.combineBlocks(newBlock, dx, dy)
-      if (newBoard) {
-        this.setState({
-          playerPosition: newBlock,
-          currentBoard: [...newBoard]
-        })
-      }
     }
   }
 
@@ -205,27 +197,10 @@ export default class Game extends React.Component {
     array[y] && array[y][x]
 
   // * look into improving this method and removing the component did update. it should look cleaner.
-  updatePlayerOnBoard = prevState => {
-    if (prevState.playerPosition.x) {
-      let newArray = [...this.state.currentBoard.map(array => [...array])]
-      newArray = this.changeBlockColor(
-        newArray,
-        this.state.playerPosition.x,
-        this.state.playerPosition.y,
-        BLOCKS.player
-      )
-      newArray = this.changeBlockColor(
-        newArray,
-        prevState.playerPosition.x,
-        prevState.playerPosition.y,
-        BLOCKS.floor
-      )
-      if (
-        this.state.playerPosition.x !== prevState.playerPosition.x ||
-        this.state.playerPosition.y !== prevState.playerPosition.y
-      )
-        return newArray
-    }
+  updatePlayerOnBoard = (oldblock, newblock, array) => {
+    array = this.changeBlockColor(array, newblock.x, newblock.y, BLOCKS.player)
+    array = this.changeBlockColor(array, oldblock.x, oldblock.y, BLOCKS.floor)
+    return array
   }
 
   getPlayerPositionFromBoard = array => {
