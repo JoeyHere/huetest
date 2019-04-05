@@ -1,6 +1,6 @@
 import React from "react"
 import GameCell from "./GameCell.js"
-import { BLOCKS, BLOCKCLASSES, paletteColors } from "../containers/Config.js"
+import { BLOCKS, BLOCKCLASSES, paletteColors } from "../concerns/Config.js"
 
 const Palette = props => {
   let convertBoardFromIds = board =>

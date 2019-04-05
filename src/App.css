@@ -78,6 +78,27 @@
   border: solid 4px;
   border-color: rgb(218, 162, 58);
 }
+
+.combineGreen {
+  background-color: rgb(100, 192, 100);
+  border: solid 4px;
+  border-color: rgb(98, 168, 98);
+  animation: burst 0.3s;
+  animation-iteration-count: 1;
+}
+
+.combinePurple {
+  background-color: rgb(170, 101, 170);
+  border: solid 4px;
+  border-color: rgb(161, 89, 161);
+}
+
+.combineOrange {
+  background-color: rgb(243, 173, 42);
+  border: solid 4px;
+  border-color: rgb(218, 162, 58);
+}
+
 .player {
   background-color: rgb(250, 242, 242);
   border: solid 4px;
@@ -92,10 +113,10 @@
 
 @keyframes flash {
   0% {
-    opacity: 1;
+    background-color: rgb(173, 168, 168);
   }
   50% {
-    opacity: 0.1;
+    background-color: rgb(247, 244, 244);
   }
 }
 
@@ -105,8 +126,16 @@
   animation-iteration-count: 2;
 }
 
-.explode {
-  background-color: bisque;
+@keyframes burst {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.3);
+  }
 }
 
 h1,

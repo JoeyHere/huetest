@@ -1,6 +1,7 @@
 import React from "react"
 import GameBoard from "./GameBoard.js"
-import { BLOCKS } from "./Config.js"
+import { BLOCKS } from "../concerns/Config.js"
+import API from "../concerns/API.js"
 
 export default class Game extends React.Component {
   state = {
@@ -11,7 +12,7 @@ export default class Game extends React.Component {
   }
 
   componentDidMount() {
-    this.getLevelFromId(this.props.id).then(level => {
+    API.getLevelFromId(this.props.id).then(level => {
       let levelData = JSON.parse(level.level_data)
       this.setState({
         playerPosition: this.getPlayerPositionFromBoard(levelData),
@@ -53,18 +54,27 @@ export default class Game extends React.Component {
     this.setState({ keydown: false })
   }
 
-  getLevelFromId = id => {
-    const API = `http://localhost:3000/levels/${id}`
-    return fetch(API).then(res => res.json())
-  }
-
   handleBlockClick = (blockx, blocky) => {
     console.log("stop clicking on the blocks and solve the puzzle!")
   }
 
   removeFlashBlocks = array => {
     let newArray = array.map(row =>
-      row.map(block => (block === BLOCKS.flash ? BLOCKS.floor : block))
+      row.map(block => {
+        if (block === BLOCKS.flash) {
+          return BLOCKS.floor
+        }
+        if (block === BLOCKS.combineGreen) {
+          return BLOCKS.green
+        }
+        if (block === BLOCKS.combineOrange) {
+          return BLOCKS.orange
+        }
+        if (block === BLOCKS.combinePurple) {
+          return BLOCKS.purple
+        }
+        return block
+      })
     )
     return newArray
   }
@@ -162,22 +172,22 @@ export default class Game extends React.Component {
 
   blocksCanCombine = (blockA, blockB) => {
     if (blockA === BLOCKS.yellow && blockB === BLOCKS.blue) {
-      return BLOCKS.green
+      return BLOCKS.combineGreen
     }
     if (blockA === BLOCKS.blue && blockB === BLOCKS.yellow) {
-      return BLOCKS.green
+      return BLOCKS.combineGreen
     }
     if (blockA === BLOCKS.yellow && blockB === BLOCKS.red) {
-      return BLOCKS.orange
+      return BLOCKS.combineOrange
     }
     if (blockA === BLOCKS.red && blockB === BLOCKS.yellow) {
-      return BLOCKS.orange
+      return BLOCKS.combineOrange
     }
     if (blockA === BLOCKS.red && blockB === BLOCKS.blue) {
-      return BLOCKS.purple
+      return BLOCKS.combinePurple
     }
     if (blockA === BLOCKS.blue && blockB === BLOCKS.red) {
-      return BLOCKS.purple
+      return BLOCKS.combinePurple
     }
     return false
   }
@@ -250,28 +260,63 @@ export default class Game extends React.Component {
         if (block === BLOCKS.wall) return false
         if (block === BLOCKS.floor) return false
         if (block === BLOCKS.brown) return false
-        if (nextBlock === block && nextNextBlock === block) {
+        if (
+          this.isSame(nextBlock, block) &&
+          this.isSame(nextNextBlock, block)
+        ) {
           return true
         }
-        if (prevBlock === block && nextBlock === block) {
+        if (this.isSame(prevBlock, block) && this.isSame(nextBlock, block)) {
           return true
         }
-        if (prevBlock === block && prevPrevBlock === block) {
+        if (
+          this.isSame(prevBlock, block) &&
+          this.isSame(prevPrevBlock, block)
+        ) {
           return true
         }
-        if (downBlock === block && downDownBlock === block) {
+        if (
+          this.isSame(downBlock, block) &&
+          this.isSame(downDownBlock, block)
+        ) {
           return true
         }
-        if (upBlock === block && downBlock === block) {
+        if (this.isSame(upBlock, block) && this.isSame(downBlock, block)) {
           return true
         }
-        if (upBlock === block && upUpBlock === block) {
+        if (this.isSame(upBlock, block) && this.isSame(upUpBlock, block)) {
           return true
         }
         return false
       })
     })
     return threesArray
+  }
+
+  isSame = (blockA, blockB) => {
+    if (blockA === blockB) {
+      return true
+    }
+    if (blockA === BLOCKS.green && blockB === BLOCKS.combineGreen) {
+      return true
+    }
+    if (blockA === BLOCKS.combineGreen && blockB === BLOCKS.green) {
+      return true
+    }
+    if (blockA === BLOCKS.purple && blockB === BLOCKS.combinePurple) {
+      return true
+    }
+    if (blockA === BLOCKS.combinePurple && blockB === BLOCKS.purple) {
+      return true
+    }
+    if (blockA === BLOCKS.orange && blockB === BLOCKS.combineOrange) {
+      return true
+    }
+    if (blockA === BLOCKS.combineOrange && blockB === BLOCKS.orange) {
+      return true
+    }
+
+    return false
   }
 
   render() {

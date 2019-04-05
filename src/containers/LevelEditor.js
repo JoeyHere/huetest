@@ -1,7 +1,8 @@
 import React from "react"
 import GameBoard from "./GameBoard.js"
 import Palette from "../components/Palette.js"
-import { BLOCKS } from "./Config.js"
+import { BLOCKS } from "../concerns/Config.js"
+import API from "../concerns/API.js"
 
 export default class LevelEditor extends React.Component {
   state = {
@@ -23,7 +24,7 @@ export default class LevelEditor extends React.Component {
   }
 
   componentDidMount() {
-    // this.getLevelFromId(1).then(level => {
+    // API.getLevelFromId(1).then(level => {
     //   let levelData = JSON.parse(level.level_data)
     //   this.setState({
     //     currentBoard: levelData
@@ -43,12 +44,6 @@ export default class LevelEditor extends React.Component {
     this.setState({
       selectedColor: BLOCKS[cell]
     })
-
-  getLevelFromId = id => {
-    const API = `http://localhost:3000/levels/${id}`
-
-    return fetch(API).then(res => res.json())
-  }
 
   render() {
     const width = this.state.currentBoard.length * 35
