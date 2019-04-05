@@ -1,14 +1,13 @@
 import React from "react"
 import GameBoard from "./GameBoard.js"
 import { BLOCKS } from "./Config.js"
-// import Controller from "./Controller.js"
 
 export default class Game extends React.Component {
   state = {
     currentBoard: [],
     playerPosition: { x: undefined, y: undefined },
-    levelName: "TEST"
-    // keydown: false
+    levelName: "TEST",
+    keydown: false
   }
 
   componentDidMount() {
@@ -20,14 +19,13 @@ export default class Game extends React.Component {
         levelName: level.name
       })
     })
-
     document.addEventListener("keydown", this.handleKeyDown)
-    // document.addEventListener("keyup", this.handleKeyUp)
+    document.addEventListener("keyup", this.handleKeyUp)
   }
 
   componentWillUnmount() {
     document.removeEventListener("keydown", this.handleKeyDown)
-    // document.removeEventListener("keyup", this.handleKeyUp)
+    document.removeEventListener("keyup", this.handleKeyUp)
   }
 
   handleKeyDown = event => {
@@ -44,11 +42,11 @@ export default class Game extends React.Component {
       if (event.key === "s" || event.key === "ArrowDown") {
         this.movePlayer(0, 1)
       }
-      // setTimeout(this.handleKeyUp, 100)
+      setTimeout(this.handleKeyUp, 50)
     }
-    // this.setState({
-    //   keydown: true
-    // })
+    this.setState({
+      keydown: true
+    })
   }
 
   handleKeyUp = () => {
@@ -57,7 +55,6 @@ export default class Game extends React.Component {
 
   getLevelFromId = id => {
     const API = `http://localhost:3000/levels/${id}`
-
     return fetch(API).then(res => res.json())
   }
 
@@ -74,6 +71,7 @@ export default class Game extends React.Component {
 
   movePlayer = (dx, dy) => {
     let currentBoard = [...this.state.currentBoard.map(array => [...array])]
+    currentBoard = this.removeFlashBlocks(currentBoard)
     const newBlock = {
       x: this.state.playerPosition.x + dx,
       y: this.state.playerPosition.y + dy
@@ -89,14 +87,12 @@ export default class Game extends React.Component {
     } else {
       currentBoard = this.combineBlocks(newBlock, dx, dy)
     }
-
     if (currentBoard) {
       currentBoard = this.updatePlayerOnBoard(
         this.state.playerPosition,
         newBlock,
         currentBoard
       )
-      currentBoard = this.removeFlashBlocks(currentBoard)
       currentBoard = this.clearBoardOfThrees(currentBoard)
       this.setState({
         playerPosition: newBlock,
@@ -196,7 +192,6 @@ export default class Game extends React.Component {
   checkBlockExists = (x, y, array = this.state.currentBoard) =>
     array[y] && array[y][x]
 
-  // * look into improving this method and removing the component did update. it should look cleaner.
   updatePlayerOnBoard = (oldblock, newblock, array) => {
     array = this.changeBlockColor(array, newblock.x, newblock.y, BLOCKS.player)
     array = this.changeBlockColor(array, oldblock.x, oldblock.y, BLOCKS.floor)
@@ -289,10 +284,6 @@ export default class Game extends React.Component {
           width={width}
           handleBlockClick={this.handleBlockClick}
         />
-        {/* <Controller
-          handleBlockClick={this.handlePaletteCLick}
-          selectedBlock={this.state.selectedColor}
-        /> */}
       </div>
     )
   }
