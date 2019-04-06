@@ -5,9 +5,9 @@ import API from "../concerns/API.js"
 
 export default class Game extends React.Component {
   state = {
-    currentBoard: [],
+    currentBoard: [[]],
     playerPosition: { x: undefined, y: undefined },
-    levelName: "TEST",
+    levelName: "",
     keydown: false
   }
 

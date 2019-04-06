@@ -6,20 +6,20 @@ import LevelIndex from "./containers/LevelIndex"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import LevelEditor from "./containers/LevelEditor"
 import Navbar from "./components/Navbar"
+import Login from "./containers/Login"
 
 class App extends React.Component {
   state = {
-    savedBoard: []
+    currentUser: undefined
   }
 
-  handleSave = board =>
-    this.setState({
-      levelBoard: board
-    })
-
-  tryLevel = () => {
-    this.setState({
-      levelEditor: !this.state.levelEditor
+  setUser = () => {
+    API.getProfile().then(userObject => {
+      if (userObject.error) {
+        console.log("user error")
+      } else {
+        this.setState({ currentUser: userObject.user })
+      }
     })
   }
 
@@ -40,7 +40,33 @@ class App extends React.Component {
               }}
             />
 
-            <Route exact path="/create" component={LevelEditor} />
+            <Route
+              path="/edit/:id"
+              component={routerProps => {
+                return (
+                  <LevelEditor
+                    id={routerProps.match.params.id}
+                    {...routerProps}
+                  />
+                )
+              }}
+            />
+
+            <Route
+              exact
+              path="/create"
+              component={routerProps => {
+                return <LevelEditor {...routerProps} />
+              }}
+            />
+
+            <Route
+              exact
+              path="/login"
+              component={routerProps => {
+                return <Login {...routerProps} setUser={this.setUser} />
+              }}
+            />
           </Switch>
         </Router>
       </div>

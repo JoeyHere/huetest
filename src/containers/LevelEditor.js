@@ -1,35 +1,32 @@
 import React from "react"
 import GameBoard from "./GameBoard.js"
 import Palette from "../components/Palette.js"
-import { BLOCKS } from "../concerns/Config.js"
+import { BLOCKS, blankBoards } from "../concerns/Config.js"
+import { Form, Button } from "semantic-ui-react"
 import API from "../concerns/API.js"
+import { NavLink } from "react-router-dom"
 
 export default class LevelEditor extends React.Component {
   state = {
-    currentBoard: [
-      [10, 10, 10, 10, 10, 9, 10, 10, 10, 10, 10, 10],
-      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
-      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
-      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
-      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
-      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
-      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
-      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
-      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
-      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
-      [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 1, 10],
-      [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
-    ],
-    selectedColor: 2
+    currentBoard: [[]],
+    selectedColor: 2,
+    level_name: "",
+    level_size: "small"
   }
 
   componentDidMount() {
-    // API.getLevelFromId(1).then(level => {
-    //   let levelData = JSON.parse(level.level_data)
-    //   this.setState({
-    //     currentBoard: levelData
-    //   })
-    // })
+    if (this.props.id) {
+      API.getLevelFromId(this.props.id).then(level => {
+        let levelData = JSON.parse(level.level_data)
+        this.setState({
+          currentBoard: levelData
+        })
+      })
+    } else {
+      this.setState({
+        currentBoard: blankBoards[`${this.state.level_size}`]
+      })
+    }
   }
 
   handleBlockClick = (blockx, blocky) => {
@@ -45,11 +42,27 @@ export default class LevelEditor extends React.Component {
       selectedColor: BLOCKS[cell]
     })
 
+  handleSave = () => {
+    API.saveLevel({
+      name: this.state.level_name,
+      level_data: JSON.stringify(this.state.currentBoard)
+    }).then(level => this.props.history.push(`/levels/${level.id}`))
+  }
+
   render() {
     const width = this.state.currentBoard.length * 35
     return (
       <div>
-        <h3>EDITOR</h3>
+        <h3>LEVEL NAME</h3>
+        <Form style={{ width: 500 + "px", margin: "auto" }}>
+          <input
+            value={this.state.level_name}
+            onChange={event => {
+              this.setState({ level_name: event.target.value })
+            }}
+            placeholder="Name your level"
+          />
+        </Form>
         <GameBoard
           handleBlockClick={this.handleBlockClick}
           board={this.state.currentBoard}
@@ -59,10 +72,33 @@ export default class LevelEditor extends React.Component {
           handleBlockClick={this.handlePaletteCLick}
           selectedBlock={this.state.selectedColor}
         />
-        <h3>{JSON.stringify(this.state.currentBoard)}</h3>
-        <button onClick={() => this.props.handleSave(this.state.currentBoard)}>
-          SAVE
-        </button>
+        <Form style={{ width: 200 + "px", margin: "auto" }}>
+          <Form.Group widths="equal">
+            <Form.Field
+              label="Level Size"
+              control="select"
+              onChange={event => {
+                this.setState({
+                  level_size: event.target.value,
+                  currentBoard: blankBoards[event.target.value]
+                })
+              }}
+            >
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+            </Form.Field>
+          </Form.Group>
+        </Form>
+        <h3>
+          <Button
+            onClick={this.handleSave}
+            style={{ width: 100 + "px", margin: "auto" }}
+          >
+            SAVE
+          </Button>
+        </h3>
+        {/* <h3>{JSON.stringify(this.state.currentBoard)}</h3> */}
       </div>
     )
   }
