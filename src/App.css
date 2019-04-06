@@ -1,14 +1,8 @@
-.cell {
+.block {
   display: inline-block;
   width: 35px;
   height: 35px;
   box-sizing: border-box;
-}
-
-.center {
-  margin: auto;
-  display: table;
-  margin-top: 10px;
 }
 
 .grid {
@@ -19,6 +13,13 @@
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
+.center {
+  margin: auto;
+  display: table;
+  margin-top: 10px;
+}
+
 .palette {
   box-shadow: 0px 0px 25px rgb(0, 0, 0);
   cursor: pointer;
@@ -156,6 +157,7 @@ h4 {
   margin: auto;
   text-align: center;
   margin-top: 50px;
+  margin-bottom: 30px;
 }
 
 button {

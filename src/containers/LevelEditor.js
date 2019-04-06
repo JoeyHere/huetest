@@ -36,9 +36,9 @@ export default class LevelEditor extends React.Component {
     })
   }
 
-  handlePaletteCLick = cell =>
+  handlePaletteCLick = block =>
     this.setState({
-      selectedColor: BLOCKS[cell]
+      selectedColor: BLOCKS[block]
     })
 
   handleSave = () => {
@@ -52,9 +52,10 @@ export default class LevelEditor extends React.Component {
     const width = this.state.currentBoard.length * 35
     return (
       <div>
-        <h3>LEVEL NAME</h3>
-        <Form style={{ width: 500 + "px", margin: "auto" }}>
+        <h3>EDITOR</h3>
+        <Form style={{ width: 400 + "px", margin: "auto" }}>
           <input
+            maxLength="40"
             value={this.state.level_name}
             onChange={event => {
               this.setState({ level_name: event.target.value })

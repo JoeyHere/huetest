@@ -1,5 +1,5 @@
 import React from "react"
-import GameCell from "./GameCell.js"
+import GameBlock from "./GameBlock.js"
 import { BLOCKS, BLOCKCLASSES, paletteColors } from "../concerns/Config.js"
 
 const Palette = props => {
@@ -12,14 +12,14 @@ const Palette = props => {
       style={{ width: paletteColors[0].length * 35 }}
     >
       {convertBoardFromIds(paletteColors).map((row, rowIndex) =>
-        row.map((cell, cellIndex) => (
-          <GameCell
-            key={1000 * (cellIndex + 1) + 10 * (rowIndex + 1)}
-            x={cellIndex}
+        row.map((block, blockIndex) => (
+          <GameBlock
+            key={1000 * (blockIndex + 1) + 10 * (rowIndex + 1)}
+            x={blockIndex}
             y={rowIndex}
-            cellColor={cell}
-            selected={props.selectedBlock === BLOCKS[cell] ? true : false}
-            handleBlockClick={() => props.handleBlockClick(cell)}
+            blockColor={block}
+            selected={props.selectedBlock === BLOCKS[block] ? true : false}
+            handleBlockClick={() => props.handleBlockClick(block)}
           />
         ))
       )}

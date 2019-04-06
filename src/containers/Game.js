@@ -8,6 +8,7 @@ export default class Game extends React.Component {
     currentBoard: [[]],
     playerPosition: { x: undefined, y: undefined },
     levelName: "",
+    levelWon: false,
     keydown: false
   }
 
@@ -79,12 +80,20 @@ export default class Game extends React.Component {
     return newArray
   }
 
+  winGame = () =>
+    this.setState({
+      levelWon: true
+    })
+
   movePlayer = (dx, dy) => {
     let currentBoard = [...this.state.currentBoard.map(array => [...array])]
     currentBoard = this.removeFlashBlocks(currentBoard)
     const newBlock = {
       x: this.state.playerPosition.x + dx,
       y: this.state.playerPosition.y + dy
+    }
+    if (!this.checkBlockExists(newBlock.x, newBlock.y)) {
+      this.winGame()
     }
     let movingBlocks = this.getMovingBlocks(
       this.state.playerPosition.x,
@@ -211,10 +220,10 @@ export default class Game extends React.Component {
   getPlayerPositionFromBoard = array => {
     let columnIndex = undefined
     let rowIndex = array.findIndex(row =>
-      row.find(cell => cell === BLOCKS.player)
+      row.find(block => block === BLOCKS.player)
     )
     if (rowIndex) {
-      columnIndex = array[rowIndex].findIndex(cell => cell === BLOCKS.player)
+      columnIndex = array[rowIndex].findIndex(block => block === BLOCKS.player)
     }
     return { x: columnIndex, y: rowIndex }
   }
@@ -324,6 +333,7 @@ export default class Game extends React.Component {
     return (
       <div>
         <h1>{this.state.levelName}</h1>
+        <h3>{this.state.levelWon ? "win" : "lose"}</h3>
         <GameBoard
           board={this.state.currentBoard}
           width={width}

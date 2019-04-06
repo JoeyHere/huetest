@@ -1,7 +1,7 @@
 import React from "react"
 
-const GameCell = props => {
-  let className = props.cellColor + " cell"
+const GameBlock = props => {
+  let className = props.blockColor + " block"
 
   if (props.selected) {
     className = className + " selected"
@@ -17,4 +17,4 @@ const GameCell = props => {
   )
 }
 
-export default GameCell
+export default GameBlock

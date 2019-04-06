@@ -1,5 +1,5 @@
 import React from "react"
-import GameCell from "../components/GameCell.js"
+import GameBlock from "../components/GameBlock.js"
 import { BLOCKCLASSES } from "../concerns/Config.js"
 
 const GameBoard = props => {
@@ -8,13 +8,15 @@ const GameBoard = props => {
   return (
     <div className="grid" style={{ width: props.width }}>
       {convertBoardFromIds(props.board).map((row, rowIndex) =>
-        row.map((cell, cellIndex) => (
-          <GameCell
-            key={1000 * (cellIndex + 1) + 10 * (rowIndex + 1)}
-            x={cellIndex}
+        row.map((block, blockIndex) => (
+          <GameBlock
+            key={1000 * (blockIndex + 1) + 10 * (rowIndex + 1)}
+            x={blockIndex}
             y={rowIndex}
-            cellColor={cell}
-            handleBlockClick={() => props.handleBlockClick(cellIndex, rowIndex)}
+            blockColor={block}
+            handleBlockClick={() =>
+              props.handleBlockClick(blockIndex, rowIndex)
+            }
           />
         ))
       )}
