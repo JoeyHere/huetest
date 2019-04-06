@@ -4,7 +4,6 @@ import Palette from "../components/Palette.js"
 import { BLOCKS, blankBoards } from "../concerns/Config.js"
 import { Form, Button } from "semantic-ui-react"
 import API from "../concerns/API.js"
-import { NavLink } from "react-router-dom"
 
 export default class LevelEditor extends React.Component {
   state = {

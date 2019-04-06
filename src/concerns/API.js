@@ -5,7 +5,7 @@ const PROFILE_URL = BASE_URL + "/profile"
 
 const getLevelFromId = id => {
   const URL = LEVELS_URL + `/${id}`
-  return fetch(URL).then(res => res.json())
+  return getterFunction(URL)
 }
 
 const getLevels = () => {
@@ -15,22 +15,19 @@ const getLevels = () => {
 const saveLevel = level => {
   return fetch(LEVELS_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
+    },
     body: JSON.stringify(level)
   }).then(resp => resp.json())
-}
-export default {
-  getLevelFromId,
-  getLevels,
-  saveLevel
 }
 
 const loginPost = (user_name, password) => {
   const options = {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({
       user: {
@@ -54,4 +51,12 @@ const getterFunction = url => {
     }
   }
   return fetch(url, options).then(resp => resp.json())
+}
+
+export default {
+  getLevelFromId,
+  getLevels,
+  saveLevel,
+  getProfile,
+  loginPost
 }

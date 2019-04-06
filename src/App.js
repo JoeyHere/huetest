@@ -7,10 +7,15 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import LevelEditor from "./containers/LevelEditor"
 import Navbar from "./components/Navbar"
 import Login from "./containers/Login"
+import API from "./concerns/API.js"
 
 class App extends React.Component {
   state = {
     currentUser: undefined
+  }
+
+  componentDidMount() {
+    this.setUser()
   }
 
   setUser = () => {
@@ -23,14 +28,21 @@ class App extends React.Component {
     })
   }
 
+  logOut = () => {
+    localStorage.removeItem("token")
+    this.setState({
+      currentUser: undefined
+    })
+    window.location.reload()
+  }
+
   render() {
     return (
       <div>
         <Router>
-          <Navbar />
+          <Navbar currentUser={this.state.currentUser} logOut={this.logOut} />
           <Switch>
             <Route exact path="/levels" component={LevelIndex} />
-
             <Route
               path="/levels/:id"
               component={routerProps => {
@@ -39,7 +51,6 @@ class App extends React.Component {
                 )
               }}
             />
-
             <Route
               path="/edit/:id"
               component={routerProps => {
@@ -51,7 +62,6 @@ class App extends React.Component {
                 )
               }}
             />
-
             <Route
               exact
               path="/create"
@@ -59,7 +69,6 @@ class App extends React.Component {
                 return <LevelEditor {...routerProps} />
               }}
             />
-
             <Route
               exact
               path="/login"

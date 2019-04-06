@@ -1,19 +1,21 @@
 import React, { Component } from "react"
 import { Button, Form } from "semantic-ui-react"
-import { NavLink } from "react-router-dom"
+import API from "../concerns/API.js"
 
 export default class Login extends Component {
   logIn = event => {
     event.preventDefault()
-    API.loginPost(event.target.email.value, event.target.password.value).then(
-      userObject => {
-        loginSetUser(userObject)
-      }
-    )
+    API.loginPost(
+      event.target.user_name.value,
+      event.target.password.value
+    ).then(userObject => {
+      loginSetUser(userObject)
+    })
     const loginSetUser = userObject => {
       let token = userObject.token
       localStorage.setItem("token", token)
       this.props.setUser()
+      this.props.history.push(`/levels`)
     }
   }
 
@@ -33,7 +35,7 @@ export default class Login extends Component {
               </Form.Field>
               <Form.Field>
                 <label>Password</label>
-                <input placeholder="Password" name="password" />
+                <input placeholder="Password" name="password" type="password" />
               </Form.Field>
               <Button className="ui submitbutton centered column" type="submit">
                 Submit
