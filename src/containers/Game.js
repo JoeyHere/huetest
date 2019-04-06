@@ -2,6 +2,7 @@ import React from "react"
 import GameBoard from "./GameBoard.js"
 import { BLOCKS } from "../concerns/Config.js"
 import API from "../concerns/API.js"
+import "../confetti.scss"
 
 export default class Game extends React.Component {
   state = {
@@ -332,13 +333,33 @@ export default class Game extends React.Component {
     const width = this.state.currentBoard.length * 35
     return (
       <div>
-        <h1>{this.state.levelName}</h1>
-        <h3>{this.state.levelWon ? "win" : "lose"}</h3>
-        <GameBoard
-          board={this.state.currentBoard}
-          width={width}
-          handleBlockClick={this.handleBlockClick}
-        />
+        {this.state.levelWon ? (
+          <div className="confetti">
+            <div className="confetti-piece" />
+            <div className="confetti-piece" />
+            <div className="confetti-piece" />
+            <div className="confetti-piece" />
+            <div className="confetti-piece" />
+            <div className="confetti-piece" />
+            <div className="confetti-piece" />
+            <div className="confetti-piece" />
+            <div className="confetti-piece" />
+            <div className="confetti-piece" />
+            <div className="confetti-piece" />
+            <div className="confetti-piece" />
+            <div className="confetti-piece" />
+            <div className="icon">YOU DID IT!</div>
+          </div>
+        ) : (
+          <div>
+            <h1>{this.state.levelName}</h1>
+            <GameBoard
+              board={this.state.currentBoard}
+              width={width}
+              handleBlockClick={this.handleBlockClick}
+            />
+          </div>
+        )}
       </div>
     )
   }

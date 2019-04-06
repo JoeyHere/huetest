@@ -52,7 +52,7 @@ export default class LevelEditor extends React.Component {
     const width = this.state.currentBoard.length * 35
     return (
       <div>
-        <h3>EDITOR</h3>
+        <h3>LEVEL EDITOR</h3>
         <Form style={{ width: 400 + "px", margin: "auto" }}>
           <input
             maxLength="40"

@@ -55,68 +55,101 @@
 }
 
 .blue {
+  background-image: url("./sprites/blue.png");
+  background-position: center center;
+  background-size: 100% 100%;
   background-color: rgb(81, 81, 243);
 }
 
 .yellow {
+  background-image: url("./sprites/yellow.png");
+  background-position: center center;
+  background-size: 100% 100%;
   background-color: rgb(236, 236, 53);
 }
 .red {
+  background-image: url("./sprites/red.png");
+  background-position: center center;
+  background-size: 100% 100%;
   background-color: rgb(223, 85, 85);
 }
 
 .green {
-  background-color: rgb(100, 192, 100);
+  background-image: url("./sprites/green.png");
+  background-position: center center;
+  background-size: 100% 100%;
+  /* background-color: rgb(100, 192, 100);
   border: solid 4px;
-  border-color: rgb(98, 168, 98);
+  border-color: rgb(98, 168, 98); */
 }
 
 .purple {
-  background-color: rgb(170, 101, 170);
+  background-image: url("./sprites/purple.png");
+  background-position: center center;
+  background-size: 100% 100%;
+  /* background-color: rgb(170, 101, 170);
   border: solid 4px;
-  border-color: rgb(161, 89, 161);
+  border-color: rgb(161, 89, 161); */
 }
 
 .orange {
-  background-color: rgb(243, 173, 42);
+  background-image: url("./sprites/orange.png");
+  background-position: center center;
+  background-size: 100% 100%;
+  /* background-color: rgb(243, 173, 42);
   border: solid 4px;
-  border-color: rgb(218, 162, 58);
+  border-color: rgb(218, 162, 58); */
 }
 
 .combineGreen {
-  background-color: rgb(100, 192, 100);
+  background-image: url("./sprites/green.png");
+  background-position: center center;
+  background-size: 100% 100%;
+  /* background-color: rgb(100, 192, 100);
   border: solid 4px;
-  border-color: rgb(98, 168, 98);
+  border-color: rgb(98, 168, 98); */
   animation: burst 0.3s;
   animation-iteration-count: 1;
 }
 
 .combinePurple {
-  background-color: rgb(170, 101, 170);
+  background-image: url("./sprites/purple.png");
+  background-position: center center;
+  background-size: 100% 100%;
+  /* background-color: rgb(170, 101, 170);
   border: solid 4px;
-  border-color: rgb(161, 89, 161);
+  border-color: rgb(161, 89, 161); */
   animation: burst 0.3s;
   animation-iteration-count: 1;
 }
 
 .combineOrange {
-  background-color: rgb(243, 173, 42);
+  background-image: url("./sprites/orange.png");
+  background-position: center center;
+  background-size: 100% 100%;
+  /* background-color: rgb(243, 173, 42);
   border: solid 4px;
-  border-color: rgb(218, 162, 58);
+  border-color: rgb(218, 162, 58); */
   animation: burst 0.3s;
   animation-iteration-count: 1;
 }
 
 .player {
-  background-color: rgb(250, 242, 242);
+  background-image: url("./sprites/hueman-sprite.png");
+  background-position: center center;
+  background-size: 100% 100%;
+  /* background-color: rgb(250, 242, 242);
   border: solid 4px;
-  border-color: rgb(235, 221, 221);
+  border-color: rgb(235, 221, 221); */
 }
 
 .brown {
-  background-color: rgb(165, 129, 62);
+  background-image: url("./sprites/brown.png");
+  background-position: center center;
+  background-size: 100% 100%;
+  /* background-color: rgb(165, 129, 62);
   border: solid 2px;
-  border-color: rgb(124, 97, 71);
+  border-color: rgb(124, 97, 71); */
 }
 
 .flash {
