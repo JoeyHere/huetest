@@ -12,7 +12,9 @@ export const BLOCKS = {
   flash: 11,
   combineGreen: 12,
   combinePurple: 13,
-  combineOrange: 14
+  combineOrange: 14,
+  bomb: 15,
+  explode: 16
 }
 
 export const BLOCKCLASSES = {
@@ -29,10 +31,12 @@ export const BLOCKCLASSES = {
   11: "flash",
   12: "combineGreen",
   13: "combinePurple",
-  14: "combineOrange"
+  14: "combineOrange",
+  15: "bomb",
+  16: "explode"
 }
 
-export const paletteColors = [[2, 3, 4, 10, 8], [6, 7, 5, 9, 1]]
+export const paletteColors = [[2, 3, 4, 5, 6, 7, 8, 15, 10, 9, 1]]
 
 export const blankBoards = {
   medium: [

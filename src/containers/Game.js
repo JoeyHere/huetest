@@ -67,6 +67,9 @@ export default class Game extends React.Component {
         if (block === BLOCKS.flash) {
           return BLOCKS.floor
         }
+        if (block === BLOCKS.explode) {
+          return BLOCKS.floor
+        }
         if (block === BLOCKS.combineGreen) {
           return BLOCKS.green
         }
@@ -202,6 +205,13 @@ export default class Game extends React.Component {
     if (blockA === BLOCKS.blue && blockB === BLOCKS.red) {
       return BLOCKS.combinePurple
     }
+    if (blockA === BLOCKS.bomb && blockB !== BLOCKS.wall) {
+      return BLOCKS.explode
+    }
+    if (blockA !== BLOCKS.wall && blockB === BLOCKS.bomb) {
+      return BLOCKS.explode
+    }
+
     return false
   }
 
@@ -273,6 +283,7 @@ export default class Game extends React.Component {
         if (block === BLOCKS.wall) return false
         if (block === BLOCKS.floor) return false
         if (block === BLOCKS.brown) return false
+        if (block === BLOCKS.bomb) return false
         if (
           this.isSame(nextBlock, block) &&
           this.isSame(nextNextBlock, block)
