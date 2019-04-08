@@ -42,7 +42,13 @@ class App extends React.Component {
         <Router>
           <Navbar currentUser={this.state.currentUser} logOut={this.logOut} />
           <Switch>
-            <Route exact path="/levels" component={LevelIndex} />
+            <Route
+              exact
+              path="/levels"
+              component={() => {
+                return <LevelIndex currentUser={this.state.currentUser} />
+              }}
+            />
             <Route
               path="/levels/:id"
               component={routerProps => {

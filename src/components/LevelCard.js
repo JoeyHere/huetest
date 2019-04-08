@@ -22,7 +22,7 @@ class LevelCard extends React.Component {
       width: `${pixelSize}px`,
       position: "relative",
       left: "33%",
-      top: "40%"
+      top: "39%"
     }
   }
 
@@ -31,14 +31,15 @@ class LevelCard extends React.Component {
     let CSS = this.generateCSS(board, Math.floor(100 / board.length))
 
     let userMeta = this.props.user
-      ? `- by ${this.props.user.user_name}`
-      : "- by HUEman"
+      ? `by ${this.props.user.user_name}`
+      : "by HUEman"
 
     return (
       <Card
+        color={this.props.completed ? "green" : "red"}
         as={Link}
         to={`/levels/${this.props.id}`}
-        style={{ height: "200px" }}
+        style={{ height: "240px" }}
       >
         <Card.Content>
           <div style={CSS} />
@@ -46,7 +47,10 @@ class LevelCard extends React.Component {
             {this.props.name} <Card.Meta>{userMeta}</Card.Meta>
           </Card.Header>
         </Card.Content>
-        {/* <Card.Content extra /> */}
+        <Card.Content extra>
+          🎲{this.props.plays} | ☑{this.props.completes}{" "}
+          {this.props.completed ? "| ✅" : "❌"}
+        </Card.Content>
       </Card>
     )
   }

@@ -18,7 +18,14 @@ class LevelIndex extends React.Component {
   render() {
     return (
       <div id="index-div">
-        <LevelCardList levels={this.state.levels} hello={"hello"} />
+        <LevelCardList
+          levels={this.state.levels}
+          completedLevelIds={
+            this.props.currentUser
+              ? this.props.currentUser.completedLevelIds
+              : []
+          }
+        />
       </div>
     )
   }

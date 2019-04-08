@@ -23,6 +23,7 @@ export default class Game extends React.Component {
         levelName: level.name
       })
     })
+    API.playedLevel(this.props.id)
     document.addEventListener("keydown", this.handleKeyDown)
     document.addEventListener("keyup", this.handleKeyUp)
   }
@@ -85,10 +86,12 @@ export default class Game extends React.Component {
     return newArray
   }
 
-  winGame = () =>
+  winGame = () => {
+    API.completedLevel(this.props.id)
     this.setState({
       levelWon: true
     })
+  }
 
   movePlayer = (dx, dy) => {
     let currentBoard = [...this.state.currentBoard.map(array => [...array])]

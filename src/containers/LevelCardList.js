@@ -16,7 +16,13 @@ class LevelCardList extends React.Component {
             }}
           >
             {this.props.levels.map(level => (
-              <LevelCard key={level.id} {...level} />
+              <LevelCard
+                key={level.id}
+                {...level}
+                completed={this.props.completedLevelIds.includes(
+                  parseInt(level.id)
+                )}
+              />
             ))}
           </Card.Group>
         </div>
