@@ -48,7 +48,7 @@ class LevelCard extends React.Component {
           </Card.Header>
         </Card.Content>
         <Card.Content extra>
-          🎲{this.props.plays} | ☑{this.props.completes}{" "}
+          🎲 {this.props.plays} | 🏆 {this.props.completes}{" "}
           {this.props.completed ? "| ✅" : "| ❌"}
         </Card.Content>
       </Card>

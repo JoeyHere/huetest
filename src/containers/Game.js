@@ -376,9 +376,9 @@ export default class Game extends React.Component {
             <div className="confetti-piece" />
             <div className="confetti-piece" />
             <div className="confetti-piece" />
-            <div className="icon">LEVEL COMPLETE!</div>
-            <Button className="icon" onClick={this.nextLevel}>
-              ✔
+            {/* <div className="icon">LEVEL COMPLETE!</div> */}
+            <Button positive={"true"} className="icon" onClick={this.nextLevel}>
+              LEVEL COMPLETE
             </Button>
           </div>
         ) : (
