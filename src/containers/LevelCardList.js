@@ -12,18 +12,16 @@ class LevelCardList extends React.Component {
             itemsPerRow={3}
             centered={true}
             style={{
-              marginLeft: 10 + "px",
-              marginRight: 10 + "px",
-              marginTop: 5 + "px"
+              marginLeft: 40 + "px",
+              marginRight: 40 + "px",
+              marginTop: 40 + "px"
             }}
           >
             {this.props.levels.map(level => (
               <LevelCard
                 key={level.id}
                 {...level}
-                completed={this.props.completedLevelIds.includes(
-                  parseInt(level.id)
-                )}
+                completed={this.props.completedLevelIds.includes(level.id)}
               />
             ))}
           </Card.Group>
