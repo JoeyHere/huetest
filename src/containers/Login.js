@@ -27,7 +27,7 @@ export default class Login extends Component {
             <h1>Login</h1>
             <Form
               onSubmit={this.logIn}
-              style={{ width: 20 + "%", padding: 20 + "px", margin: "auto" }}
+              style={{ width: 400 + "px", padding: 20 + "px", margin: "auto" }}
             >
               <Form.Field>
                 <label>User Name</label>
@@ -37,7 +37,12 @@ export default class Login extends Component {
                 <label>Password</label>
                 <input placeholder="Password" name="password" type="password" />
               </Form.Field>
-              <Button className="ui submitbutton centered column" type="submit">
+              <Button
+                positive={"true"}
+                fluid={"true"}
+                className="ui submitbutton"
+                type="submit"
+              >
                 Submit
               </Button>
             </Form>

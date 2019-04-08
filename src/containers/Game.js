@@ -190,6 +190,12 @@ export default class Game extends React.Component {
   }
 
   blocksCanCombine = (blockA, blockB) => {
+    if (blockA === BLOCKS.floor || blockB === BLOCKS.floor) {
+      return false
+    }
+    if (blockA === BLOCKS.wall || blockB === BLOCKS.wall) {
+      return false
+    }
     if (blockA === BLOCKS.yellow && blockB === BLOCKS.blue) {
       return BLOCKS.combineGreen
     }
@@ -348,6 +354,7 @@ export default class Game extends React.Component {
 
   nextLevel = () => {
     this.props.history.push(`/levels`)
+    this.props.setUser()
   }
 
   render() {
@@ -371,7 +378,7 @@ export default class Game extends React.Component {
             <div className="confetti-piece" />
             <div className="icon">LEVEL COMPLETE!</div>
             <Button className="icon" onClick={this.nextLevel}>
-              >>>
+              ✔
             </Button>
           </div>
         ) : (

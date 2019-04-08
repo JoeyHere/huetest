@@ -36,6 +36,14 @@ class App extends React.Component {
     window.location.reload()
   }
 
+  // addCompletedLevel = levelId => {
+  //   let user = { ...this.state.currentUser }
+  //   user.completedLevelIds = [...user.completedLevelIds, levelId]
+  //   this.setState({
+  //     currentUser: user
+  //   })
+  // }
+
   render() {
     return (
       <div>
@@ -53,7 +61,11 @@ class App extends React.Component {
               path="/levels/:id"
               component={routerProps => {
                 return (
-                  <Game id={routerProps.match.params.id} {...routerProps} />
+                  <Game
+                    id={routerProps.match.params.id}
+                    {...routerProps}
+                    setUser={this.setUser}
+                  />
                 )
               }}
             />
