@@ -44,15 +44,14 @@ export default class LevelEditor extends React.Component {
   handleSave = () => {
     API.saveLevel({
       name: this.state.level_name,
-      level_data: JSON.stringify(this.state.currentBoard),
-      user_id: this.props.currentUser.id
+      level_data: JSON.stringify(this.state.currentBoard)
     }).then(level => this.props.history.push(`/levels/${level.id}`))
   }
 
   render() {
     const width = this.state.currentBoard.length * 35
     return (
-      <div>
+      <div className={"editor"}>
         <h3>LEVEL EDITOR</h3>
         <Form style={{ width: 400 + "px", margin: "auto" }}>
           <input

@@ -11,7 +11,7 @@ export default class Navbar extends Component {
         <Menu>
           <Menu.Item name="play" as={NavLink} to="/levels" />
           <Menu.Item name="create" as={NavLink} to="/create" />
-          <Menu.Item name="discover" as={NavLink} to="/discover" />
+          {/* <Menu.Item name="discover" as={NavLink} to="/discover" /> */}
 
           {this.props.currentUser ? (
             <Menu.Item name="log-out" onClick={this.props.logOut} />
