@@ -22,13 +22,17 @@ class LevelCard extends React.Component {
       width: `${pixelSize}px`,
       position: "relative",
       left: "33%",
-      top: "25%"
+      top: "40%"
     }
   }
 
   render() {
     let board = JSON.parse(this.props.level_data)
     let CSS = this.generateCSS(board, Math.floor(100 / board.length))
+
+    let userMeta = this.props.user
+      ? `- by ${this.props.user.user_name}`
+      : "- by HUEman"
 
     return (
       <Card
@@ -38,8 +42,11 @@ class LevelCard extends React.Component {
       >
         <Card.Content>
           <div style={CSS} />
-          <div style={{ float: "left" }}>{this.props.name}</div>
+          <Card.Header style={{ float: "left" }}>
+            {this.props.name} <Card.Meta>{userMeta}</Card.Meta>
+          </Card.Header>
         </Card.Content>
+        {/* <Card.Content extra /> */}
       </Card>
     )
   }

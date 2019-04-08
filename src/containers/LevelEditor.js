@@ -55,7 +55,7 @@ export default class LevelEditor extends React.Component {
         <h3>LEVEL EDITOR</h3>
         <Form style={{ width: 400 + "px", margin: "auto" }}>
           <input
-            maxLength="40"
+            maxLength="30"
             value={this.state.level_name}
             onChange={event => {
               this.setState({ level_name: event.target.value })
