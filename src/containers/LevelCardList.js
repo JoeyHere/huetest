@@ -9,6 +9,8 @@ class LevelCardList extends React.Component {
         <div style={{ paddingBottom: 5 + "px", paddingTop: 5 + "px" }} />
         <div>
           <Card.Group
+            itemsPerRow={3}
+            centered={true}
             style={{
               marginLeft: 10 + "px",
               marginRight: 10 + "px",

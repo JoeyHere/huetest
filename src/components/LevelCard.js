@@ -21,8 +21,8 @@ class LevelCard extends React.Component {
       height: `${pixelSize}px`,
       width: `${pixelSize}px`,
       position: "relative",
-      left: "33%",
-      top: "39%"
+      left: "60%",
+      top: "30%"
     }
   }
 
@@ -39,7 +39,7 @@ class LevelCard extends React.Component {
         color={this.props.completed ? "green" : "red"}
         as={Link}
         to={`/levels/${this.props.id}`}
-        style={{ height: "240px" }}
+        style={{ height: "210px", width: "300px" }}
       >
         <Card.Content>
           <div style={CSS} />
@@ -49,7 +49,7 @@ class LevelCard extends React.Component {
         </Card.Content>
         <Card.Content extra>
           🎲{this.props.plays} | ☑{this.props.completes}{" "}
-          {this.props.completed ? "| ✅" : "❌"}
+          {this.props.completed ? "| ✅" : "| ❌"}
         </Card.Content>
       </Card>
     )

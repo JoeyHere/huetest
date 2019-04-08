@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Menu } from "semantic-ui-react"
+import { Menu, Button } from "semantic-ui-react"
 import { NavLink } from "react-router-dom"
 
 export default class Navbar extends Component {
@@ -8,17 +8,25 @@ export default class Navbar extends Component {
   render() {
     return (
       <div>
-        <Menu>
-          <Menu.Item name="play" as={NavLink} to="/levels" />
-          <Menu.Item name="create" as={NavLink} to="/create" />
+        <Menu widths={4} attached="top" tabular>
+          <Menu.Item name="PLAY" as={NavLink} to="/levels" />
+          <Menu.Item name="CREATE" as={NavLink} to="/create" />
           {/* <Menu.Item name="discover" as={NavLink} to="/discover" /> */}
 
           {this.props.currentUser ? (
-            <Menu.Item name="log-out" onClick={this.props.logOut} />
+            <Menu.Item name="log-out" position={"right"}>
+              <Button onClick={this.props.logOut}>Log Out</Button>
+            </Menu.Item>
           ) : (
             <>
-              <Menu.Item name="log-in" as={NavLink} to="/login" />
-              <Menu.Item name="sign-up" as={NavLink} to="/signup" />
+              <Menu.Item position={"right"}>
+                <Button primary as={NavLink} to="/signup">
+                  Sign Up
+                </Button>
+                <Button as={NavLink} to="/login">
+                  Log In
+                </Button>
+              </Menu.Item>
             </>
           )}
         </Menu>
