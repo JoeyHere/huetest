@@ -44,7 +44,8 @@ export default class LevelEditor extends React.Component {
   handleSave = () => {
     API.saveLevel({
       name: this.state.level_name,
-      level_data: JSON.stringify(this.state.currentBoard)
+      level_data: JSON.stringify(this.state.currentBoard),
+      user_id: this.props.currentUser.id
     }).then(level => this.props.history.push(`/levels/${level.id}`))
   }
 
@@ -98,7 +99,6 @@ export default class LevelEditor extends React.Component {
             SAVE
           </Button>
         </h3>
-        {/* <h3>{JSON.stringify(this.state.currentBoard)}</h3> */}
       </div>
     )
   }

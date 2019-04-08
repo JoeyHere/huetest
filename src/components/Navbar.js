@@ -16,7 +16,10 @@ export default class Navbar extends Component {
           {this.props.currentUser ? (
             <Menu.Item name="log-out" onClick={this.props.logOut} />
           ) : (
-            <Menu.Item name="log-in" as={NavLink} to="/login" />
+            <>
+              <Menu.Item name="log-in" as={NavLink} to="/login" />
+              <Menu.Item name="sign-up" as={NavLink} to="/signup" />
+            </>
           )}
         </Menu>
       </div>

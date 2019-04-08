@@ -39,12 +39,12 @@
 }
 
 .bomb {
-  background-image: url("./sprites/bomb.png");
+  background-image: url("./sprites/bombf1.png");
   background-position: center center;
   background-size: 100% 100%;
   animation: bombFrames 0.8s;
   animation-iteration-count: infinite;
-  /* background-color: rgb(81, 81, 243); */
+  /* background-color: rgb(109, 109, 122); */
 }
 
 .blue {
@@ -128,7 +128,7 @@
 }
 
 .player {
-  background-image: url("./sprites/hueman.png");
+  background-image: url("./sprites/hmframe1.png");
   background-position: center center;
   background-size: 100% 100%;
   animation: playerFrames 0.8s;
@@ -253,10 +253,13 @@ h2,
 h3,
 h4 {
   color: rgb(172, 163, 163);
-  margin: auto;
   text-align: center;
   margin-top: 50px;
   margin-bottom: 30px;
+}
+
+.board {
+  margin-top: 50px;
 }
 
 button {

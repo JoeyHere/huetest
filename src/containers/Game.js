@@ -372,7 +372,7 @@ export default class Game extends React.Component {
             </Button>
           </div>
         ) : (
-          <div>
+          <div className={"board"}>
             <h1>{this.state.levelName}</h1>
             <GameBoard
               board={this.state.currentBoard}

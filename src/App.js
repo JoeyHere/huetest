@@ -21,7 +21,7 @@ class App extends React.Component {
   setUser = () => {
     API.getProfile().then(userObject => {
       if (userObject.error) {
-        console.log("user error")
+        console.log(userObject.error)
       } else {
         this.setState({ currentUser: userObject.user })
       }
@@ -66,14 +66,25 @@ class App extends React.Component {
               exact
               path="/create"
               component={routerProps => {
-                return <LevelEditor {...routerProps} />
+                return (
+                  <LevelEditor
+                    {...routerProps}
+                    currentUser={this.state.currentUser}
+                  />
+                )
               }}
             />
             <Route
               exact
               path="/login"
               component={routerProps => {
-                return <Login {...routerProps} setUser={this.setUser} />
+                return (
+                  <Login
+                    {...routerProps}
+                    setUser={this.setUser}
+                    currentUser={this.state.currentUser}
+                  />
+                )
               }}
             />
           </Switch>
