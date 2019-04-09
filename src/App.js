@@ -74,6 +74,13 @@ class App extends React.Component {
                 return <LevelIndex currentUser={this.state.currentUser} />
               }}
             />
+            <Route
+              exact
+              path="/"
+              component={() => {
+                return <LevelIndex currentUser={this.state.currentUser} />
+              }}
+            />
             <this.PrivateRoute
               currentUser={this.state.currentUser}
               exact
@@ -103,13 +110,11 @@ class App extends React.Component {
                 )
               }}
             />
-
             <this.PrivateRoute
               currentUser={this.state.currentUser}
               path="/create"
               component={LevelEditor}
             />
-
             <Route
               exact
               path="/login"
@@ -123,7 +128,6 @@ class App extends React.Component {
                 )
               }}
             />
-
             <Route
               exact
               path="/signup"

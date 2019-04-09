@@ -1,6 +1,6 @@
 import React from "react"
 import LevelCard from "../components/LevelCard.js"
-import { Card, Dropdown } from "semantic-ui-react"
+import { Card } from "semantic-ui-react"
 
 class LevelCardList extends React.Component {
   render() {

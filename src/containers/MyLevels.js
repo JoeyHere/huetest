@@ -28,7 +28,7 @@ class MyLevels extends React.Component {
         />
         <h3>
           {this.state.levels.length === 0
-            ? "you haven't created any levels yet...."
+            ? "You haven't created any levels yet...."
             : null}
         </h3>
       </div>

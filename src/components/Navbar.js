@@ -9,9 +9,9 @@ export default class Navbar extends Component {
     return (
       <>
         <Menu stackable={true} id="navBar" widths={5} attached="top" tabular>
-          <Menu.Item name="PLAY" as={NavLink} to="/levels" />
-          <Menu.Item name="CREATE" as={NavLink} to="/create" />
-          <Menu.Item>
+          <Menu.Item color={"green"} name="PLAY" as={NavLink} to="/levels" />
+          <Menu.Item color={"blue"} name="CREATE" as={NavLink} to="/create" />
+          <Menu.Item fitted>
             <Image src={"https://i.ibb.co/fHMm8Rw/brown.png"} />
             <Image src={"https://i.ibb.co/0scrPMV/red.png"} />
             <Image src={"https://i.ibb.co/THvVFLG/green.png"} />
@@ -22,6 +22,7 @@ export default class Navbar extends Component {
           {this.props.currentUser ? (
             <>
               <Menu.Item
+                color={"yellow"}
                 name={"MY LEVELS"}
                 position={"right"}
                 as={NavLink}
@@ -31,17 +32,25 @@ export default class Navbar extends Component {
                 name="LOG-OUT"
                 onClick={this.props.logOut}
                 position={"right"}
-              />
+              >
+                LOG OUT {" - "}(
+                {this.props.currentUser
+                  ? this.props.currentUser.user_name
+                  : null}
+                )
+              </Menu.Item>
             </>
           ) : (
             <>
               <Menu.Item
+                color={"yellow"}
                 name={"SIGN UP"}
                 position={"right"}
                 as={NavLink}
                 to="/signup"
               />
               <Menu.Item
+                color={"red"}
                 name={"LOG IN"}
                 position={"right"}
                 as={NavLink}
