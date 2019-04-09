@@ -17,9 +17,6 @@ const Confetti = props => {
       <div className="confetti-piece" />
       <div className="confetti-piece" />
       <div className="confetti-piece" />
-      <Button positive={true} className="icon" onClick={props.nextLevel}>
-        LEVEL COMPLETE
-      </Button>
     </div>
   )
 }

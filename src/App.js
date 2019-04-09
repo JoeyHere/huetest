@@ -9,6 +9,8 @@ import Navbar from "./components/Navbar"
 import Login from "./containers/Login"
 import API from "./concerns/API.js"
 import SignUp from "./containers/SignUp"
+import MyLevels from "./containers/MyLevels"
+import PrivateRoute from "./components/PrivateRoute"
 
 class App extends React.Component {
   state = {
@@ -49,6 +51,12 @@ class App extends React.Component {
               component={() => {
                 return <LevelIndex currentUser={this.state.currentUser} />
               }}
+            />
+            <PrivateRoute
+              currentUser={this.state.currentUser}
+              exact
+              path="/mylevels"
+              component={MyLevels}
             />
             <Route
               path="/levels/:id"

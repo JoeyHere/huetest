@@ -7,16 +7,18 @@ export default class Navbar extends Component {
 
   render() {
     return (
-      <div>
-        <Menu id="navBar" widths={5} attached="top" tabular>
-          <Image src={"https://i.ibb.co/t49MPMt/hmframe1.png"} />
+      <>
+        <Menu stackable={true} id="navBar" widths={5} attached="top" tabular>
           <Menu.Item name="PLAY" as={NavLink} to="/levels" />
           <Menu.Item name="CREATE" as={NavLink} to="/create" />
-          <Image src={"https://i.ibb.co/fHMm8Rw/brown.png"} />
-          <Image src={"https://i.ibb.co/0scrPMV/red.png"} />
-          <Image src={"https://i.ibb.co/ZLVxh9P/yellow.png"} />
-          <Image src={"https://i.ibb.co/nsm8vdz/blue.png"} />
-          <Image src={"https://i.ibb.co/fHMm8Rw/brown.png"} />
+          <Menu.Item>
+            <Image src={"https://i.ibb.co/fHMm8Rw/brown.png"} />
+            <Image src={"https://i.ibb.co/0scrPMV/red.png"} />
+            <Image src={"https://i.ibb.co/THvVFLG/green.png"} />
+            <Image src={"https://i.ibb.co/ZLVxh9P/yellow.png"} />
+            <Image src={"https://i.ibb.co/nsm8vdz/blue.png"} />
+            <Image src={"https://i.ibb.co/fHMm8Rw/brown.png"} />
+          </Menu.Item>
           {this.props.currentUser ? (
             <>
               <Menu.Item
@@ -47,9 +49,8 @@ export default class Navbar extends Component {
               />
             </>
           )}
-          <Image src={"https://i.ibb.co/NmXKvJq/bombf2.png"} />
         </Menu>
-      </div>
+      </>
     )
   }
 }

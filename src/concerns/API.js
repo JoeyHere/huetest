@@ -5,6 +5,7 @@ const SIGNUP_URL = BASE_URL + "/signup"
 const PROFILE_URL = BASE_URL + "/profile"
 const PLAYED_URL = BASE_URL + "/played"
 const COMPLETED_URL = BASE_URL + "/completed"
+const MYLEVELS_URL = BASE_URL + "/mylevels"
 
 const getLevelFromId = id => {
   const URL = LEVELS_URL + `/${id}`
@@ -13,6 +14,10 @@ const getLevelFromId = id => {
 
 const getLevels = () => {
   return getterFunction(LEVELS_URL)
+}
+
+const getMyLevels = () => {
+  return getterFunction(MYLEVELS_URL)
 }
 
 const saveLevel = level => {
@@ -102,5 +107,6 @@ export default {
   loginPost,
   playedLevel,
   completedLevel,
-  signUpPost
+  signUpPost,
+  getMyLevels
 }

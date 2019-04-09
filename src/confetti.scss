@@ -13,19 +13,11 @@ $duration: 3000;
   @return $randomNum;
 }
 
-.icon {
-  font-size: 32px;
-  font-weight: bold;
-  letter-spacing: 5px;
-  position: relative;
-  color: rgb(146, 146, 146);
-}
-
 .confetti {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 60vh;
   overflow: hidden;

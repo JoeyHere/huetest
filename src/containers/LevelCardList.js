@@ -6,26 +6,28 @@ class LevelCardList extends React.Component {
   render() {
     return (
       <div>
-        <div style={{ paddingBottom: 5 + "px", paddingTop: 5 + "px" }} />
-        <div>
-          <Card.Group
-            itemsPerRow={3}
-            centered={true}
-            style={{
-              marginLeft: 40 + "px",
-              marginRight: 40 + "px",
-              marginTop: 40 + "px"
-            }}
-          >
-            {this.props.levels.map(level => (
-              <LevelCard
-                key={level.id}
-                {...level}
-                completed={this.props.completedLevelIds.includes(level.id)}
-              />
-            ))}
-          </Card.Group>
-        </div>
+        <Card.Group
+          itemsPerRow={3}
+          centered={true}
+          style={{
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginTop: "50px",
+            width: "1000px"
+          }}
+        >
+          {this.props.levels.map(level => (
+            <LevelCard
+              key={level.id}
+              {...level}
+              completed={
+                this.props.completedLevelIds
+                  ? this.props.completedLevelIds.includes(level.id)
+                  : false
+              }
+            />
+          ))}
+        </Card.Group>
       </div>
     )
   }
