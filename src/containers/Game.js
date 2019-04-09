@@ -35,24 +35,26 @@ export default class Game extends React.Component {
   }
 
   handleKeyDown = event => {
-    if (!this.state.keydown) {
-      if (event.key === "a" || event.key === "ArrowLeft") {
-        this.movePlayer(-1, 0)
+    if (this.state.levelWon === false) {
+      if (!this.state.keydown) {
+        if (event.key === "a" || event.key === "ArrowLeft") {
+          this.movePlayer(-1, 0)
+        }
+        if (event.key === "d" || event.key === "ArrowRight") {
+          this.movePlayer(1, 0)
+        }
+        if (event.key === "w" || event.key === "ArrowUp") {
+          this.movePlayer(0, -1)
+        }
+        if (event.key === "s" || event.key === "ArrowDown") {
+          this.movePlayer(0, 1)
+        }
+        setTimeout(this.handleKeyUp, 50)
       }
-      if (event.key === "d" || event.key === "ArrowRight") {
-        this.movePlayer(1, 0)
-      }
-      if (event.key === "w" || event.key === "ArrowUp") {
-        this.movePlayer(0, -1)
-      }
-      if (event.key === "s" || event.key === "ArrowDown") {
-        this.movePlayer(0, 1)
-      }
-      setTimeout(this.handleKeyUp, 50)
+      this.setState({
+        keydown: true
+      })
     }
-    this.setState({
-      keydown: true
-    })
   }
 
   handleKeyUp = () => {
@@ -363,7 +365,7 @@ export default class Game extends React.Component {
     return (
       <div>
         {this.state.levelWon ? (
-          <div>
+          <div style={{ position: "relative" }}>
             <Confetti nextLevel={this.nextLevel} />
             <div className={"board blur"}>
               <h1>{this.state.levelName}</h1>
@@ -373,7 +375,12 @@ export default class Game extends React.Component {
                 handleBlockClick={this.handleBlockClick}
               />
             </div>
-            <Button positive={true} className="icon" onClick={this.nextLevel}>
+            <Button
+              style={{ position: "absolute", top: "50%" }}
+              positive={true}
+              className="winButton"
+              onClick={this.nextLevel}
+            >
               LEVEL COMPLETE
             </Button>
           </div>

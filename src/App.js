@@ -3,14 +3,18 @@ import React from "react"
 import Game from "./containers/Game"
 import "./App.css"
 import LevelIndex from "./containers/LevelIndex"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom"
 import LevelEditor from "./containers/LevelEditor"
 import Navbar from "./components/Navbar"
 import Login from "./containers/Login"
 import API from "./concerns/API.js"
 import SignUp from "./containers/SignUp"
 import MyLevels from "./containers/MyLevels"
-import PrivateRoute from "./components/PrivateRoute"
 
 class App extends React.Component {
   state = {
@@ -39,6 +43,24 @@ class App extends React.Component {
     window.location.reload()
   }
 
+  PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={props => {
+        return this.state.currentUser ? (
+          <Component {...rest} {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
+        )
+      }}
+    />
+  )
+
   render() {
     return (
       <div>
@@ -52,7 +74,7 @@ class App extends React.Component {
                 return <LevelIndex currentUser={this.state.currentUser} />
               }}
             />
-            <PrivateRoute
+            <this.PrivateRoute
               currentUser={this.state.currentUser}
               exact
               path="/mylevels"
@@ -81,18 +103,13 @@ class App extends React.Component {
                 )
               }}
             />
-            <Route
-              exact
+
+            <this.PrivateRoute
+              currentUser={this.state.currentUser}
               path="/create"
-              component={routerProps => {
-                return (
-                  <LevelEditor
-                    {...routerProps}
-                    currentUser={this.state.currentUser}
-                  />
-                )
-              }}
+              component={LevelEditor}
             />
+
             <Route
               exact
               path="/login"
