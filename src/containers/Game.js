@@ -3,7 +3,7 @@ import GameBoard from "./GameBoard.js"
 import { BLOCKS } from "../concerns/Config.js"
 import API from "../concerns/API.js"
 import "../confetti.scss"
-import { Button } from "semantic-ui-react"
+import Confetti from "../components/Confetti.js"
 
 export default class Game extends React.Component {
   state = {
@@ -362,25 +362,7 @@ export default class Game extends React.Component {
     return (
       <div>
         {this.state.levelWon ? (
-          <div className="confetti">
-            <div className="confetti-piece" />
-            <div className="confetti-piece" />
-            <div className="confetti-piece" />
-            <div className="confetti-piece" />
-            <div className="confetti-piece" />
-            <div className="confetti-piece" />
-            <div className="confetti-piece" />
-            <div className="confetti-piece" />
-            <div className="confetti-piece" />
-            <div className="confetti-piece" />
-            <div className="confetti-piece" />
-            <div className="confetti-piece" />
-            <div className="confetti-piece" />
-            {/* <div className="icon">LEVEL COMPLETE!</div> */}
-            <Button positive={true} className="icon" onClick={this.nextLevel}>
-              LEVEL COMPLETE
-            </Button>
-          </div>
+          <Confetti nextLevel={this.nextLevel} />
         ) : (
           <div className={"board"}>
             <h1>{this.state.levelName}</h1>

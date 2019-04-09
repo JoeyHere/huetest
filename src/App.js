@@ -8,6 +8,7 @@ import LevelEditor from "./containers/LevelEditor"
 import Navbar from "./components/Navbar"
 import Login from "./containers/Login"
 import API from "./concerns/API.js"
+import SignUp from "./containers/SignUp"
 
 class App extends React.Component {
   state = {
@@ -35,14 +36,6 @@ class App extends React.Component {
     })
     window.location.reload()
   }
-
-  // addCompletedLevel = levelId => {
-  //   let user = { ...this.state.currentUser }
-  //   user.completedLevelIds = [...user.completedLevelIds, levelId]
-  //   this.setState({
-  //     currentUser: user
-  //   })
-  // }
 
   render() {
     return (
@@ -98,6 +91,20 @@ class App extends React.Component {
               component={routerProps => {
                 return (
                   <Login
+                    {...routerProps}
+                    setUser={this.setUser}
+                    currentUser={this.state.currentUser}
+                  />
+                )
+              }}
+            />
+
+            <Route
+              exact
+              path="/signup"
+              component={routerProps => {
+                return (
+                  <SignUp
                     {...routerProps}
                     setUser={this.setUser}
                     currentUser={this.state.currentUser}

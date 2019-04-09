@@ -1,6 +1,7 @@
 const BASE_URL = "http://localhost:3000"
 const LEVELS_URL = BASE_URL + "/levels"
 const LOGIN_URL = BASE_URL + "/login"
+const SIGNUP_URL = BASE_URL + "/signup"
 const PROFILE_URL = BASE_URL + "/profile"
 const PLAYED_URL = BASE_URL + "/played"
 const COMPLETED_URL = BASE_URL + "/completed"
@@ -63,6 +64,22 @@ const loginPost = (user_name, password) => {
   return fetch(LOGIN_URL, options).then(resp => resp.json())
 }
 
+const signUpPost = (user_name, password) => {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      user: {
+        user_name: user_name,
+        password: password
+      }
+    })
+  }
+  return fetch(SIGNUP_URL, options).then(resp => resp.json())
+}
+
 const getProfile = () => {
   return getterFunction(PROFILE_URL)
 }
@@ -84,5 +101,6 @@ export default {
   getProfile,
   loginPost,
   playedLevel,
-  completedLevel
+  completedLevel,
+  signUpPost
 }

@@ -22,7 +22,7 @@ class LevelCard extends React.Component {
       width: `${pixelSize}px`,
       position: "relative",
       left: "60%",
-      top: "30%"
+      top: "29%"
     }
   }
 

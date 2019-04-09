@@ -2,15 +2,16 @@ import React, { Component } from "react"
 import { Button, Form } from "semantic-ui-react"
 import API from "../concerns/API.js"
 
-export default class Login extends Component {
+export default class SignUp extends Component {
   state = {
     user_name: "",
-    password: ""
+    password: "",
+    password_confirmed: ""
   }
 
-  logIn = event => {
+  signUp = event => {
     event.preventDefault()
-    API.loginPost(this.state.user_name, this.state.password).then(
+    API.signUpPost(this.state.user_name, this.state.password).then(
       userObject => {
         loginSetUser(userObject)
       }
@@ -26,9 +27,9 @@ export default class Login extends Component {
   render() {
     return (
       <div className="logInForm">
-        <h1>LOGIN</h1>
+        <h1>SIGN UP</h1>
         <Form
-          onSubmit={this.logIn}
+          onSubmit={this.signUp}
           style={{ width: 400 + "px", padding: 20 + "px", margin: "auto" }}
         >
           <Form.Field>
@@ -43,7 +44,7 @@ export default class Login extends Component {
             />
           </Form.Field>
           <Form.Field>
-            {/* <label>password</label> */}
+            {/* <label>Password</label> */}
             <input
               onChange={event =>
                 this.setState({ password: event.target.value })
