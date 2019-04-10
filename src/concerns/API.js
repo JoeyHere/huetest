@@ -1,4 +1,4 @@
-const BASE_URL = "https://hueman-server.herokuapp.com"
+const BASE_URL = "https://hueman-server-eu.herokuapp.com"
 const LEVELS_URL = BASE_URL + "/levels"
 const LOGIN_URL = BASE_URL + "/login"
 const SIGNUP_URL = BASE_URL + "/signup"
@@ -59,7 +59,6 @@ const playedLevel = levelId => {
   })
     .then(resp => resp.json())
     .then(handleApiResponse)
-    .catch(handleError)
 }
 
 const completedLevel = levelId => {
