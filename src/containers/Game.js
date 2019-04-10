@@ -19,16 +19,21 @@ export default class Game extends React.Component {
 
   componentDidMount() {
     API.getLevelFromId(this.props.id).then(level => {
-      let levelData = JSON.parse(level.level_data)
-      this.setState({
-        playerPosition: this.getPlayerPositionFromBoard(levelData),
-        originalBoard: levelData,
-        currentBoard: levelData,
-        undoBoard: levelData,
-        levelName: level.name
-      })
+      if (level) {
+        let levelData = JSON.parse(level.level_data)
+        this.setState({
+          playerPosition: this.getPlayerPositionFromBoard(levelData),
+          originalBoard: levelData,
+          currentBoard: levelData,
+          undoBoard: levelData,
+          levelName: level.name
+        })
+        API.playedLevel(this.props.id)
+      } else {
+        this.props.history.push(`/levels`)
+      }
     })
-    API.playedLevel(this.props.id)
+
     document.addEventListener("keydown", this.handleKeyDown)
     document.addEventListener("keyup", this.handleKeyUp)
   }
@@ -418,6 +423,11 @@ export default class Game extends React.Component {
               handleBlockClick={this.handleBlockClick}
             />
             <div className={"resetButton"}>
+              <Button
+                color={"grey"}
+                icon="stop"
+                onClick={() => this.props.history.goBack()}
+              />
               <Button icon="backward" onClick={this.undoMove} />
               <Button icon="fast backward" onClick={this.resetLevel} />
             </div>

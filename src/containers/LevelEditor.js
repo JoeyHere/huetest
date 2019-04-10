@@ -59,7 +59,11 @@ export default class LevelEditor extends React.Component {
     API.saveLevel({
       name: this.state.level_name,
       level_data: JSON.stringify(this.state.currentBoard)
-    }).then(level => this.props.history.push(`/levels/${level.id}`))
+    }).then(level => {
+      if (level) {
+        this.props.history.push(`/levels/${level.id}`)
+      }
+    })
   }
 
   render() {

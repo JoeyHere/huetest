@@ -13,7 +13,9 @@ export default class SignUp extends Component {
     event.preventDefault()
     API.signUpPost(this.state.user_name, this.state.password).then(
       userObject => {
-        loginSetUser(userObject)
+        if (userObject) {
+          loginSetUser(userObject)
+        }
       }
     )
     const loginSetUser = userObject => {

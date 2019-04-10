@@ -7,6 +7,20 @@ const PLAYED_URL = BASE_URL + "/played"
 const COMPLETED_URL = BASE_URL + "/completed"
 const MYLEVELS_URL = BASE_URL + "/mylevels"
 
+const handleError = errorObj => {
+  let error = containsError(errorObj)
+    ? errorObj
+    : { error: "oops something went wrong" }
+  alert(`${error.error}`)
+}
+const containsError = data => "error" in data
+const handleApiResponse = data => {
+  if (containsError(data)) {
+    return Promise.reject(data)
+  }
+  return data
+}
+
 const getLevelFromId = id => {
   const URL = LEVELS_URL + `/${id}`
   return getterFunction(URL)
@@ -28,7 +42,10 @@ const saveLevel = level => {
       Authorization: localStorage.getItem("token")
     },
     body: JSON.stringify(level)
-  }).then(resp => resp.json())
+  })
+    .then(resp => resp.json())
+    .then(handleApiResponse)
+    .catch(handleError)
 }
 
 const playedLevel = levelId => {
@@ -39,7 +56,10 @@ const playedLevel = levelId => {
       Authorization: localStorage.getItem("token")
     },
     body: JSON.stringify(levelId)
-  }).then(resp => resp.json())
+  })
+    .then(resp => resp.json())
+    .then(handleApiResponse)
+    .catch(handleError)
 }
 
 const completedLevel = levelId => {
@@ -50,7 +70,10 @@ const completedLevel = levelId => {
       Authorization: localStorage.getItem("token")
     },
     body: JSON.stringify(levelId)
-  }).then(resp => resp.json())
+  })
+    .then(resp => resp.json())
+    .then(handleApiResponse)
+    .catch(handleError)
 }
 
 const loginPost = (user_name, password) => {
@@ -66,7 +89,10 @@ const loginPost = (user_name, password) => {
       }
     })
   }
-  return fetch(LOGIN_URL, options).then(resp => resp.json())
+  return fetch(LOGIN_URL, options)
+    .then(resp => resp.json())
+    .then(handleApiResponse)
+    .catch(handleError)
 }
 
 const signUpPost = (user_name, password) => {
@@ -82,7 +108,10 @@ const signUpPost = (user_name, password) => {
       }
     })
   }
-  return fetch(SIGNUP_URL, options).then(resp => resp.json())
+  return fetch(SIGNUP_URL, options)
+    .then(resp => resp.json())
+    .then(handleApiResponse)
+    .catch(handleError)
 }
 
 const getProfile = () => {
@@ -96,7 +125,10 @@ const getterFunction = url => {
       Authorization: localStorage.getItem("token")
     }
   }
-  return fetch(url, options).then(resp => resp.json())
+  return fetch(url, options)
+    .then(resp => resp.json())
+    .then(handleApiResponse)
+    .catch(handleError)
 }
 
 export default {
@@ -108,5 +140,7 @@ export default {
   playedLevel,
   completedLevel,
   signUpPost,
-  getMyLevels
+  getMyLevels,
+  handleError,
+  handleApiResponse
 }

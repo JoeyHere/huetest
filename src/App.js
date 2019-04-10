@@ -93,6 +93,7 @@ class App extends React.Component {
               component={MyLevels}
             />
             <Route
+              exact
               path="/levels/:id"
               component={routerProps => {
                 return (
@@ -146,6 +147,7 @@ class App extends React.Component {
                 )
               }}
             />
+            <h1>404 Not Found</h1>
           </Switch>
         </Router>
       </div>

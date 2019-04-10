@@ -12,7 +12,12 @@ export default class Login extends Component {
     event.preventDefault()
     API.loginPost(this.state.user_name, this.state.password).then(
       userObject => {
-        loginSetUser(userObject)
+        if (userObject.token) {
+          loginSetUser(userObject)
+        } else {
+          alert(`Password or Username Incorrect`)
+          window.location.reload()
+        }
       }
     )
     const loginSetUser = userObject => {
