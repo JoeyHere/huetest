@@ -300,3 +300,7 @@ button {
   left: 70%;
   width: 140px;
 }
+
+.levelPreview {
+  filter: blur(0.3px);
+}

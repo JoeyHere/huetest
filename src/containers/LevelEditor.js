@@ -31,7 +31,9 @@ export default class LevelEditor extends React.Component {
   handleBlockClick = (blockx, blocky) => {
     let currentBoard = [...this.state.currentBoard.map(array => [...array])]
     currentBoard = this.handlePlayerClick(currentBoard)
-    currentBoard[blocky][blockx] = this.state.selectedColor
+    if (currentBoard[blocky][blockx] !== BLOCKS.player) {
+      currentBoard[blocky][blockx] = this.state.selectedColor
+    }
     this.setState({
       currentBoard: currentBoard
     })

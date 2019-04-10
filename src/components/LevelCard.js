@@ -42,7 +42,7 @@ class LevelCard extends React.Component {
         style={{ height: "210px", width: "300px" }}
       >
         <Card.Content>
-          <div style={CSS} />
+          <div className={"levelPreview"} style={CSS} />
           <Card.Header style={{ float: "left" }}>
             {this.props.name} <Card.Meta>{userMeta}</Card.Meta>{" "}
           </Card.Header>

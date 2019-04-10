@@ -20,7 +20,9 @@ class LevelIndex extends React.Component {
     return (
       <div id="index-div">
         <h3>
-          {!this.props.currentUser ? "log in to track your progress" : null}
+          {!this.props.currentUser
+            ? "log in to track your progress and create levels"
+            : null}
         </h3>
         <DropdownFilter />
         <LevelCardList

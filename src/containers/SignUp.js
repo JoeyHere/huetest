@@ -35,6 +35,7 @@ export default class SignUp extends Component {
           <Form.Field>
             {/* <label>User Name</label> */}
             <input
+              maxLength="20"
               onChange={event =>
                 this.setState({ user_name: event.target.value })
               }
@@ -46,6 +47,7 @@ export default class SignUp extends Component {
           <Form.Field>
             {/* <label>Password</label> */}
             <input
+              maxLength="30"
               onChange={event =>
                 this.setState({ password: event.target.value })
               }

@@ -4,7 +4,7 @@ import { BLOCKS } from "../concerns/Config.js"
 import API from "../concerns/API.js"
 import "../confetti.scss"
 import Confetti from "../components/Confetti.js"
-import { Button, Icon } from "semantic-ui-react"
+import { Button } from "semantic-ui-react"
 
 export default class Game extends React.Component {
   state = {
@@ -52,6 +52,12 @@ export default class Game extends React.Component {
         }
         if (event.key === "s" || event.key === "ArrowDown") {
           this.movePlayer(0, 1)
+        }
+        if (event.key === "r" || event.key === " ") {
+          this.resetLevel()
+        }
+        if (event.key === "u") {
+          this.undoMove()
         }
         setTimeout(this.handleKeyUp, 50)
       }
