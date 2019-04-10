@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000"
+const BASE_URL = "https://hueman-server.herokuapp.com"
 const LEVELS_URL = BASE_URL + "/levels"
 const LOGIN_URL = BASE_URL + "/login"
 const SIGNUP_URL = BASE_URL + "/signup"
