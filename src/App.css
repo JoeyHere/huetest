@@ -23,6 +23,12 @@
   transform: translateX(-50%);
 }
 
+.resetButton {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .blur {
   filter: blur(3px);
   opacity: 0.6;
@@ -288,7 +294,7 @@ button {
   margin-top: 50px;
 }
 
-.icon {
+.filter {
   position: absolute;
   top: 10px;
   left: 70%;

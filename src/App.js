@@ -71,7 +71,12 @@ class App extends React.Component {
               exact
               path="/levels"
               component={() => {
-                return <LevelIndex currentUser={this.state.currentUser} />
+                return (
+                  <LevelIndex
+                    currentUser={this.state.currentUser}
+                    setUser={this.setUser}
+                  />
+                )
               }}
             />
             <Route

@@ -4,10 +4,12 @@ import { BLOCKS } from "../concerns/Config.js"
 import API from "../concerns/API.js"
 import "../confetti.scss"
 import Confetti from "../components/Confetti.js"
-import { Button } from "semantic-ui-react"
+import { Button, Icon } from "semantic-ui-react"
 
 export default class Game extends React.Component {
   state = {
+    originalBoard: [[]],
+    undoBoard: [[]],
     currentBoard: [[]],
     playerPosition: { x: undefined, y: undefined },
     levelName: "",
@@ -20,7 +22,9 @@ export default class Game extends React.Component {
       let levelData = JSON.parse(level.level_data)
       this.setState({
         playerPosition: this.getPlayerPositionFromBoard(levelData),
+        originalBoard: levelData,
         currentBoard: levelData,
+        undoBoard: levelData,
         levelName: level.name
       })
     })
@@ -128,7 +132,8 @@ export default class Game extends React.Component {
       currentBoard = this.clearBoardOfThrees(currentBoard)
       this.setState({
         playerPosition: newBlock,
-        currentBoard: currentBoard
+        currentBoard: currentBoard,
+        undoBoard: this.state.currentBoard
       })
     }
   }
@@ -223,7 +228,6 @@ export default class Game extends React.Component {
     if (blockA !== BLOCKS.wall && blockB === BLOCKS.bomb) {
       return BLOCKS.explode
     }
-
     return false
   }
 
@@ -360,6 +364,21 @@ export default class Game extends React.Component {
     this.props.setUser()
   }
 
+  resetLevel = () => {
+    this.setState({
+      currentBoard: this.state.originalBoard,
+      playerPosition: this.getPlayerPositionFromBoard(this.state.originalBoard),
+      undoBoard: this.state.originalBoard
+    })
+  }
+
+  undoMove = () => {
+    this.setState({
+      currentBoard: this.state.undoBoard,
+      playerPosition: this.getPlayerPositionFromBoard(this.state.undoBoard)
+    })
+  }
+
   render() {
     const width = this.state.currentBoard.length * 35
     return (
@@ -392,6 +411,10 @@ export default class Game extends React.Component {
               width={width}
               handleBlockClick={this.handleBlockClick}
             />
+            <div className={"resetButton"}>
+              <Button icon="backward" onClick={this.undoMove} />
+              <Button icon="fast backward" onClick={this.resetLevel} />
+            </div>
           </div>
         )}
       </div>

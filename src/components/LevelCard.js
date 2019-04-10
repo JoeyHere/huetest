@@ -44,7 +44,7 @@ class LevelCard extends React.Component {
         <Card.Content>
           <div style={CSS} />
           <Card.Header style={{ float: "left" }}>
-            {this.props.name} <Card.Meta>{userMeta}</Card.Meta>
+            {this.props.name} <Card.Meta>{userMeta}</Card.Meta>{" "}
           </Card.Header>
         </Card.Content>
         <Card.Content extra>
