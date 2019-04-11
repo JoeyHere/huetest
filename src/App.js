@@ -18,7 +18,9 @@ import MyLevels from "./containers/MyLevels"
 
 class App extends React.Component {
   state = {
-    currentUser: undefined
+    currentUser: undefined,
+    filterLevel: "All",
+    orderLevel: "Popular"
   }
 
   componentDidMount() {
@@ -41,6 +43,18 @@ class App extends React.Component {
       currentUser: undefined
     })
     window.location.reload()
+  }
+
+  handleFilterChange = (event, data) => {
+    this.setState({
+      filterLevel: data.value
+    })
+  }
+
+  handleOrderChange = (event, data) => {
+    this.setState({
+      orderLevel: data.value
+    })
   }
 
   PrivateRoute = ({ component: Component, ...rest }) => (
@@ -73,6 +87,10 @@ class App extends React.Component {
               component={routerProps => {
                 return (
                   <LevelIndex
+                    handleFilterChange={this.handleFilterChange}
+                    filterState={this.state.filterLevel}
+                    handleOrderChange={this.handleOrderChange}
+                    orderState={this.state.orderLevel}
                     currentUser={this.state.currentUser}
                     setUser={this.setUser}
                     {...routerProps}
@@ -86,6 +104,10 @@ class App extends React.Component {
               component={routerProps => {
                 return (
                   <LevelIndex
+                    handleFilterChange={this.handleFilterChange}
+                    filterState={this.state.filterLevel}
+                    handleOrderChange={this.handleOrderChange}
+                    orderState={this.state.orderLevel}
                     currentUser={this.state.currentUser}
                     {...routerProps}
                   />

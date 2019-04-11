@@ -5,9 +5,7 @@ import DropDownFilter from "../components/DropDownFilter.js"
 
 class LevelIndex extends React.Component {
   state = {
-    levels: [],
-    filterLevel: "All",
-    orderLevel: "Popular"
+    levels: []
   }
 
   componentDidMount() {
@@ -20,7 +18,7 @@ class LevelIndex extends React.Component {
 
   filterLevels = () => {
     let levels = []
-    switch (this.state.filterLevel) {
+    switch (this.props.filterState) {
       case "Tutorial":
         levels = this.state.levels.filter(level => {
           return (
@@ -68,26 +66,14 @@ class LevelIndex extends React.Component {
     this.props.history.push(`/levels/${levelId}`)
   }
 
-  handleFilterChange = (event, data) => {
-    this.setState({
-      filterLevel: data.value
-    })
-  }
-
-  handleOrderChange = (event, data) => {
-    this.setState({
-      orderLevel: data.value
-    })
-  }
-
   render() {
     return (
       <div id="index-div">
         <DropDownFilter
-          handleFilterChange={this.handleFilterChange}
-          filterState={this.state.filterLevel}
-          handleOrderChange={this.handleOrderChange}
-          orderState={this.state.orderLevel}
+          handleFilterChange={this.props.handleFilterChange}
+          filterState={this.props.filterState}
+          handleOrderChange={this.props.handleOrderChange}
+          orderState={this.props.orderState}
         />
         <LevelCardList
           handleLevelClick={this.handleLevelClick}

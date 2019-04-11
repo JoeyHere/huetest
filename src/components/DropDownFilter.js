@@ -6,7 +6,7 @@ const difficultyOptions = [
     key: "All",
     text: "All",
     value: "All",
-    image: { src: "https://i.ibb.co/fHMm8Rw/brown.png" }
+    image: { src: "https://i.ibb.co/nsm8vdz/blue.png" }
   },
   {
     key: "Hard",
@@ -30,7 +30,7 @@ const difficultyOptions = [
     key: "Tutorial",
     text: "Tutorial",
     value: "Tutorial",
-    image: { src: "https://i.ibb.co/nsm8vdz/blue.png" }
+    image: { src: "https://i.ibb.co/fHMm8Rw/brown.png" }
   }
 ]
 

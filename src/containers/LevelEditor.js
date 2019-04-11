@@ -82,7 +82,7 @@ export default class LevelEditor extends React.Component {
   handleDelete = () => {
     API.deleteLevel({ id: this.props.id }).then(level => {
       if (level) {
-        this.props.history.push(`/levels`)
+        this.props.history.push(`/mylevels`)
       }
     })
   }
