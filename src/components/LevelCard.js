@@ -33,6 +33,10 @@ class LevelCard extends React.Component {
       ? `by ${this.props.user.user_name}`
       : "by HUEman"
 
+    let extraStyle = this.props.completed
+      ? { backgroundColor: "rgb(229, 255, 224)" }
+      : { backgroundColor: "rgb(252, 207, 207)" }
+
     return (
       <Card
         color={this.props.completed ? "green" : "red"}
@@ -45,7 +49,7 @@ class LevelCard extends React.Component {
             {this.props.name} <Card.Meta>{userMeta}</Card.Meta>{" "}
           </Card.Header>
         </Card.Content>
-        <Card.Content extra>
+        <Card.Content extra style={extraStyle}>
           🎲 {this.props.plays} | 🏆 {this.props.completes}{" "}
           {this.props.completed ? "| ✅" : "| ❌"}
         </Card.Content>

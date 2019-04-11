@@ -6,7 +6,7 @@ const difficultyOptions = [
     key: "All",
     text: "All",
     value: "All",
-    image: { src: "https://i.ibb.co/t49MPMt/hmframe1.png" }
+    image: { src: "https://i.ibb.co/fHMm8Rw/brown.png" }
   },
   {
     key: "Hard",
@@ -19,6 +19,12 @@ const difficultyOptions = [
     text: "Easy",
     value: "Easy",
     image: { src: "https://i.ibb.co/THvVFLG/green.png" }
+  },
+  {
+    key: "HUEman",
+    text: "HUEman",
+    value: "HUEman",
+    image: { src: "https://i.ibb.co/t49MPMt/hmframe1.png" }
   },
   {
     key: "Tutorial",
@@ -43,21 +49,23 @@ const sortOptions = [
   }
 ]
 
-const DropdownExampleInline = () => (
+const DropDownFilter = props => (
   <span className="filterLevels">
     Show{" "}
     <Dropdown
+      onChange={props.handleFilterChange}
       inline
       options={difficultyOptions}
-      defaultValue={difficultyOptions[0].value}
+      value={props.filterState}
     />
     Levels, Sorted By{" "}
     <Dropdown
+      onChange={props.handleOrderChange}
       inline
       options={sortOptions}
-      defaultValue={sortOptions[1].value}
+      value={props.orderState}
     />
   </span>
 )
 
-export default DropdownExampleInline
+export default DropDownFilter
