@@ -62,6 +62,21 @@ class LevelIndex extends React.Component {
     }
   }
 
+  orderLevels = array => {
+    let newArray = [...array]
+    switch (this.props.orderState) {
+      case "Popular":
+        newArray.sort((a, b) => b.plays - a.plays)
+        break
+      case "New":
+        newArray.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+        break
+      default:
+        newArray = array
+    }
+    return newArray
+  }
+
   handleLevelClick = levelId => {
     this.props.history.push(`/levels/${levelId}`)
   }
@@ -77,7 +92,7 @@ class LevelIndex extends React.Component {
         />
         <LevelCardList
           handleLevelClick={this.handleLevelClick}
-          levels={this.filterLevels()}
+          levels={this.orderLevels(this.filterLevels())}
           completedLevelIds={
             this.props.currentUser
               ? this.props.currentUser.completedLevelIds

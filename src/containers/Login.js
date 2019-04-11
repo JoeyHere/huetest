@@ -80,7 +80,7 @@ export default class Login extends Component {
             as={Link}
             to={"/signup"}
           >
-            click here to sign up
+            GO TO SIGN UP
           </Button>
         </Form>
       </div>
