@@ -50,8 +50,6 @@ class LevelIndex extends React.Component {
           )
         })
         break
-      case "Easy":
-        levels = this.state.levels
       default:
         levels = this.state.levels
     }
