@@ -44,8 +44,8 @@ class LevelCard extends React.Component {
       : "by HUEman"
 
     let extraStyle = this.props.completed
-      ? { backgroundColor: "rgb(229, 255, 224)" }
-      : { backgroundColor: "rgb(252, 207, 207)" }
+      ? { backgroundColor: "rgb(229, 255, 224)", textAlign: "right" }
+      : { backgroundColor: "rgb(252, 207, 207)", textAlign: "right" }
 
     return (
       <Card
