@@ -1,11 +1,13 @@
 import React from "react"
 import LevelCard from "../components/LevelCard.js"
 import { Card } from "semantic-ui-react"
+import DropdownFilter from "../components/DropdownFilter.js"
 
 class LevelCardList extends React.Component {
   render() {
     return (
       <div>
+        <DropdownFilter />
         <Card.Group
           itemsPerRow={3}
           centered={true}

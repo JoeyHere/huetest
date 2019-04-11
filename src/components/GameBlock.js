@@ -4,7 +4,7 @@ const GameBlock = props => {
   let className = props.blockColor + " block"
 
   if (props.selected) {
-    className = className + " selected"
+    className = className + " selectedBlock"
   }
 
   return (

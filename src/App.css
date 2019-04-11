@@ -250,7 +250,7 @@
   }
 }
 
-.selected {
+.selectedBlock {
   animation: selectedScale 0.5s;
   animation-fill-mode: forwards;
 }
@@ -294,11 +294,9 @@ button {
   margin-top: 50px;
 }
 
-.filter {
-  position: absolute;
-  top: 10px;
-  left: 70%;
-  width: 140px;
+.filterLevels {
+  position: relative;
+  left: 60%;
 }
 
 .levelPreview {
