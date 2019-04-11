@@ -308,3 +308,12 @@ button {
   text-align: center;
   margin: auto;
 }
+
+.levelPreview {
+  margin: auto;
+  position: relative;
+  top: 3px;
+  border: solid;
+  border-width: 5px;
+  border-color: grey;
+}

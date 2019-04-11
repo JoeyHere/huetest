@@ -1,5 +1,5 @@
 import React from "react"
-import { Card } from "semantic-ui-react"
+import { Card, Image } from "semantic-ui-react"
 import { BLOCKCOLORS } from "../concerns/Config"
 
 class LevelCard extends React.Component {
@@ -14,20 +14,30 @@ class LevelCard extends React.Component {
       })
     )
     generatedBoxShadow = generatedBoxShadow.slice(0, -2)
-    return {
+    let css = {
       backgroundColor: firstPixel,
       boxShadow: generatedBoxShadow,
       height: `${pixelSize}px`,
       width: `${pixelSize}px`,
-      position: "relative",
-      left: "60%",
-      top: "29%"
+      position: "relative"
     }
+
+    return (
+      <div
+        className={"levelPreview"}
+        style={{
+          height: `${gameBoard.length * Math.floor(100 / gameBoard.length)}px`,
+          width: `${gameBoard[0].length * Math.floor(100 / gameBoard.length)}px`
+        }}
+      >
+        <div style={css} />
+      </div>
+    )
   }
 
   render() {
     let board = JSON.parse(this.props.level_data)
-    let CSS = this.generateCSS(board, Math.floor(100 / board.length))
+    let preview = this.generateCSS(board, Math.floor(100 / board.length))
 
     let userMeta = this.props.user
       ? `by ${this.props.user.user_name}`
@@ -41,10 +51,10 @@ class LevelCard extends React.Component {
       <Card
         color={this.props.completed ? "green" : "red"}
         onClick={() => this.props.handleLevelClick(this.props.id)}
-        style={{ height: "200px", width: "280px" }}
+        style={{ height: "280px", width: "220px" }}
       >
+        <Card.Content>{preview}</Card.Content>
         <Card.Content>
-          <div className={"levelPreview"} style={CSS} />
           <Card.Header style={{ float: "left" }}>
             {this.props.name} <Card.Meta>{userMeta}</Card.Meta>{" "}
           </Card.Header>
