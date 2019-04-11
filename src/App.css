@@ -298,7 +298,3 @@ button {
   position: relative;
   left: 60%;
 }
-
-.levelPreview {
-  filter: blur(0.3px);
-}

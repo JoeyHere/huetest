@@ -19,6 +19,7 @@ class LevelIndex extends React.Component {
   render() {
     return (
       <div id="index-div">
+        <DropdownFilter />
         <LevelCardList
           levels={this.state.levels}
           completedLevelIds={
