@@ -6,7 +6,7 @@ import DropDownFilter from "../components/DropDownFilter.js"
 class LevelIndex extends React.Component {
   state = {
     levels: [],
-    filterLevel: "Tutorial",
+    filterLevel: "All",
     orderLevel: "Popular"
   }
 
