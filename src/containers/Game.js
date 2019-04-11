@@ -416,18 +416,21 @@ export default class Game extends React.Component {
           </div>
         ) : (
           <div className={"board"}>
-            <h1>{this.state.levelName}</h1>
+            <div>
+              <Button
+                size={"small"}
+                icon={"close"}
+                className={"exitButton"}
+                onClick={() => this.props.history.goBack()}
+              />
+              <h1>{this.state.levelName}</h1>
+            </div>
             <GameBoard
               board={this.state.currentBoard}
               width={width}
               handleBlockClick={this.handleBlockClick}
             />
             <div className={"resetButton"}>
-              <Button
-                color={"grey"}
-                icon="stop"
-                onClick={() => this.props.history.goBack()}
-              />
               <Button icon="backward" onClick={this.undoMove} />
               <Button icon="fast backward" onClick={this.resetLevel} />
             </div>

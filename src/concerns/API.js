@@ -1,5 +1,5 @@
-const BASE_URL = "https://hueman-server-eu.herokuapp.com"
-// const BASE_URL = "http://localhost:3000"
+// const BASE_URL = "https://hueman-server-eu.herokuapp.com"
+const BASE_URL = "http://localhost:3000"
 const LEVELS_URL = BASE_URL + "/levels"
 const LOGIN_URL = BASE_URL + "/login"
 const SIGNUP_URL = BASE_URL + "/signup"
@@ -43,6 +43,33 @@ const saveLevel = level => {
       Authorization: localStorage.getItem("token")
     },
     body: JSON.stringify(level)
+  })
+    .then(resp => resp.json())
+    .then(handleApiResponse)
+    .catch(handleError)
+}
+
+const updateLevel = level => {
+  return fetch(LEVELS_URL + `/${level.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
+    },
+    body: JSON.stringify(level)
+  })
+    .then(resp => resp.json())
+    .then(handleApiResponse)
+    .catch(handleError)
+}
+
+const deleteLevel = level => {
+  return fetch(LEVELS_URL + `/${level.id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
+    }
   })
     .then(resp => resp.json())
     .then(handleApiResponse)
@@ -142,5 +169,7 @@ export default {
   signUpPost,
   getMyLevels,
   handleError,
-  handleApiResponse
+  handleApiResponse,
+  updateLevel,
+  deleteLevel
 }

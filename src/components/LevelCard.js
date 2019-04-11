@@ -1,6 +1,5 @@
 import React from "react"
 import { Card } from "semantic-ui-react"
-import { Link } from "react-router-dom"
 import { BLOCKCOLORS } from "../concerns/Config"
 
 class LevelCard extends React.Component {
@@ -37,8 +36,7 @@ class LevelCard extends React.Component {
     return (
       <Card
         color={this.props.completed ? "green" : "red"}
-        as={Link}
-        to={`/levels/${this.props.id}`}
+        onClick={() => this.props.handleLevelClick(this.props.id)}
         style={{ height: "210px", width: "300px" }}
       >
         <Card.Content>

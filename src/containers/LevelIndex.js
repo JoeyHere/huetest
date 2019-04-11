@@ -16,11 +16,16 @@ class LevelIndex extends React.Component {
     )
   }
 
+  handleLevelClick = levelId => {
+    this.props.history.push(`/levels/${levelId}`)
+  }
+
   render() {
     return (
       <div id="index-div">
         <DropdownFilter />
         <LevelCardList
+          handleLevelClick={this.handleLevelClick}
           levels={this.state.levels}
           completedLevelIds={
             this.props.currentUser

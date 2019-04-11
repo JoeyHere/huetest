@@ -18,6 +18,7 @@ class LevelCardList extends React.Component {
         >
           {this.props.levels.map(level => (
             <LevelCard
+              handleLevelClick={this.props.handleLevelClick}
               key={level.id}
               {...level}
               completed={

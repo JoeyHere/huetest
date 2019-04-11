@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Menu, Image, Icon } from "semantic-ui-react"
+import { Menu } from "semantic-ui-react"
 import { NavLink } from "react-router-dom"
 
 export default class Navbar extends Component {
@@ -50,11 +50,11 @@ export default class Navbar extends Component {
             </>
           )}
         </Menu>
-        <h3>
+        <h4>
           {!this.props.currentUser
-            ? "sign up to track your progress and create levels"
+            ? "SIGN UP TO TRACK PROGRESS AND CREATE LEVELS"
             : null}
-        </h3>
+        </h4>
       </>
     )
   }

@@ -28,6 +28,10 @@
   left: 50%;
   transform: translateX(-50%);
 }
+.exitButton {
+  position: absolute;
+  left: 70%;
+}
 
 .blur {
   filter: blur(3px);

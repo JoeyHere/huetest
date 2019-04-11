@@ -70,11 +70,12 @@ class App extends React.Component {
             <Route
               exact
               path="/levels"
-              component={() => {
+              component={routerProps => {
                 return (
                   <LevelIndex
                     currentUser={this.state.currentUser}
                     setUser={this.setUser}
+                    {...routerProps}
                   />
                 )
               }}
@@ -82,8 +83,13 @@ class App extends React.Component {
             <Route
               exact
               path="/"
-              component={() => {
-                return <LevelIndex currentUser={this.state.currentUser} />
+              component={routerProps => {
+                return (
+                  <LevelIndex
+                    currentUser={this.state.currentUser}
+                    {...routerProps}
+                  />
+                )
               }}
             />
             <this.PrivateRoute
@@ -106,7 +112,7 @@ class App extends React.Component {
               }}
             />
             <Route
-              path="/edit/:id"
+              path="/create/:id/edit"
               component={routerProps => {
                 return (
                   <LevelEditor

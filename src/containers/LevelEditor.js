@@ -18,7 +18,8 @@ export default class LevelEditor extends React.Component {
       API.getLevelFromId(this.props.id).then(level => {
         let levelData = JSON.parse(level.level_data)
         this.setState({
-          currentBoard: levelData
+          currentBoard: levelData,
+          level_name: level.name
         })
       })
     } else {
@@ -56,12 +57,32 @@ export default class LevelEditor extends React.Component {
     })
 
   handleSave = () => {
-    API.saveLevel({
-      name: this.state.level_name,
-      level_data: JSON.stringify(this.state.currentBoard)
-    }).then(level => {
+    if (!this.props.id) {
+      API.saveLevel({
+        name: this.state.level_name,
+        level_data: JSON.stringify(this.state.currentBoard)
+      }).then(level => {
+        if (level) {
+          this.props.history.push(`/levels/${level.id}`)
+        }
+      })
+    } else {
+      API.updateLevel({
+        name: this.state.level_name,
+        level_data: JSON.stringify(this.state.currentBoard),
+        id: this.props.id
+      }).then(level => {
+        if (level) {
+          this.props.history.push(`/levels/${level.id}`)
+        }
+      })
+    }
+  }
+
+  handleDelete = () => {
+    API.deleteLevel({ id: this.props.id }).then(level => {
       if (level) {
-        this.props.history.push(`/levels/${level.id}`)
+        this.props.history.push(`/levels`)
       }
     })
   }
@@ -70,6 +91,12 @@ export default class LevelEditor extends React.Component {
     const width = this.state.currentBoard.length * 35
     return (
       <div className={"editor"}>
+        <Button
+          size={"small"}
+          icon={"close"}
+          className={"exitButton"}
+          onClick={() => this.props.history.goBack()}
+        />
         <h3>LEVEL EDITOR</h3>
         <Form style={{ width: 400 + "px", margin: "auto" }}>
           <input
@@ -111,10 +138,26 @@ export default class LevelEditor extends React.Component {
         <h3>
           <Button
             onClick={this.handleSave}
-            style={{ width: 100 + "px", margin: "auto" }}
+            style={{ width: 130 + "px", margin: "auto" }}
           >
-            SAVE
+            SAVE + TEST
           </Button>
+          <Button
+            positive={true}
+            onClick={this.handleSave}
+            style={{ width: 100 + "px" }}
+          >
+            PUBLISH
+          </Button>
+          {this.props.id ? (
+            <Button
+              negative={true}
+              onClick={this.handleDelete}
+              style={{ width: 100 + "px" }}
+            >
+              DELETE
+            </Button>
+          ) : null}
         </h3>
       </div>
     )
