@@ -302,3 +302,9 @@ button {
   position: relative;
   left: 60%;
 }
+
+.signUpButton {
+  align-self: center;
+  text-align: center;
+  margin: auto;
+}

@@ -37,7 +37,7 @@ class LevelCard extends React.Component {
       <Card
         color={this.props.completed ? "green" : "red"}
         onClick={() => this.props.handleLevelClick(this.props.id)}
-        style={{ height: "210px", width: "300px" }}
+        style={{ height: "200px", width: "280px" }}
       >
         <Card.Content>
           <div className={"levelPreview"} style={CSS} />

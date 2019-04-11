@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Button, Form } from "semantic-ui-react"
+import { Link } from "react-router-dom"
 import API from "../concerns/API.js"
 
 export default class Login extends Component {
@@ -72,6 +73,14 @@ export default class Login extends Component {
             type="submit"
           >
             SUBMIT
+          </Button>
+          <Button
+            className={"signUpButton"}
+            fluid={true}
+            as={Link}
+            to={"/signup"}
+          >
+            click here to sign up
           </Button>
         </Form>
       </div>

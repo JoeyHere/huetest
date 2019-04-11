@@ -17,14 +17,15 @@ export default class Navbar extends Component {
             as={NavLink}
             to="/create"
           />
+          <Menu.Item
+            color={"yellow"}
+            name={"MY LEVELS"}
+            icon={!this.props.currentUser ? "lock" : null}
+            as={NavLink}
+            to="/mylevels"
+          />
           {this.props.currentUser ? (
             <>
-              <Menu.Item
-                color={"yellow"}
-                name={"MY LEVELS"}
-                as={NavLink}
-                to="/mylevels"
-              />
               <Menu.Item name="LOG-OUT" onClick={this.props.logOut}>
                 LOG OUT {" - "}(
                 {this.props.currentUser
@@ -35,12 +36,6 @@ export default class Navbar extends Component {
             </>
           ) : (
             <>
-              <Menu.Item
-                color={"yellow"}
-                name={"SIGN UP"}
-                as={NavLink}
-                to="/signup"
-              />
               <Menu.Item
                 color={"red"}
                 name={"LOG IN"}

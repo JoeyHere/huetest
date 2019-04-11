@@ -7,13 +7,13 @@ class LevelCardList extends React.Component {
     return (
       <div>
         <Card.Group
-          itemsPerRow={3}
+          itemsPerRow={4}
           centered={true}
           style={{
             marginLeft: "auto",
             marginRight: "auto",
             marginTop: "50px",
-            width: "1000px"
+            width: "1300px"
           }}
         >
           {this.props.levels.map(level => (

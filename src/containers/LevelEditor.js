@@ -136,10 +136,7 @@ export default class LevelEditor extends React.Component {
           </Form.Group>
         </Form>
         <h3>
-          <Button
-            onClick={this.handleSave}
-            style={{ width: 130 + "px", margin: "auto" }}
-          >
+          <Button onClick={this.handleSave} style={{ width: 130 + "px" }}>
             SAVE + TEST
           </Button>
           <Button
