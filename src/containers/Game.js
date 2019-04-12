@@ -442,7 +442,10 @@ export default class Game extends React.Component {
                   size={"small"}
                   icon={"close"}
                   className={"exitButton"}
-                  onClick={() => this.props.history.goBack()}
+                  onClick={() => {
+                    this.props.setUser()
+                    this.props.history.goBack()
+                  }}
                 />
               )}
               <h1>

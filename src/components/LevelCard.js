@@ -1,5 +1,5 @@
 import React from "react"
-import { Card, Image } from "semantic-ui-react"
+import { Card } from "semantic-ui-react"
 import { BLOCKCOLORS } from "../concerns/Config"
 
 class LevelCard extends React.Component {
