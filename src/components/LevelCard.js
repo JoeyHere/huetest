@@ -26,8 +26,8 @@ class LevelCard extends React.Component {
       <div
         className={"levelPreview"}
         style={{
-          height: `${gameBoard.length * Math.floor(100 / gameBoard.length)}px`,
-          width: `${gameBoard[0].length * Math.floor(100 / gameBoard.length)}px`
+          height: `${gameBoard.length * 5}px`,
+          width: `${gameBoard[0].length * 5}px`
         }}
       >
         <div style={css} />
@@ -37,7 +37,7 @@ class LevelCard extends React.Component {
 
   render() {
     let board = JSON.parse(this.props.level_data)
-    let preview = this.generateCSS(board, Math.floor(100 / board.length))
+    let preview = this.generateCSS(board, 5)
 
     let userMeta = this.props.user
       ? `by ${this.props.user.user_name}`
@@ -51,11 +51,11 @@ class LevelCard extends React.Component {
       <Card
         color={this.props.completed ? "green" : "red"}
         onClick={() => this.props.handleLevelClick(this.props.id)}
-        style={{ height: "260px", width: "260px" }}
+        style={{ width: "400px" }}
       >
-        <Card.Content>{preview}</Card.Content>
-        <Card.Content>
+        <Card.Content style={{ padding: "16px" }}>
           <Card.Header style={{ float: "left" }}>
+            {preview}
             {this.props.name} <Card.Meta>{userMeta}</Card.Meta>{" "}
           </Card.Header>
         </Card.Content>

@@ -310,10 +310,12 @@ button {
 }
 
 .levelPreview {
-  margin: auto;
   float: left;
+  margin-right: 20px;
+  margin-top: 3px;
+  margin-bottom: 3px;
   position: relative;
-  /* top: 3px; */
+  /* top: 10%; */
   border: solid;
   border-width: 5px;
   border-color: grey;
