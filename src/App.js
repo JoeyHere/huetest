@@ -20,7 +20,8 @@ class App extends React.Component {
   state = {
     currentUser: undefined,
     filterLevel: "All",
-    orderLevel: "Popular"
+    orderLevel: "Popular",
+    toggleComplete: false
   }
 
   componentDidMount() {
@@ -57,6 +58,12 @@ class App extends React.Component {
     })
   }
 
+  handleToggleChange = (event, data) => {
+    this.setState({
+      toggleComplete: data.checked
+    })
+  }
+
   PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
       {...rest}
@@ -90,6 +97,8 @@ class App extends React.Component {
                     handleFilterChange={this.handleFilterChange}
                     filterState={this.state.filterLevel}
                     handleOrderChange={this.handleOrderChange}
+                    handleToggleChange={this.handleToggleChange}
+                    toggleComplete={this.state.toggleComplete}
                     orderState={this.state.orderLevel}
                     currentUser={this.state.currentUser}
                     setUser={this.setUser}

@@ -2,6 +2,7 @@ import React from "react"
 import LevelCardList from "../containers/LevelCardList.js"
 import API from "../concerns/API.js"
 import DropDownFilter from "../components/DropDownFilter.js"
+import { Checkbox } from "semantic-ui-react"
 
 class LevelIndex extends React.Component {
   state = {
@@ -53,6 +54,16 @@ class LevelIndex extends React.Component {
       default:
         levels = this.state.levels
     }
+
+    if (this.props.toggleComplete === true) {
+      levels = levels.filter(level => {
+        return (
+          this.props.currentUser &&
+          !this.props.currentUser.completedLevelIds.includes(level.id)
+        )
+      })
+    }
+
     if (levels.length > 0) {
       return levels
     } else {
@@ -86,6 +97,13 @@ class LevelIndex extends React.Component {
   render() {
     return (
       <div id="index-div">
+        <Checkbox
+          className={"toggleLevels"}
+          label={"Hide Completed"}
+          checked={this.props.toggleComplete}
+          onChange={this.props.handleToggleChange}
+          // toggle
+        />
         <DropDownFilter
           handleFilterChange={this.props.handleFilterChange}
           filterState={this.props.filterState}

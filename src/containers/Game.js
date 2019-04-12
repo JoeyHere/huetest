@@ -4,7 +4,7 @@ import { BLOCKS } from "../concerns/Config.js"
 import API from "../concerns/API.js"
 import "../confetti.scss"
 import Confetti from "../components/Confetti.js"
-import { Button } from "semantic-ui-react"
+import { Button, Icon } from "semantic-ui-react"
 
 export default class Game extends React.Component {
   state = {
@@ -460,8 +460,14 @@ export default class Game extends React.Component {
               handleBlockClick={this.handleBlockClick}
             />
             <div className={"resetButton"}>
-              <Button icon="backward" onClick={this.undoMove} />
-              <Button icon="fast backward" onClick={this.resetLevel} />
+              <Button onClick={this.undoMove}>
+                <Icon name="backward" />
+                Undo
+              </Button>
+              <Button onClick={this.resetLevel}>
+                <Icon name="undo" />
+                Reset
+              </Button>
             </div>
           </div>
         )}

@@ -303,6 +303,11 @@ button {
   left: 60%;
 }
 
+.toggleLevels {
+  position: relative;
+  left: 20%;
+}
+
 .signUpButton {
   align-self: center;
   text-align: center;
