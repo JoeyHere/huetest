@@ -90,6 +90,7 @@ const playedLevel = levelId => {
   })
     .then(resp => resp.json())
     .then(handleApiResponse)
+    .catch(handleError)
 }
 
 const completedLevel = levelId => {
@@ -117,6 +118,7 @@ const publishLevel = level => {
   })
     .then(resp => resp.json())
     .then(handleApiResponse)
+    .catch(handleError)
 }
 
 const loginPost = (user_name, password) => {
