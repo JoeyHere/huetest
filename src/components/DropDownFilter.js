@@ -37,7 +37,7 @@ const difficultyOptions = [
 const sortOptions = [
   {
     key: "New",
-    text: "New ⌚",
+    text: "New",
     value: "New",
     image: { src: "https://i.ibb.co/ZLVxh9P/yellow.png" }
   },

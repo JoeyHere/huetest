@@ -30,7 +30,7 @@ export default class SignUp extends Component {
   render() {
     return (
       <div className="logInForm">
-        <h1>SIGN UP</h1>
+        {/* <h1>SIGN UP</h1> */}
         <Form
           onSubmit={this.signUp}
           style={{ width: 400 + "px", padding: 20 + "px", margin: "auto" }}
@@ -66,7 +66,7 @@ export default class SignUp extends Component {
             className="ui submitbutton"
             type="submit"
           >
-            SUBMIT
+            SIGN UP
           </Button>
           <Button
             className={"signUpButton"}

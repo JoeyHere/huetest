@@ -19,12 +19,18 @@ class MyLevels extends React.Component {
     this.props.history.push(`/create/${levelId}/edit`)
   }
 
+  handlePublishedClick = levelId => {
+    this.props.history.push(`/levels/${levelId}`)
+  }
+
   render() {
     return (
       <div id="index-div">
         <LevelCardList
           handleLevelClick={this.handleLevelClick}
+          handlePublishedClick={this.handlePublishedClick}
           levels={this.state.levels}
+          currentUserId={this.props.currentUser ? this.props.currentUser.id : 0}
           completedLevelIds={
             this.props.currentUser
               ? this.props.currentUser.completedLevelIds

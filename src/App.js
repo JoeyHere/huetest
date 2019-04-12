@@ -133,7 +133,13 @@ class App extends React.Component {
                 )
               }}
             />
-            <Route
+            <this.PrivateRoute
+              currentUser={this.state.currentUser}
+              exact
+              path="/create"
+              component={LevelEditor}
+            />
+            <this.PrivateRoute
               path="/create/:id/edit"
               component={routerProps => {
                 return (
@@ -143,11 +149,6 @@ class App extends React.Component {
                   />
                 )
               }}
-            />
-            <this.PrivateRoute
-              currentUser={this.state.currentUser}
-              path="/create"
-              component={LevelEditor}
             />
             <Route
               exact

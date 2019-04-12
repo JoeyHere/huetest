@@ -51,7 +51,7 @@ class LevelCard extends React.Component {
       <Card
         color={this.props.completed ? "green" : "red"}
         onClick={() => this.props.handleLevelClick(this.props.id)}
-        style={{ height: "280px", width: "220px" }}
+        style={{ height: "260px", width: "260px" }}
       >
         <Card.Content>{preview}</Card.Content>
         <Card.Content>
@@ -61,7 +61,8 @@ class LevelCard extends React.Component {
         </Card.Content>
         <Card.Content extra style={extraStyle}>
           🎲 {this.props.plays} | 🏆 {this.props.completes}{" "}
-          {this.props.completed ? "| ✅" : "| ❌"}
+          {this.props.completed ? "| ✅" : "| ❌"}{" "}
+          {this.props.userPublished ? "| 📖" : null}
         </Card.Content>
       </Card>
     )

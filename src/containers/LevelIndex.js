@@ -79,6 +79,10 @@ class LevelIndex extends React.Component {
     this.props.history.push(`/levels/${levelId}`)
   }
 
+  handlePublishedClick = levelId => {
+    this.props.history.push(`/levels/${levelId}`)
+  }
+
   render() {
     return (
       <div id="index-div">
@@ -90,7 +94,9 @@ class LevelIndex extends React.Component {
         />
         <LevelCardList
           handleLevelClick={this.handleLevelClick}
+          handlePublishedClick={this.handlePublishedClick}
           levels={this.orderLevels(this.filterLevels())}
+          currentUserId={this.props.currentUser ? this.props.currentUser.id : 0}
           completedLevelIds={
             this.props.currentUser
               ? this.props.currentUser.completedLevelIds

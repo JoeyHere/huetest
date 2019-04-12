@@ -313,7 +313,7 @@ button {
   margin: auto;
   float: left;
   position: relative;
-  top: 3px;
+  /* top: 3px; */
   border: solid;
   border-width: 5px;
   border-color: grey;

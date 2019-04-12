@@ -4,6 +4,8 @@ import Palette from "../components/Palette.js"
 import { BLOCKS, blankBoards } from "../concerns/Config.js"
 import { Form, Button } from "semantic-ui-react"
 import API from "../concerns/API.js"
+import PublishModal from "../components/PublishModal.js"
+import DeleteModal from "../components/DeleteModal.js"
 
 export default class LevelEditor extends React.Component {
   state = {
@@ -79,6 +81,18 @@ export default class LevelEditor extends React.Component {
     }
   }
 
+  handlePublish = () => {
+    API.publishLevel({
+      name: this.state.level_name,
+      level_data: JSON.stringify(this.state.currentBoard),
+      id: this.props.id
+    }).then(level => {
+      if (level) {
+        this.props.history.push(`/levels/${level.id}`)
+      }
+    })
+  }
+
   handleDelete = () => {
     API.deleteLevel({ id: this.props.id }).then(level => {
       if (level) {
@@ -136,24 +150,18 @@ export default class LevelEditor extends React.Component {
           </Form.Group>
         </Form>
         <h3>
-          <Button onClick={this.handleSave} style={{ width: 130 + "px" }}>
-            SAVE + TEST
+          <Button onClick={this.handleSave} style={{ width: 150 + "px" }}>
+            SAVE / PREVIEW
           </Button>
-          <Button
-            positive={true}
-            onClick={this.handleSave}
+          <PublishModal
             style={{ width: 100 + "px" }}
-          >
-            PUBLISH
-          </Button>
+            handlePublish={this.handlePublish}
+          />
           {this.props.id ? (
-            <Button
-              negative={true}
-              onClick={this.handleDelete}
+            <DeleteModal
               style={{ width: 100 + "px" }}
-            >
-              DELETE
-            </Button>
+              handleDelete={this.handleDelete}
+            />
           ) : null}
         </h3>
       </div>

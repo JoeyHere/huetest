@@ -14,7 +14,8 @@ export default class Game extends React.Component {
     playerPosition: { x: undefined, y: undefined },
     levelName: "",
     levelWon: false,
-    keydown: false
+    keydown: false,
+    preview: false
   }
 
   componentDidMount() {
@@ -26,7 +27,8 @@ export default class Game extends React.Component {
           originalBoard: levelData,
           currentBoard: levelData,
           undoBoard: levelData,
-          levelName: level.name
+          levelName: level.name,
+          preview: !level.published
         })
         API.playedLevel(this.props.id)
       } else {
@@ -371,8 +373,13 @@ export default class Game extends React.Component {
   }
 
   nextLevel = () => {
-    this.props.history.push(`/levels`)
-    this.props.setUser()
+    if (this.state.preview) {
+      this.props.history.push(`/create/${this.props.id}/edit`)
+      this.props.setUser()
+    } else {
+      this.props.history.push(`/levels`)
+      this.props.setUser()
+    }
   }
 
   resetLevel = () => {
@@ -398,7 +405,11 @@ export default class Game extends React.Component {
           <div style={{ position: "relative" }}>
             <Confetti nextLevel={this.nextLevel} />
             <div className={"board blur"}>
-              <h1>{this.state.levelName}</h1>
+              <h1>
+                {!this.state.preview
+                  ? this.state.levelName
+                  : `${this.state.levelName} (Preview)`}
+              </h1>
               <GameBoard
                 board={this.state.currentBoard}
                 width={width}
@@ -417,13 +428,28 @@ export default class Game extends React.Component {
         ) : (
           <div className={"board"}>
             <div>
-              <Button
-                size={"small"}
-                icon={"close"}
-                className={"exitButton"}
-                onClick={() => this.props.history.goBack()}
-              />
-              <h1>{this.state.levelName}</h1>
+              {this.state.preview ? (
+                <Button
+                  size={"small"}
+                  icon={"close"}
+                  className={"exitButton"}
+                  onClick={() =>
+                    this.props.history.push(`/create/${this.props.id}/edit`)
+                  }
+                />
+              ) : (
+                <Button
+                  size={"small"}
+                  icon={"close"}
+                  className={"exitButton"}
+                  onClick={() => this.props.history.goBack()}
+                />
+              )}
+              <h1>
+                {!this.state.preview
+                  ? this.state.levelName
+                  : `${this.state.levelName} (Preview)`}
+              </h1>
             </div>
             <GameBoard
               board={this.state.currentBoard}
