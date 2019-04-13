@@ -118,6 +118,9 @@ class App extends React.Component {
                     handleOrderChange={this.handleOrderChange}
                     orderState={this.state.orderLevel}
                     currentUser={this.state.currentUser}
+                    handleToggleChange={this.handleToggleChange}
+                    toggleComplete={this.state.handleToggleChange}
+                    toggleComplete={this.state.toggleComplete}
                     {...routerProps}
                   />
                 )
