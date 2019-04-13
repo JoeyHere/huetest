@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Button, Header, Modal } from "semantic-ui-react"
+import { Button, Header, Image, Modal } from "semantic-ui-react"
 
 class PublishModal extends Component {
   state = { open: false }
@@ -16,7 +16,7 @@ class PublishModal extends Component {
           PUBLISH
         </Button>
 
-        <Modal dimmer={dimmer} open={open} onClose={this.close}>
+        <Modal dimmer={dimmer} open={open} onClose={this.close} size="small">
           <Modal.Header>PUBLISH LEVEL - ARE YOU SURE?</Modal.Header>
           <Modal.Content>
             <Modal.Description>
@@ -24,7 +24,9 @@ class PublishModal extends Component {
                 You must complete the level after publishing for other User's to
                 see it.
               </Header>
-              <p>PUBLISHED LEVELS CAN NO LONGER BE EDITED!</p>
+              <p style={{ textAlign: "center" }}>
+                Published Levels Can No Longer Be Edited!
+              </p>
             </Modal.Description>
           </Modal.Content>
           <Modal.Actions>
