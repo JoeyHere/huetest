@@ -5,6 +5,7 @@ import API from "../concerns/API.js"
 import "../confetti.scss"
 import Confetti from "../components/Confetti.js"
 import { Button, Icon } from "semantic-ui-react"
+import Sound from "react-sound"
 
 export default class Game extends React.Component {
   state = {
@@ -15,7 +16,10 @@ export default class Game extends React.Component {
     levelName: "",
     levelWon: false,
     keydown: false,
-    preview: false
+    preview: false,
+    mute: true,
+    playSound: false,
+    soundURL: "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
   }
 
   componentDidMount() {
@@ -143,6 +147,30 @@ export default class Game extends React.Component {
         currentBoard
       )
       currentBoard = this.clearBoardOfThrees(currentBoard)
+
+      let boardString = JSON.stringify(currentBoard)
+      if (boardString.includes(JSON.stringify(BLOCKS.flash))) {
+        this.playSoundEffect(
+          "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"
+        )
+      } else if (boardString.includes(JSON.stringify(BLOCKS.explode))) {
+        this.playSoundEffect(
+          "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
+        )
+      } else if (boardString.includes(JSON.stringify(BLOCKS.combineGreen))) {
+        this.playSoundEffect(
+          "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
+        )
+      } else if (boardString.includes(JSON.stringify(BLOCKS.combinePurple))) {
+        this.playSoundEffect(
+          "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
+        )
+      } else if (boardString.includes(JSON.stringify(BLOCKS.combineOrange))) {
+        this.playSoundEffect(
+          "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
+        )
+      }
+
       this.setState({
         playerPosition: newBlock,
         currentBoard: currentBoard,
@@ -397,7 +425,32 @@ export default class Game extends React.Component {
     })
   }
 
+  playSoundEffect = url => {
+    this.setState({
+      playSound: true,
+      soundURL: url
+    })
+  }
+
+  handleSoundFinishedPlaying = () => {
+    this.setState({
+      playSound: false
+    })
+  }
+
   render() {
+    const soundEffect = (
+      <Sound
+        url={this.state.soundURL}
+        playStatus={
+          this.state.playSound && !this.state.mute
+            ? Sound.status.PLAYING
+            : Sound.status.STOPPED
+        }
+        autoLoad={true}
+        onFinishedPlaying={this.handleSoundFinishedPlaying}
+      />
+    )
     const width = this.state.currentBoard.length * 35
     return (
       <div>
@@ -428,6 +481,7 @@ export default class Game extends React.Component {
         ) : (
           <div className={"board"}>
             <div>
+              <div>{soundEffect}</div>
               {this.state.preview ? (
                 <Button
                   size={"small"}
