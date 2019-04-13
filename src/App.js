@@ -15,7 +15,6 @@ import Login from "./containers/Login"
 import API from "./concerns/API.js"
 import SignUp from "./containers/SignUp"
 import MyLevels from "./containers/MyLevels"
-import Sound from "react-sound"
 
 class App extends React.Component {
   state = {
