@@ -17,7 +17,6 @@ export default class Game extends React.Component {
     levelWon: false,
     keydown: false,
     preview: false,
-    mute: true,
     playSound: false,
     soundURL: "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
   }
@@ -481,7 +480,7 @@ export default class Game extends React.Component {
         ) : (
           <div className={"board"}>
             <div>
-              <div>{soundEffect}</div>
+              <div>{this.props.mute ? null : soundEffect}</div>
               {this.state.preview ? (
                 <Button
                   size={"small"}

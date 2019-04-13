@@ -21,7 +21,8 @@ class App extends React.Component {
     currentUser: undefined,
     filterLevel: "All",
     orderLevel: "Popular",
-    toggleComplete: false
+    toggleComplete: false,
+    mute: true
   }
 
   componentDidMount() {
@@ -141,6 +142,7 @@ class App extends React.Component {
                     id={routerProps.match.params.id}
                     {...routerProps}
                     setUser={this.setUser}
+                    mute={this.state.mute}
                   />
                 )
               }}
