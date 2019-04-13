@@ -12,7 +12,7 @@ const PUBLISH_URL = BASE_URL + "/publish"
 const handleError = errorObj => {
   let error = containsError(errorObj)
     ? errorObj
-    : { error: "oops something went wrong" }
+    : { error: "Something Went Wrong" }
   alert(`${error.error}`)
 }
 

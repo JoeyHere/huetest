@@ -6,6 +6,7 @@ import "../confetti.scss"
 import Confetti from "../components/Confetti.js"
 import { Button, Icon } from "semantic-ui-react"
 import Sound from "react-sound"
+import PublishModal from "../components/PublishModal.js"
 
 export default class Game extends React.Component {
   state = {
@@ -437,6 +438,18 @@ export default class Game extends React.Component {
     })
   }
 
+  handlePublish = () => {
+    API.publishLevel({
+      name: this.state.level_name,
+      level_data: JSON.stringify(this.state.currentBoard),
+      id: this.props.id
+    }).then(level => {
+      if (level) {
+        this.props.history.push(`/mylevels`)
+      }
+    })
+  }
+
   render() {
     const soundEffect = (
       <Sound
@@ -468,14 +481,27 @@ export default class Game extends React.Component {
                 handleBlockClick={this.handleBlockClick}
               />
             </div>
-            <Button
-              style={{ position: "absolute", top: "50%" }}
-              positive={true}
-              className="winButton"
-              onClick={this.nextLevel}
-            >
-              LEVEL COMPLETE
-            </Button>
+            {this.state.preview === false ? (
+              <Button
+                style={{ position: "absolute", top: "50%" }}
+                positive={true}
+                className="winButton"
+                onClick={this.nextLevel}
+              >
+                LEVEL COMPLETE
+              </Button>
+            ) : (
+              <>
+                <Button
+                  style={{ position: "absolute", top: "43%" }}
+                  className="winButton"
+                  onClick={this.nextLevel}
+                >
+                  CONTINUE EDITING
+                </Button>
+                <PublishModal handlePublish={this.handlePublish} />
+              </>
+            )}
           </div>
         ) : (
           <div className={"board"}>
@@ -506,6 +532,7 @@ export default class Game extends React.Component {
                   ? this.state.levelName
                   : `${this.state.levelName} (Preview)`}
               </h1>
+              <h3>Complete the Level to Publish</h3>
             </div>
             <GameBoard
               board={this.state.currentBoard}

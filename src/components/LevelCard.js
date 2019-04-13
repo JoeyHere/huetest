@@ -1,5 +1,5 @@
 import React from "react"
-import { Card } from "semantic-ui-react"
+import { Card, CardContent } from "semantic-ui-react"
 import { BLOCKCOLORS } from "../concerns/Config"
 
 class LevelCard extends React.Component {
@@ -43,21 +43,27 @@ class LevelCard extends React.Component {
       ? `by ${this.props.user.user_name}`
       : "by HUEman"
 
-    let extraStyle = this.props.completed
-      ? { backgroundColor: "rgb(229, 255, 224)", textAlign: "right" }
-      : { backgroundColor: "rgb(252, 207, 207)", textAlign: "right" }
+    let extraStyle =
+      this.props.completed || this.props.userPublished
+        ? { backgroundColor: "rgb(229, 255, 224)", textAlign: "right" }
+        : { backgroundColor: "rgb(252, 207, 207)", textAlign: "right" }
 
     return (
       <Card
-        color={this.props.completed ? "green" : "red"}
+        color={
+          this.props.completed || this.props.userPublished ? "green" : "red"
+        }
         onClick={() => this.props.handleLevelClick(this.props.id)}
-        style={{ width: "380px" }}
+        style={{ width: "250px" }}
       >
         <Card.Content style={{ padding: "16px" }}>
-          <Card.Header style={{ float: "left" }}>
+          <Card.Header style={{ float: "left", padding: "5px" }}>
             {preview}
-            {this.props.name} <Card.Meta>{userMeta}</Card.Meta>{" "}
+            {this.props.name}
           </Card.Header>
+        </Card.Content>
+        <Card.Content extra style={{ textAlign: "center" }}>
+          {userMeta}
         </Card.Content>
         <Card.Content extra style={extraStyle}>
           🎲 {this.props.plays} | 🏆 {this.props.completes}{" "}

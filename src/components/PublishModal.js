@@ -11,19 +11,24 @@ class PublishModal extends Component {
     const { open, dimmer } = this.state
 
     return (
-      <div>
-        <Button positive={true} onClick={this.show("inverted")}>
+      <>
+        <Button
+          className={"winButton"}
+          style={{
+            position: "absolute",
+            top: "57%"
+          }}
+          positive={true}
+          onClick={this.show("inverted")}
+        >
           PUBLISH
         </Button>
 
-        <Modal dimmer={dimmer} open={open} onClose={this.close} size="small">
-          <Modal.Header>PUBLISH LEVEL - ARE YOU SURE?</Modal.Header>
+        <Modal dimmer={dimmer} open={open} onClose={this.close} size="tiny">
+          <Modal.Header>PUBLISH LEVEL</Modal.Header>
           <Modal.Content>
             <Modal.Description>
-              <Header>
-                You must complete the level after publishing for other User's to
-                see it.
-              </Header>
+              <Header>ARE YOU SURE?</Header>
               <p style={{ textAlign: "center" }}>
                 Published Levels Can No Longer Be Edited!
               </p>
@@ -40,7 +45,7 @@ class PublishModal extends Component {
             />
           </Modal.Actions>
         </Modal>
-      </div>
+      </>
     )
   }
 }

@@ -150,13 +150,9 @@ export default class LevelEditor extends React.Component {
           </Form.Group>
         </Form>
         <h3>
-          <Button onClick={this.handleSave} style={{ width: 150 + "px" }}>
-            SAVE / PREVIEW
+          <Button onClick={this.handleSave} style={{ width: 200 + "px" }}>
+            PREVIEW + PUBLISH
           </Button>
-          <PublishModal
-            style={{ width: 100 + "px" }}
-            handlePublish={this.handlePublish}
-          />
           {this.props.id ? (
             <DeleteModal
               style={{ width: 100 + "px" }}
