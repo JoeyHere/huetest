@@ -445,7 +445,7 @@ export default class Game extends React.Component {
   handlePublish = () => {
     API.publishLevel({
       name: this.state.level_name,
-      level_data: JSON.stringify(this.state.currentBoard),
+      level_data: JSON.stringify(this.state.originalBoard),
       id: this.props.id
     }).then(level => {
       if (level) {
