@@ -22,7 +22,8 @@ export default class Game extends React.Component {
     keydown: false,
     preview: false,
     playSound: false,
-    soundURL: "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3",
+    soundURL:
+      "https://www.pacdv.com/sounds/interface_sound_effects/sound61.wav",
     rated: false
   }
 
@@ -158,23 +159,23 @@ export default class Game extends React.Component {
       let boardString = JSON.stringify(currentBoard)
       if (boardString.includes(JSON.stringify(BLOCKS.flash))) {
         this.playSoundEffect(
-          "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"
+          "https://www.pacdv.com/sounds/interface_sound_effects/sound118.wav"
         )
       } else if (boardString.includes(JSON.stringify(BLOCKS.explode))) {
         this.playSoundEffect(
-          "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
+          "https://www.pacdv.com/sounds/interface_sound_effects/sound54.wav"
         )
       } else if (boardString.includes(JSON.stringify(BLOCKS.combineGreen))) {
         this.playSoundEffect(
-          "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
+          "https://www.pacdv.com/sounds/interface_sound_effects/sound61.wav"
         )
       } else if (boardString.includes(JSON.stringify(BLOCKS.combinePurple))) {
         this.playSoundEffect(
-          "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
+          "https://www.pacdv.com/sounds/interface_sound_effects/sound61.wav"
         )
       } else if (boardString.includes(JSON.stringify(BLOCKS.combineOrange))) {
         this.playSoundEffect(
-          "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
+          "https://www.pacdv.com/sounds/interface_sound_effects/sound61.wav"
         )
       }
 
@@ -476,6 +477,7 @@ export default class Game extends React.Component {
   render() {
     const soundEffect = (
       <Sound
+        volume={5}
         url={this.state.soundURL}
         playStatus={
           this.state.playSound && !this.state.mute

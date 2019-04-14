@@ -32,7 +32,7 @@ export default class SignUp extends Component {
   render() {
     return (
       <div className="logInForm">
-        {/* <h1>SIGN UP</h1> */}
+        <h2>SIGN UP</h2>
         <Form
           onSubmit={this.signUp}
           style={{ width: 400 + "px", padding: 20 + "px", margin: "auto" }}
