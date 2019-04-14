@@ -27,10 +27,18 @@ export default class Navbar extends Component {
             to="/create"
           />
           <Image
+            style={{ margin: "10px", width: "27px", height: "27px" }}
+            src="https://i.ibb.co/fHMm8Rw/brown.png"
+          />
+          <Image
             className={"hueLogo"}
             rounded
             style={{ margin: "10px", width: "153px", height: "27px" }}
             src="https://i.ibb.co/34DXmpm/Hueman-logo.png"
+          />
+          <Image
+            style={{ margin: "10px", width: "27px", height: "27px" }}
+            src="https://i.ibb.co/fHMm8Rw/brown.png"
           />
           <Menu.Item
             color={"yellow"}
