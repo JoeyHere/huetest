@@ -10,7 +10,7 @@ export default class Navbar extends Component {
       <>
         <Menu
           size={"small"}
-          style={{ backgroundColor: "rgb(240, 240, 240)" }}
+          // style={{ backgroundColor: "rgb(240, 240, 240)" }}
           stackable={true}
           id="navBar"
           widths={8}
