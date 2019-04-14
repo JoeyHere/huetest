@@ -7,23 +7,25 @@ export default class SignUp extends Component {
   state = {
     user_name: "",
     password: "",
-    password_confirmed: ""
+    confirm: ""
   }
 
   signUp = event => {
-    event.preventDefault()
-    API.signUpPost(this.state.user_name, this.state.password).then(
-      userObject => {
-        if (userObject) {
-          loginSetUser(userObject)
+    if (this.state.password === this.state.confirm) {
+      event.preventDefault()
+      API.signUpPost(this.state.user_name, this.state.password).then(
+        userObject => {
+          if (userObject) {
+            loginSetUser(userObject)
+          }
         }
+      )
+      const loginSetUser = userObject => {
+        let token = userObject.token
+        localStorage.setItem("token", token)
+        this.props.setUser()
+        this.props.history.push(`/levels`)
       }
-    )
-    const loginSetUser = userObject => {
-      let token = userObject.token
-      localStorage.setItem("token", token)
-      this.props.setUser()
-      this.props.history.push(`/levels`)
     }
   }
 
@@ -57,6 +59,17 @@ export default class SignUp extends Component {
               value={this.state.password}
               placeholder="Password"
               name="password"
+              type="password"
+            />
+          </Form.Field>
+          <Form.Field>
+            {/* <label>Password</label> */}
+            <input
+              maxLength="30"
+              onChange={event => this.setState({ confirm: event.target.value })}
+              value={this.state.confirm}
+              placeholder="Confirm Password"
+              name="confirm"
               type="password"
             />
           </Form.Field>

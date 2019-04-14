@@ -589,7 +589,7 @@ export default class Game extends React.Component {
               <h3>
                 {!this.state.preview
                   ? `by ${this.state.creator_name}`
-                  : "Complete the Level to Publish"}
+                  : "COMPLETE LEVEL TO PUBLISH"}
               </h3>
             </div>
             <GameBoard

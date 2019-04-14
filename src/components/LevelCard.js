@@ -73,7 +73,8 @@ class LevelCard extends React.Component {
                 (this.props.downvotes + this.props.upvotes)) *
               100
             : 0}
-          % {this.props.completed ? " | ✅" : " | ❌"}{" "}
+          % {this.props.completed && !this.props.userPublished ? " | ✅" : null}
+          {!this.props.completed && !this.props.userPublished ? " | ❌" : null}
           {this.props.userPublished ? " | 📖" : null}
         </Card.Content>
       </Card>
