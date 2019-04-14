@@ -149,7 +149,11 @@ export default class LevelEditor extends React.Component {
           </Form.Group>
         </Form>
         <h3>
-          <Button onClick={this.handleSave} style={{ width: 160 + "px" }}>
+          <Button
+            primary
+            onClick={this.handleSave}
+            style={{ width: 160 + "px" }}
+          >
             SAVE + PREVIEW
           </Button>
           {this.props.id ? (

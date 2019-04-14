@@ -488,22 +488,26 @@ export default class Game extends React.Component {
             {this.state.preview === false ? (
               <>
                 <Button
-                  style={{ position: "absolute", top: "40%" }}
-                  positive={true}
+                  size={"big"}
+                  style={{ position: "absolute", top: "43%" }}
+                  primary
+                  // positive={true}
                   className="winButton"
                   onClick={this.nextLevel}
                 >
                   LEVEL COMPLETE
                 </Button>
                 <Button
+                  // basic
+                  size={"big"}
                   disabled={this.state.rated}
                   className="winButton"
-                  icon={"thumbs up outline"}
+                  icon={"thumbs up"}
+                  color={"green"}
                   style={{
-                    color: "green",
                     position: "absolute",
                     top: "60%",
-                    left: "45%"
+                    left: "47%"
                   }}
                   onClick={() => {
                     API.upvoteLevel(this.props.id)
@@ -511,14 +515,16 @@ export default class Game extends React.Component {
                   }}
                 />
                 <Button
+                  // basic
+                  size={"big"}
+                  color="red"
                   disabled={this.state.rated}
                   className="winButton"
-                  icon={"thumbs down outline"}
+                  icon={"thumbs down"}
                   style={{
                     position: "absolute",
                     top: "60%",
-                    left: "55%",
-                    color: "red"
+                    left: "53%"
                   }}
                   onClick={() => {
                     API.downvoteLevel(this.props.id)
@@ -529,6 +535,7 @@ export default class Game extends React.Component {
             ) : (
               <>
                 <Button
+                  primary
                   style={{ position: "absolute", top: "43%" }}
                   className="winButton"
                   onClick={this.nextLevel}
@@ -569,9 +576,8 @@ export default class Game extends React.Component {
                   : `${this.state.levelName} (Preview)`}
               </h1>
               <h3>
-                by{" "}
                 {!this.state.preview
-                  ? this.state.creator_name
+                  ? `by ${this.state.creator_name}`
                   : "Complete the Level to Publish"}
               </h3>
             </div>
