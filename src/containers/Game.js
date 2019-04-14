@@ -195,6 +195,14 @@ export default class Game extends React.Component {
     if (!this.checkBlockExists(blockB.x, blockB.y)) {
       return false
     }
+    // added to fix bug, need to check it is 100%
+    if (this.getBlock(blockA.x, blockA.y) === BLOCKS.wall) {
+      return false
+    }
+    if (this.getBlock(blockB.x, blockB.y) === BLOCKS.wall) {
+      return false
+    }
+
     if (
       this.blocksCanCombine(
         this.getBlock(blockA.x, blockA.y, inputArray),
