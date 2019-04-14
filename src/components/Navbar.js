@@ -18,7 +18,8 @@ export default class Navbar extends Component {
             to="/create"
           />
           <Image
-            style={{ margin: "5px" }}
+            rounded
+            style={{ margin: "5px", width: "229px", height: "40px" }}
             src="https://i.ibb.co/34DXmpm/Hueman-logo.png"
           />
           <Menu.Item
