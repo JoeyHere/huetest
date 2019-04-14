@@ -75,7 +75,11 @@ class LevelIndex extends React.Component {
     let newArray = [...array]
     switch (this.props.orderState) {
       case "Popular":
-        newArray.sort((a, b) => b.plays - a.plays)
+        newArray.sort(
+          (a, b) =>
+            b.plays * (b.upvotes - b.downvotes + 1) -
+            a.plays * (a.upvotes - a.downvotes + 1)
+        )
         break
       case "New":
         newArray.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))

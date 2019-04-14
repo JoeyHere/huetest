@@ -66,8 +66,8 @@ class LevelCard extends React.Component {
           {userMeta}
         </Card.Content>
         <Card.Content extra style={extraStyle}>
-          🎲 {this.props.plays} | <span role="img">🏆</span>{" "}
-          {this.props.completes} | 👍
+          🎲 {this.props.plays} | <span role="img">🏆 </span>{" "}
+          {this.props.completes} | 👍{" "}
           {this.props.upvotes
             ? (this.props.upvotes /
                 (this.props.downvotes + this.props.upvotes)) *

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Menu } from "semantic-ui-react"
+import { Menu, Image } from "semantic-ui-react"
 import { NavLink } from "react-router-dom"
 
 export default class Navbar extends Component {
@@ -8,7 +8,7 @@ export default class Navbar extends Component {
   render() {
     return (
       <>
-        <Menu stackable={true} id="navBar" widths={5} attached="top" tabular>
+        <Menu stackable={true} id="navBar" widths={6} attached="top" tabular>
           <Menu.Item color={"green"} name="PLAY" as={NavLink} to="/levels" />
           <Menu.Item
             color={"blue"}
@@ -16,6 +16,10 @@ export default class Navbar extends Component {
             name="CREATE"
             as={NavLink}
             to="/create"
+          />
+          <Image
+            style={{ margin: "5px" }}
+            src="https://i.ibb.co/34DXmpm/Hueman-logo.png"
           />
           <Menu.Item
             color={"yellow"}

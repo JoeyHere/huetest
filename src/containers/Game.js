@@ -297,7 +297,7 @@ export default class Game extends React.Component {
     let rowIndex = array.findIndex(row =>
       row.find(block => block === BLOCKS.player)
     )
-    if (rowIndex) {
+    if (rowIndex || rowIndex === 0) {
       columnIndex = array[rowIndex].findIndex(block => block === BLOCKS.player)
     }
     return { x: columnIndex, y: rowIndex }
