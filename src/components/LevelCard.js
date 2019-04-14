@@ -27,7 +27,11 @@ class LevelCard extends React.Component {
         className={"levelPreview"}
         style={{
           height: `${gameBoard.length * 5}px`,
-          width: `${gameBoard[0].length * 5}px`
+          width: `${gameBoard[0].length * 5}px`,
+          borderColor:
+            this.props.completed || this.props.userPublished
+              ? "rgb(229, 235, 200)"
+              : "rgb(252, 207, 207)"
         }}
       >
         <div style={css} />
