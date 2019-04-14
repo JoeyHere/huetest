@@ -13,8 +13,8 @@ class LevelCardList extends React.Component {
             marginLeft: "auto",
             marginRight: "auto",
             marginTop: "50px",
-            paddingRight: "12%",
-            paddingLeft: "12%"
+            paddingRight: "15%",
+            paddingLeft: "15%"
           }}
         >
           {this.props.levels.map(level => (

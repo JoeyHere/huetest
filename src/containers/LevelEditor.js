@@ -154,7 +154,7 @@ export default class LevelEditor extends React.Component {
             onClick={this.handleSave}
             style={{ width: 160 + "px" }}
           >
-            SAVE + PREVIEW
+            SAVE / PREVIEW
           </Button>
           {this.props.id ? (
             <DeleteModal

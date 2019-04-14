@@ -68,7 +68,8 @@ class LevelCard extends React.Component {
         style={{
           width: "270px",
           height: "200px",
-          backgroundColor: "rgb(255, 255, 255)"
+          backgroundColor: "rgb(255, 255, 255)",
+          margin: "25px"
         }}
       >
         <Card.Content style={{ padding: "16px" }}>

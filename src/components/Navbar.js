@@ -9,12 +9,14 @@ export default class Navbar extends Component {
     return (
       <>
         <Menu
-          // style={{ backgroundColor: "rgb(255, 249, 245)" }}
+          size={"small"}
+          style={{ backgroundColor: "rgb(240, 240, 240)" }}
           stackable={true}
           id="navBar"
           widths={6}
           attached="top"
           tabular
+          borderless
         >
           <Menu.Item color={"green"} name="PLAY" as={NavLink} to="/levels" />
           <Menu.Item
