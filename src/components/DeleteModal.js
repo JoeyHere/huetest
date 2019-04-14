@@ -12,7 +12,11 @@ class DeleteModal extends Component {
 
     return (
       <div>
-        <Button negative={true} onClick={this.show("inverted")}>
+        <Button
+          className={"deleteButton"}
+          negative={true}
+          onClick={this.show("inverted")}
+        >
           DELETE
         </Button>
 

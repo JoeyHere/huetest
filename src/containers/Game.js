@@ -7,6 +7,7 @@ import Confetti from "../components/Confetti.js"
 import { Button, Icon } from "semantic-ui-react"
 import Sound from "react-sound"
 import PublishModal from "../components/PublishModal.js"
+import DeleteModal from "../components/DeleteModal.js"
 
 export default class Game extends React.Component {
   state = {
@@ -14,6 +15,7 @@ export default class Game extends React.Component {
     undoBoard: [[]],
     currentBoard: [[]],
     creator_name: undefined,
+    creator_id: undefined,
     playerPosition: { x: undefined, y: undefined },
     levelName: "",
     levelWon: false,
@@ -35,7 +37,8 @@ export default class Game extends React.Component {
           undoBoard: levelData,
           levelName: level.name,
           creator_name: level.user.user_name,
-          preview: !level.published
+          preview: !level.published,
+          creator_id: level.user.id
         })
         API.playedLevel(this.props.id)
       } else {
@@ -454,6 +457,14 @@ export default class Game extends React.Component {
     })
   }
 
+  handleDelete = () => {
+    API.deleteLevel({ id: this.props.id }).then(level => {
+      if (level) {
+        this.props.history.push(`/mylevels`)
+      }
+    })
+  }
+
   render() {
     const soundEffect = (
       <Sound
@@ -595,6 +606,14 @@ export default class Game extends React.Component {
                 <Icon name="undo" />
                 Reset
               </Button>
+              {this.state.creator_id &&
+              this.props.currentUser &&
+              this.state.creator_id === this.props.currentUser.id ? (
+                <DeleteModal
+                  style={{ width: 100 + "px" }}
+                  handleDelete={this.handleDelete}
+                />
+              ) : null}
             </div>
           </div>
         )}

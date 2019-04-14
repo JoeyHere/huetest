@@ -142,6 +142,7 @@ class App extends React.Component {
                     {...routerProps}
                     setUser={this.setUser}
                     mute={this.state.mute}
+                    currentUser={this.state.currentUser}
                   />
                 )
               }}
