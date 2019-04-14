@@ -8,7 +8,14 @@ export default class Navbar extends Component {
   render() {
     return (
       <>
-        <Menu stackable={true} id="navBar" widths={6} attached="top" tabular>
+        <Menu
+          // style={{ backgroundColor: "rgb(255, 249, 245)" }}
+          stackable={true}
+          id="navBar"
+          widths={6}
+          attached="top"
+          tabular
+        >
           <Menu.Item color={"green"} name="PLAY" as={NavLink} to="/levels" />
           <Menu.Item
             color={"blue"}
@@ -19,7 +26,7 @@ export default class Navbar extends Component {
           />
           <Image
             rounded
-            style={{ margin: "5px", width: "229px", height: "40px" }}
+            style={{ margin: "10px", width: "153px", height: "27px" }}
             src="https://i.ibb.co/34DXmpm/Hueman-logo.png"
           />
           <Menu.Item
