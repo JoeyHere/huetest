@@ -499,7 +499,7 @@ export default class Game extends React.Component {
             {this.state.preview === false ? (
               <>
                 <Button
-                  size={"big"}
+                  size={"large"}
                   style={{ position: "absolute", top: "43%" }}
                   primary
                   // positive={true}
@@ -510,8 +510,8 @@ export default class Game extends React.Component {
                 </Button>
                 <Button
                   // basic
-                  size={"big"}
-                  disabled={this.state.rated}
+                  size={"large"}
+                  disabled={this.state.rated || !this.props.currentUser}
                   className="winButton"
                   icon={"thumbs up"}
                   color={"green"}
@@ -527,9 +527,9 @@ export default class Game extends React.Component {
                 />
                 <Button
                   // basic
-                  size={"big"}
+                  size={"large"}
                   color="red"
-                  disabled={this.state.rated}
+                  disabled={this.state.rated || !this.props.currentUser}
                   className="winButton"
                   icon={"thumbs down"}
                   style={{
