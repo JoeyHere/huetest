@@ -1,5 +1,5 @@
 import React from "react"
-import { Card } from "semantic-ui-react"
+import { Card, Icon } from "semantic-ui-react"
 import { BLOCKCOLORS } from "../concerns/Config"
 
 class LevelCard extends React.Component {
@@ -39,9 +39,19 @@ class LevelCard extends React.Component {
     let board = JSON.parse(this.props.level_data)
     let preview = this.generateCSS(board, 5)
 
-    let userMeta = this.props.user
-      ? `by ${this.props.user.user_name}`
-      : "by HUEman"
+    let userMeta = this.props.user ? (
+      <>
+        <span style={{ float: "right" }}>
+          {`${this.props.user.user_name} `}
+          <Icon name="user outline" />
+        </span>
+        <span style={{ float: "left" }}>
+          {new Date(this.props.created_at).toLocaleDateString("en-GB")}
+        </span>
+      </>
+    ) : (
+      "by HUEman"
+    )
 
     let extraStyle =
       this.props.completed || this.props.userPublished
@@ -62,9 +72,7 @@ class LevelCard extends React.Component {
             {this.props.name}
           </Card.Header>
         </Card.Content>
-        <Card.Content extra style={{ textAlign: "right" }}>
-          {userMeta}
-        </Card.Content>
+        <Card.Content extra>{userMeta}</Card.Content>
         <Card.Content extra style={extraStyle}>
           🎲 {this.props.plays} | <span role="img">🏆 </span>{" "}
           {this.props.completes} | 👍{" "}
