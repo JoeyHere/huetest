@@ -4,7 +4,6 @@ import Palette from "../components/Palette.js"
 import { BLOCKS, blankBoards } from "../concerns/Config.js"
 import { Form, Button } from "semantic-ui-react"
 import API from "../concerns/API.js"
-import PublishModal from "../components/PublishModal.js"
 import DeleteModal from "../components/DeleteModal.js"
 
 export default class LevelEditor extends React.Component {
@@ -150,8 +149,8 @@ export default class LevelEditor extends React.Component {
           </Form.Group>
         </Form>
         <h3>
-          <Button onClick={this.handleSave} style={{ width: 200 + "px" }}>
-            PREVIEW + PUBLISH
+          <Button onClick={this.handleSave} style={{ width: 160 + "px" }}>
+            SAVE + PREVIEW
           </Button>
           {this.props.id ? (
             <DeleteModal

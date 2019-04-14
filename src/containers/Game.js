@@ -13,13 +13,15 @@ export default class Game extends React.Component {
     originalBoard: [[]],
     undoBoard: [[]],
     currentBoard: [[]],
+    creator_name: undefined,
     playerPosition: { x: undefined, y: undefined },
     levelName: "",
     levelWon: false,
     keydown: false,
     preview: false,
     playSound: false,
-    soundURL: "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
+    soundURL: "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3",
+    rated: false
   }
 
   componentDidMount() {
@@ -32,6 +34,7 @@ export default class Game extends React.Component {
           currentBoard: levelData,
           undoBoard: levelData,
           levelName: level.name,
+          creator_name: level.user.user_name,
           preview: !level.published
         })
         API.playedLevel(this.props.id)
@@ -50,6 +53,7 @@ export default class Game extends React.Component {
   }
 
   handleKeyDown = event => {
+    event.preventDefault()
     if (this.state.levelWon === false) {
       if (!this.state.keydown) {
         if (event.key === "a" || event.key === "ArrowLeft") {
@@ -482,14 +486,46 @@ export default class Game extends React.Component {
               />
             </div>
             {this.state.preview === false ? (
-              <Button
-                style={{ position: "absolute", top: "50%" }}
-                positive={true}
-                className="winButton"
-                onClick={this.nextLevel}
-              >
-                LEVEL COMPLETE
-              </Button>
+              <>
+                <Button
+                  style={{ position: "absolute", top: "40%" }}
+                  positive={true}
+                  className="winButton"
+                  onClick={this.nextLevel}
+                >
+                  LEVEL COMPLETE
+                </Button>
+                <Button
+                  disabled={this.state.rated}
+                  className="winButton"
+                  icon={"thumbs up outline"}
+                  style={{
+                    color: "green",
+                    position: "absolute",
+                    top: "60%",
+                    left: "45%"
+                  }}
+                  onClick={() => {
+                    API.upvoteLevel(this.props.id)
+                    this.setState({ rated: true })
+                  }}
+                />
+                <Button
+                  disabled={this.state.rated}
+                  className="winButton"
+                  icon={"thumbs down outline"}
+                  style={{
+                    position: "absolute",
+                    top: "60%",
+                    left: "55%",
+                    color: "red"
+                  }}
+                  onClick={() => {
+                    API.downvoteLevel(this.props.id)
+                    this.setState({ rated: true })
+                  }}
+                />
+              </>
             ) : (
               <>
                 <Button
@@ -532,7 +568,12 @@ export default class Game extends React.Component {
                   ? this.state.levelName
                   : `${this.state.levelName} (Preview)`}
               </h1>
-              <h3>Complete the Level to Publish</h3>
+              <h3>
+                by{" "}
+                {!this.state.preview
+                  ? this.state.creator_name
+                  : "Complete the Level to Publish"}
+              </h3>
             </div>
             <GameBoard
               board={this.state.currentBoard}

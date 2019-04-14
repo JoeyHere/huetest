@@ -5,6 +5,8 @@ const LOGIN_URL = BASE_URL + "/login"
 const SIGNUP_URL = BASE_URL + "/signup"
 const PROFILE_URL = BASE_URL + "/profile"
 const PLAYED_URL = BASE_URL + "/played"
+const UPVOTE_URL = BASE_URL + "/upvote"
+const DOWNVOTE_URL = BASE_URL + "/downvote"
 const COMPLETED_URL = BASE_URL + "/completed"
 const MYLEVELS_URL = BASE_URL + "/mylevels"
 const PUBLISH_URL = BASE_URL + "/publish"
@@ -81,6 +83,34 @@ const deleteLevel = level => {
 
 const playedLevel = levelId => {
   return fetch(PLAYED_URL + `/${levelId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
+    },
+    body: JSON.stringify(levelId)
+  })
+    .then(resp => resp.json())
+    .then(handleApiResponse)
+    .catch(handleError)
+}
+
+const upvoteLevel = levelId => {
+  return fetch(UPVOTE_URL + `/${levelId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token")
+    },
+    body: JSON.stringify(levelId)
+  })
+    .then(resp => resp.json())
+    .then(handleApiResponse)
+    .catch(handleError)
+}
+
+const downvoteLevel = levelId => {
+  return fetch(DOWNVOTE_URL + `/${levelId}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -190,5 +220,7 @@ export default {
   handleApiResponse,
   updateLevel,
   deleteLevel,
-  publishLevel
+  publishLevel,
+  upvoteLevel,
+  downvoteLevel
 }

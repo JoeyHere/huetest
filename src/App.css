@@ -299,13 +299,15 @@ button {
 }
 
 .filterLevels {
-  position: relative;
-  left: 60%;
+  position: absolute;
+  right: 20%;
+  /* transform: translateX(50%); */
 }
 
 .toggleLevels {
-  position: relative;
-  left: 15%;
+  position: absolute;
+  left: 20%;
+  /* transform: translateX(-50%); */
 }
 
 .signUpButton {
