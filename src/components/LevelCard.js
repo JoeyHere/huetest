@@ -41,11 +41,11 @@ class LevelCard extends React.Component {
 
     let userMeta = this.props.user ? (
       <>
-        <span style={{ float: "right" }}>
-          {`${this.props.user.user_name} `}
-          <Icon name="user outline" />
-        </span>
         <span style={{ float: "left" }}>
+          <Icon name="user outline" />
+          {`${this.props.user.user_name} `}
+        </span>
+        <span style={{ float: "right" }}>
           {new Date(this.props.created_at).toLocaleDateString("en-GB")}
         </span>
       </>
@@ -64,7 +64,11 @@ class LevelCard extends React.Component {
           this.props.completed || this.props.userPublished ? "green" : "red"
         }
         onClick={() => this.props.handleLevelClick(this.props.id)}
-        style={{ width: "270px", backgroundColor: "rgb(255, 255, 255)" }}
+        style={{
+          width: "270px",
+          height: "200px",
+          backgroundColor: "rgb(255, 255, 255)"
+        }}
       >
         <Card.Content style={{ padding: "16px" }}>
           <Card.Header style={{ float: "left", padding: "5px" }}>
