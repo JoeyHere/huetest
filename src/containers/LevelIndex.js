@@ -59,7 +59,8 @@ class LevelIndex extends React.Component {
       levels = levels.filter(level => {
         return (
           this.props.currentUser &&
-          !this.props.currentUser.completedLevelIds.includes(level.id)
+          !this.props.currentUser.completedLevelIds.includes(level.id) &&
+          this.props.currentUser.id !== level.user.id
         )
       })
     }
