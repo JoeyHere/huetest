@@ -4,7 +4,7 @@ import { BLOCKS, sfxThrees } from "../concerns/Config.js"
 import API from "../concerns/API.js"
 import "../confetti.scss"
 import Confetti from "../components/Confetti.js"
-import { Button, Icon, Message } from "semantic-ui-react"
+import { Button, Icon } from "semantic-ui-react"
 import Sound from "react-sound"
 import PublishModal from "../components/PublishModal.js"
 import DeleteModal from "../components/DeleteModal.js"
@@ -596,7 +596,7 @@ export default class Game extends React.Component {
                   className={"exitButton"}
                   onClick={() => {
                     this.props.setUser()
-                    this.props.history.goBack()
+                    this.props.history.push(`/levels`)
                     this.props.muteGame(this.state.mute)
                   }}
                 />

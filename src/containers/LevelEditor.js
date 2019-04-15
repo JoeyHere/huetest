@@ -108,7 +108,7 @@ export default class LevelEditor extends React.Component {
           size={"small"}
           icon={"close"}
           className={"exitButton"}
-          onClick={() => this.props.history.goBack()}
+          onClick={() => this.props.history.push(`/mylevels`)}
         />
         <h3>LEVEL EDITOR</h3>
         <Form style={{ width: 400 + "px", margin: "auto" }}>
