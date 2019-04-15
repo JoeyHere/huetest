@@ -1,5 +1,5 @@
 import React from "react"
-import { Card, Icon } from "semantic-ui-react"
+import { Card, Icon, Image } from "semantic-ui-react"
 import { BLOCKCOLORS } from "../concerns/Config"
 
 class LevelCard extends React.Component {
@@ -47,7 +47,16 @@ class LevelCard extends React.Component {
           {`${this.props.user.user_name} `}
         </span>
         <span style={{ float: "right" }}>
-          {new Date(this.props.created_at).toLocaleDateString("en-GB")}
+          {this.props.completed && !this.props.userPublished ? (
+            <Image
+              verticalAlign
+              width={"22px"}
+              src="https://i.ibb.co/HF4Jm1K/hmframe3.png"
+            />
+          ) : null}
+          {this.props.userPublished
+            ? new Date(this.props.created_at).toLocaleDateString("en-GB")
+            : null}
         </span>
       </>
     ) : (
@@ -56,8 +65,13 @@ class LevelCard extends React.Component {
 
     let extraStyle =
       this.props.completed || this.props.userPublished
-        ? { backgroundColor: "rgb(229, 255, 224)", textAlign: "center" }
-        : { backgroundColor: "rgb(252, 207, 207)", textAlign: "center" }
+        ? { textAlign: "center" }
+        : { textAlign: "center" }
+
+    // let extraStyle =
+    //   this.props.completed || this.props.userPublished
+    //     ? { backgroundColor: "rgb(229, 255, 224)", textAlign: "center" }
+    //     : { backgroundColor: "rgb(252, 207, 207)", textAlign: "center" }
 
     return (
       <Card
@@ -87,8 +101,6 @@ class LevelCard extends React.Component {
                 (this.props.downvotes + this.props.upvotes)) *
               100
             : 0}
-          % {this.props.completed && !this.props.userPublished ? " | ✅" : null}
-          {!this.props.completed && !this.props.userPublished ? " | ❌" : null}
           {this.props.userPublished ? " | 📖" : null}
         </Card.Content>
       </Card>
