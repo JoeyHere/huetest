@@ -107,7 +107,16 @@ class LevelCard extends React.Component {
             {this.props.name}
           </Card.Header>
         </Card.Content>
-        <Card.Content extra>{userMeta}</Card.Content>
+        <Card.Content
+          style={
+            this.props.completed || this.props.userPublished
+              ? { backgroundColor: "rgb(229, 255, 224)" }
+              : { backgroundColor: "rgb(252, 207, 207)" }
+          }
+          extra
+        >
+          {userMeta}
+        </Card.Content>
         <Card.Content extra style={extraStyle}>
           <span style={{ float: "left" }}>
             <Icon name="play circle outline" /> {this.props.plays}
