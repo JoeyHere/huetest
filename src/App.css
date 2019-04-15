@@ -335,10 +335,7 @@ button {
 }
 
 .deleteButton {
-  position: absolute;
-  left: 50%;
-  bottom: -100px;
-  transform: translateX(-50%);
+  position: relative;
 }
 
 .hueLogo {

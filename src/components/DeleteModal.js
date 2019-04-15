@@ -11,7 +11,7 @@ class DeleteModal extends Component {
     const { open, dimmer } = this.state
 
     return (
-      <div>
+      <>
         <Button
           icon="trash alternate outline"
           className={"deleteButton"}
@@ -39,7 +39,7 @@ class DeleteModal extends Component {
             />
           </Modal.Actions>
         </Modal>
-      </div>
+      </>
     )
   }
 }
