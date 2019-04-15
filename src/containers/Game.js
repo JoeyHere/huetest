@@ -4,7 +4,7 @@ import { BLOCKS, sfxThrees } from "../concerns/Config.js"
 import API from "../concerns/API.js"
 import "../confetti.scss"
 import Confetti from "../components/Confetti.js"
-import { Button, Icon } from "semantic-ui-react"
+import { Button, Icon, Message } from "semantic-ui-react"
 import Sound from "react-sound"
 import PublishModal from "../components/PublishModal.js"
 import DeleteModal from "../components/DeleteModal.js"
@@ -165,7 +165,7 @@ export default class Game extends React.Component {
         )
       } else if (boardString.includes(JSON.stringify(BLOCKS.explode))) {
         this.playSoundEffect(
-          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555321791/sound54_cmk58v.wav"
+          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555337307/explode_w6fvbn.wav"
         )
       } else if (boardString.includes(JSON.stringify(BLOCKS.combineGreen))) {
         this.playSoundEffect(

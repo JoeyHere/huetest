@@ -324,14 +324,14 @@ button {
 
 .levelPreview {
   float: left;
-  margin-right: 25px;
+  margin-right: 20px;
   margin-top: 3px;
   /* margin-bottom: 3px; */
   position: relative;
   /* top: 10%; */
-  border: solid;
-  border-width: 5px;
-  box-shadow: 0px 0px 10px grey;
+  /* border: solid;
+  border-width: 5px; */
+  /* box-shadow: 0px 0px 7px rgb(156, 156, 156); */
 }
 
 .deleteButton {
