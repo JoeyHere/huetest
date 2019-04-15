@@ -517,7 +517,7 @@ export default class Game extends React.Component {
               <>
                 <Button
                   size={"large"}
-                  style={{ position: "absolute", top: "43%" }}
+                  style={{ position: "absolute", top: "48%" }}
                   primary
                   // positive={true}
                   className="winButton"
@@ -534,7 +534,7 @@ export default class Game extends React.Component {
                   color={"green"}
                   style={{
                     position: "absolute",
-                    top: "60%",
+                    top: "65%",
                     left: "47%"
                   }}
                   onClick={() => {
@@ -551,7 +551,7 @@ export default class Game extends React.Component {
                   icon={"thumbs down"}
                   style={{
                     position: "absolute",
-                    top: "60%",
+                    top: "65%",
                     left: "53%"
                   }}
                   onClick={() => {
