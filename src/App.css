@@ -343,3 +343,7 @@ button {
 .hueLogo {
   filter: opacity(90%);
 }
+
+.statusImage {
+  filter: opacity(70%);
+}

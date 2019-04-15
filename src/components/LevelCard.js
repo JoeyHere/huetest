@@ -49,12 +49,20 @@ class LevelCard extends React.Component {
         <span style={{ float: "right" }}>
           {this.props.completed && !this.props.userPublished ? (
             <>
-              <Image width={"20px"} src="https://i.ibb.co/THvVFLG/green.png" />
+              <Image
+                className={"statusImage"}
+                width={"20px"}
+                src="https://i.ibb.co/THvVFLG/green.png"
+              />
             </>
           ) : null}
           {!this.props.completed && !this.props.userPublished ? (
             <>
-              <Image width={"20px"} src="https://i.ibb.co/0scrPMV/red.png" />
+              <Image
+                className={"statusImage"}
+                width={"20px"}
+                src="https://i.ibb.co/0scrPMV/red.png"
+              />
             </>
           ) : null}
           {this.props.userPublished
