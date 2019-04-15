@@ -22,7 +22,7 @@ class App extends React.Component {
     filterLevel: "All",
     orderLevel: "Popular",
     toggleComplete: false,
-    mute: true
+    mute: false
   }
 
   componentDidMount() {
