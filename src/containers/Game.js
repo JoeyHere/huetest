@@ -24,7 +24,8 @@ export default class Game extends React.Component {
     playSound: false,
     soundURL:
       "https://www.pacdv.com/sounds/interface_sound_effects/sound61.wav",
-    rated: false
+    rated: false,
+    mute: true
   }
 
   componentDidMount() {
@@ -39,7 +40,8 @@ export default class Game extends React.Component {
           levelName: level.name,
           creator_name: level.user.user_name,
           preview: !level.published,
-          creator_id: level.user.id
+          creator_id: level.user.id,
+          mute: this.props.mute
         })
         API.playedLevel(this.props.id)
       } else {
@@ -424,6 +426,7 @@ export default class Game extends React.Component {
       this.props.history.push(`/levels`)
       this.props.setUser()
     }
+    this.props.muteGame(this.state.mute)
   }
 
   resetLevel = () => {
@@ -472,6 +475,10 @@ export default class Game extends React.Component {
         this.props.history.push(`/mylevels`)
       }
     })
+  }
+
+  muteGame = () => {
+    this.setState({ mute: !this.state.mute })
   }
 
   render() {
@@ -570,15 +577,16 @@ export default class Game extends React.Component {
         ) : (
           <div className={"board"}>
             <div>
-              <div>{this.props.mute ? null : soundEffect}</div>
+              <div>{soundEffect}</div>
               {this.state.preview ? (
                 <Button
                   size={"small"}
                   icon={"close"}
                   className={"exitButton"}
-                  onClick={() =>
+                  onClick={() => {
                     this.props.history.push(`/create/${this.props.id}/edit`)
-                  }
+                    this.props.muteGame(this.state.mute)
+                  }}
                 />
               ) : (
                 <Button
@@ -588,6 +596,7 @@ export default class Game extends React.Component {
                   onClick={() => {
                     this.props.setUser()
                     this.props.history.goBack()
+                    this.props.muteGame(this.state.mute)
                   }}
                 />
               )}
@@ -616,6 +625,10 @@ export default class Game extends React.Component {
                 <Icon name="undo" />
                 Reset
               </Button>
+              <Button
+                icon={!this.state.mute ? "volume up" : "volume off"}
+                onClick={this.muteGame}
+              />
               {this.state.creator_id &&
               this.props.currentUser &&
               this.state.creator_id === this.props.currentUser.id ? (

@@ -65,6 +65,10 @@ class App extends React.Component {
     })
   }
 
+  muteGame = boolean => {
+    this.setState({ mute: boolean })
+  }
+
   PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
       {...rest}
@@ -143,6 +147,7 @@ class App extends React.Component {
                     setUser={this.setUser}
                     mute={this.state.mute}
                     currentUser={this.state.currentUser}
+                    muteGame={this.muteGame}
                   />
                 )
               }}
