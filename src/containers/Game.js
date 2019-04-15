@@ -23,10 +23,9 @@ export default class Game extends React.Component {
     keydown: false,
     preview: false,
     playSound: false,
-    soundURL:
-      "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555322432/bottle_pop_1_fmum8p.wav",
+    soundID: undefined,
     rated: false,
-    mute: true
+    mute: false
   }
 
   componentDidMount() {
@@ -161,25 +160,16 @@ export default class Game extends React.Component {
 
       let boardString = JSON.stringify(currentBoard)
       if (boardString.includes(JSON.stringify(BLOCKS.flash))) {
-        this.playSoundEffect(
-          sfxThrees[Math.floor(Math.random() * sfxThrees.length)]
-        )
+        this.playSoundEffect(1)
+        // sfxThrees[Math.floor(Math.random() * sfxThrees.length)]
       } else if (boardString.includes(JSON.stringify(BLOCKS.explode))) {
-        this.playSoundEffect(
-          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555343875/expl_fmgba9.wav"
-        )
+        this.playSoundEffect(3)
       } else if (boardString.includes(JSON.stringify(BLOCKS.combineGreen))) {
-        this.playSoundEffect(
-          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555361189/popp_ly9nob.wav"
-        )
+        this.playSoundEffect(2)
       } else if (boardString.includes(JSON.stringify(BLOCKS.combinePurple))) {
-        this.playSoundEffect(
-          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555361189/popp_ly9nob.wav"
-        )
+        this.playSoundEffect(2)
       } else if (boardString.includes(JSON.stringify(BLOCKS.combineOrange))) {
-        this.playSoundEffect(
-          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555361189/popp_ly9nob.wav"
-        )
+        this.playSoundEffect(2)
       }
 
       this.setState({
@@ -444,10 +434,10 @@ export default class Game extends React.Component {
     })
   }
 
-  playSoundEffect = url => {
+  playSoundEffect = id => {
     this.setState({
       playSound: true,
-      soundURL: url
+      soundID: id
     })
   }
 
@@ -482,12 +472,40 @@ export default class Game extends React.Component {
   }
 
   render() {
-    const soundEffect = (
+    const soundEffectThrees = (
       <Sound
         volume={8}
-        url={this.state.soundURL}
+        url="https://res.cloudinary.com/dhtz4uflf/video/upload/v1555320898/sound118-2_l6nkr4.wav"
         playStatus={
-          this.state.playSound && !this.state.mute
+          this.state.playSound && !this.state.mute && this.state.soundID === 1
+            ? Sound.status.PLAYING
+            : Sound.status.STOPPED
+        }
+        autoLoad={true}
+        onFinishedPlaying={this.handleSoundFinishedPlaying}
+      />
+    )
+
+    const soundEffectCombine = (
+      <Sound
+        volume={8}
+        url="https://res.cloudinary.com/dhtz4uflf/video/upload/v1555361189/popp_ly9nob.wav"
+        playStatus={
+          this.state.playSound && !this.state.mute && this.state.soundID === 2
+            ? Sound.status.PLAYING
+            : Sound.status.STOPPED
+        }
+        autoLoad={true}
+        onFinishedPlaying={this.handleSoundFinishedPlaying}
+      />
+    )
+
+    const soundEffectExplode = (
+      <Sound
+        volume={8}
+        url="https://res.cloudinary.com/dhtz4uflf/video/upload/v1555343875/expl_fmgba9.wav"
+        playStatus={
+          this.state.playSound && !this.state.mute && this.state.soundID === 3
             ? Sound.status.PLAYING
             : Sound.status.STOPPED
         }
@@ -577,7 +595,9 @@ export default class Game extends React.Component {
         ) : (
           <div className={"board"}>
             <div>
-              <div>{this.state.mute ? null : soundEffect}</div>
+              <div>{this.state.mute ? null : soundEffectThrees}</div>
+              <div>{this.state.mute ? null : soundEffectExplode}</div>
+              <div>{this.state.mute ? null : soundEffectCombine}</div>
               {this.state.preview ? (
                 <Button
                   size={"small"}
