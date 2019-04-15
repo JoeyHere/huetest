@@ -65,9 +65,13 @@ class LevelCard extends React.Component {
               />
             </>
           ) : null}
-          {this.props.userPublished
-            ? new Date(this.props.created_at).toLocaleDateString("en-GB")
-            : null}
+          {this.props.userPublished ? (
+            <>
+              {" "}
+              {new Date(this.props.created_at).toLocaleDateString("en-GB")}{" "}
+              <Icon name="arrow alternate circle up outline" />
+            </>
+          ) : null}
         </span>
       </>
     ) : (
@@ -105,10 +109,14 @@ class LevelCard extends React.Component {
         </Card.Content>
         <Card.Content extra>{userMeta}</Card.Content>
         <Card.Content extra style={extraStyle}>
-          <span style={{ float: "left" }}>🎲 {this.props.plays}</span>
-          <span style={{ textAlign: "center" }}>🏆 {this.props.completes}</span>
+          <span style={{ float: "left" }}>
+            <Icon name="play circle outline" /> {this.props.plays}
+          </span>
+          <span style={{ textAlign: "center" }}>
+            <Icon name="trophy" /> {this.props.completes}
+          </span>
           <span style={{ float: "right" }}>
-            👍{" "}
+            <Icon name="thumbs up outline" />
             {this.props.upvotes
               ? (this.props.upvotes /
                   (this.props.downvotes + this.props.upvotes)) *
