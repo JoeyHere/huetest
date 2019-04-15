@@ -1,6 +1,6 @@
 import React from "react"
 import GameBoard from "./GameBoard.js"
-import { BLOCKS } from "../concerns/Config.js"
+import { BLOCKS, sfxThrees } from "../concerns/Config.js"
 import API from "../concerns/API.js"
 import "../confetti.scss"
 import Confetti from "../components/Confetti.js"
@@ -23,7 +23,7 @@ export default class Game extends React.Component {
     preview: false,
     playSound: false,
     soundURL:
-      "https://www.pacdv.com/sounds/interface_sound_effects/sound61.wav",
+      "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555322432/bottle_pop_1_fmum8p.wav",
     rated: false,
     mute: true
   }
@@ -161,23 +161,23 @@ export default class Game extends React.Component {
       let boardString = JSON.stringify(currentBoard)
       if (boardString.includes(JSON.stringify(BLOCKS.flash))) {
         this.playSoundEffect(
-          "https://www.pacdv.com/sounds/interface_sound_effects/sound118.wav"
+          sfxThrees[Math.floor(Math.random() * sfxThrees.length)]
         )
       } else if (boardString.includes(JSON.stringify(BLOCKS.explode))) {
         this.playSoundEffect(
-          "https://www.pacdv.com/sounds/interface_sound_effects/sound54.wav"
+          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555321791/sound54_cmk58v.wav"
         )
       } else if (boardString.includes(JSON.stringify(BLOCKS.combineGreen))) {
         this.playSoundEffect(
-          "https://www.pacdv.com/sounds/interface_sound_effects/sound61.wav"
+          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555322822/bottle_pop_2_qw3lgt.wav"
         )
       } else if (boardString.includes(JSON.stringify(BLOCKS.combinePurple))) {
         this.playSoundEffect(
-          "https://www.pacdv.com/sounds/interface_sound_effects/sound61.wav"
+          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555322822/bottle_pop_2_qw3lgt.wav"
         )
       } else if (boardString.includes(JSON.stringify(BLOCKS.combineOrange))) {
         this.playSoundEffect(
-          "https://www.pacdv.com/sounds/interface_sound_effects/sound61.wav"
+          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555322822/bottle_pop_2_qw3lgt.wav"
         )
       }
 
@@ -484,7 +484,7 @@ export default class Game extends React.Component {
   render() {
     const soundEffect = (
       <Sound
-        volume={5}
+        volume={8}
         url={this.state.soundURL}
         playStatus={
           this.state.playSound && !this.state.mute
@@ -577,7 +577,7 @@ export default class Game extends React.Component {
         ) : (
           <div className={"board"}>
             <div>
-              <div>{soundEffect}</div>
+              <div>{this.state.mute ? null : soundEffect}</div>
               {this.state.preview ? (
                 <Button
                   size={"small"}
