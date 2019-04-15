@@ -12,13 +12,13 @@ const difficultyOptions = [
     key: "Hard",
     text: "Hard",
     value: "Hard",
-    image: { src: "https://i.ibb.co/0scrPMV/red.png" }
+    image: { src: "https://i.ibb.co/jy9RVy8/bombf3.png" }
   },
   {
     key: "Easy",
     text: "Easy",
     value: "Easy",
-    image: { src: "https://i.ibb.co/THvVFLG/green.png" }
+    image: { src: "https://i.ibb.co/ZLVxh9P/yellow.png" }
   },
   {
     key: "HUEman",
@@ -39,7 +39,7 @@ const sortOptions = [
     key: "New",
     text: "New",
     value: "New",
-    image: { src: "https://i.ibb.co/ZLVxh9P/yellow.png" }
+    image: { src: "https://i.ibb.co/whWk5bg/purple.png" }
   },
   {
     key: "Popular",

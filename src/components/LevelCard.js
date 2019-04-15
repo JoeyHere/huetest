@@ -48,11 +48,14 @@ class LevelCard extends React.Component {
         </span>
         <span style={{ float: "right" }}>
           {this.props.completed && !this.props.userPublished ? (
-            <Image
-              verticalAlign
-              width={"22px"}
-              src="https://i.ibb.co/HF4Jm1K/hmframe3.png"
-            />
+            <>
+              <Image width={"20px"} src="https://i.ibb.co/THvVFLG/green.png" />
+            </>
+          ) : null}
+          {!this.props.completed && !this.props.userPublished ? (
+            <>
+              <Image width={"20px"} src="https://i.ibb.co/0scrPMV/red.png" />
+            </>
           ) : null}
           {this.props.userPublished
             ? new Date(this.props.created_at).toLocaleDateString("en-GB")
@@ -100,8 +103,8 @@ class LevelCard extends React.Component {
             ? (this.props.upvotes /
                 (this.props.downvotes + this.props.upvotes)) *
               100
-            : 0}
-          {this.props.userPublished ? " | 📖" : null}
+            : 0}{" "}
+          %{this.props.userPublished ? " | 📖" : null}
         </Card.Content>
       </Card>
     )
