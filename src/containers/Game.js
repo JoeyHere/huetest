@@ -468,7 +468,7 @@ export default class Game extends React.Component {
   }
 
   muteGame = () => {
-    this.setState({ mute: !this.state.mute })
+    this.setState({ mute: !this.state.mute, playSound: false })
   }
 
   render() {
