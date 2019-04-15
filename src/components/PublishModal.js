@@ -16,7 +16,7 @@ class PublishModal extends Component {
           className={"winButton"}
           style={{
             position: "absolute",
-            top: "57%"
+            top: "65%"
           }}
           positive={true}
           onClick={this.show("inverted")}

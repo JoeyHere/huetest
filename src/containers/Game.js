@@ -564,7 +564,7 @@ export default class Game extends React.Component {
               <>
                 <Button
                   primary
-                  style={{ position: "absolute", top: "43%" }}
+                  style={{ position: "absolute", top: "48%" }}
                   className="winButton"
                   onClick={this.nextLevel}
                 >
