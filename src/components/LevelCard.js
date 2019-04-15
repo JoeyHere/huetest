@@ -120,7 +120,7 @@ class LevelCard extends React.Component {
         </Card.Content>
         <Card.Content extra style={extraStyle}>
           <span style={{ float: "left" }}>
-            <Icon name="play circle outline" />
+            <Icon name="play circle" />
             {this.props.plays}
             {" / "} <Icon name="trophy" />
             {this.props.completes}

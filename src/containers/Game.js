@@ -170,15 +170,15 @@ export default class Game extends React.Component {
         )
       } else if (boardString.includes(JSON.stringify(BLOCKS.combineGreen))) {
         this.playSoundEffect(
-          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555322822/bottle_pop_2_qw3lgt.wav"
+          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555361189/popp_ly9nob.wav"
         )
       } else if (boardString.includes(JSON.stringify(BLOCKS.combinePurple))) {
         this.playSoundEffect(
-          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555322822/bottle_pop_2_qw3lgt.wav"
+          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555361189/popp_ly9nob.wav"
         )
       } else if (boardString.includes(JSON.stringify(BLOCKS.combineOrange))) {
         this.playSoundEffect(
-          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555322822/bottle_pop_2_qw3lgt.wav"
+          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555361189/popp_ly9nob.wav"
         )
       }
 
@@ -199,7 +199,6 @@ export default class Game extends React.Component {
     if (!this.checkBlockExists(blockB.x, blockB.y)) {
       return false
     }
-    // added to fix bug, need to check it is 100%
     if (this.getBlock(blockA.x, blockA.y) === BLOCKS.wall) {
       return false
     }
