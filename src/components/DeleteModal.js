@@ -13,12 +13,11 @@ class DeleteModal extends Component {
     return (
       <div>
         <Button
+          icon="trash alternate outline"
           className={"deleteButton"}
           negative={true}
           onClick={this.show("inverted")}
-        >
-          DELETE
-        </Button>
+        />
 
         <Modal dimmer={dimmer} open={open} onClose={this.close} size="tiny">
           <Modal.Header>DELETE LEVEL - ARE YOU SURE?</Modal.Header>

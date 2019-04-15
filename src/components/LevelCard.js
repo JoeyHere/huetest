@@ -104,7 +104,7 @@ class LevelCard extends React.Component {
         <Card.Content style={{ padding: "16px" }}>
           <Card.Header style={{ float: "left", padding: "5px" }}>
             {preview}
-            {this.props.name}
+            <span style={{ margin: "auto" }}>{this.props.name}</span>
           </Card.Header>
         </Card.Content>
         <Card.Content
