@@ -8,6 +8,7 @@ import { Button, Icon, Message } from "semantic-ui-react"
 import Sound from "react-sound"
 import PublishModal from "../components/PublishModal.js"
 import DeleteModal from "../components/DeleteModal.js"
+import RulesModal from "../components/RulesModal.js"
 
 export default class Game extends React.Component {
   state = {
@@ -165,7 +166,7 @@ export default class Game extends React.Component {
         )
       } else if (boardString.includes(JSON.stringify(BLOCKS.explode))) {
         this.playSoundEffect(
-          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555337307/explode_w6fvbn.wav"
+          "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555343875/expl_fmgba9.wav"
         )
       } else if (boardString.includes(JSON.stringify(BLOCKS.combineGreen))) {
         this.playSoundEffect(
@@ -617,14 +618,19 @@ export default class Game extends React.Component {
               handleBlockClick={this.handleBlockClick}
             />
             <div className={"resetButton"}>
-              <Button onClick={this.undoMove}>
-                <Icon name="backward" />
-                Undo
+              <Button animated="vertical" onClick={this.undoMove}>
+                <Button.Content visible>
+                  <Icon name="backward" />
+                </Button.Content>
+                <Button.Content hidden>Undo</Button.Content>
               </Button>
-              <Button onClick={this.resetLevel}>
-                <Icon name="undo" />
-                Reset
+              <Button animated="vertical" onClick={this.resetLevel}>
+                <Button.Content visible>
+                  <Icon name="undo" />
+                </Button.Content>
+                <Button.Content hidden>Reset</Button.Content>
               </Button>
+              <RulesModal />
               <Button
                 icon={!this.state.mute ? "volume up" : "volume off"}
                 onClick={this.muteGame}

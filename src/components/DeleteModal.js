@@ -20,11 +20,11 @@ class DeleteModal extends Component {
         />
 
         <Modal dimmer={dimmer} open={open} onClose={this.close} size="tiny">
-          <Modal.Header>DELETE LEVEL - ARE YOU SURE?</Modal.Header>
+          <Modal.Header>Delete Level - Are You Sure?</Modal.Header>
           <Modal.Content>
             <Modal.Description>
               <p style={{ textAlign: "center" }}>
-                DELETING LEVELS CAN NOT BE UNDONE
+                Deleting Levels can't be undone!
               </p>
             </Modal.Description>
           </Modal.Content>

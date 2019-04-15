@@ -152,7 +152,7 @@ export default class LevelEditor extends React.Component {
           <Button
             primary
             onClick={this.handleSave}
-            style={{ width: 160 + "px" }}
+            style={{ width: 150 + "px" }}
           >
             SAVE / PREVIEW
           </Button>

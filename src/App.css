@@ -24,10 +24,14 @@
 }
 
 .resetButton {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
 }
+
 .exitButton {
   position: absolute;
   left: 70%;

@@ -120,18 +120,17 @@ class LevelCard extends React.Component {
         </Card.Content>
         <Card.Content extra style={extraStyle}>
           <span style={{ float: "left" }}>
-            <Icon name="play circle outline" /> {this.props.plays}
-          </span>
-          <span style={{ textAlign: "center" }}>
-            <Icon name="trophy" /> {this.props.completes}
+            <Icon name="play circle outline" />
+            {this.props.plays}
+            {" / "} <Icon name="trophy" />
+            {this.props.completes}
           </span>
           <span style={{ float: "right" }}>
             <Icon name="thumbs up outline" />
-            {this.props.upvotes
-              ? (this.props.upvotes /
-                  (this.props.downvotes + this.props.upvotes)) *
-                100
-              : 0}{" "}
+            {this.props.upvotes ? this.props.upvotes : 0}
+            {" / "}
+            <Icon name="thumbs down outline" />
+            {this.props.downvotes ? this.props.downvotes : 0}
           </span>
         </Card.Content>
       </Card>

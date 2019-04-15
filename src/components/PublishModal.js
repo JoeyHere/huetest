@@ -25,12 +25,11 @@ class PublishModal extends Component {
         </Button>
 
         <Modal dimmer={dimmer} open={open} onClose={this.close} size="tiny">
-          <Modal.Header>PUBLISH LEVEL</Modal.Header>
+          <Modal.Header>Publish Level - Are You Sure?</Modal.Header>
           <Modal.Content>
             <Modal.Description>
-              <Header>ARE YOU SURE?</Header>
               <p style={{ textAlign: "center" }}>
-                Published Levels Can No Longer Be Edited!
+                Published Levels can no longer be edited!
               </p>
             </Modal.Description>
           </Modal.Content>
