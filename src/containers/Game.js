@@ -125,6 +125,7 @@ export default class Game extends React.Component {
     this.setState({
       levelWon: true
     })
+    this.playSoundEffect(4)
   }
 
   movePlayer = (dx, dy) => {
@@ -513,11 +514,26 @@ export default class Game extends React.Component {
         onFinishedPlaying={this.handleSoundFinishedPlaying}
       />
     )
+
+    const soundEffectWin = (
+      <Sound
+        volume={8}
+        url="https://res.cloudinary.com/dhtz4uflf/video/upload/v1555365788/162476__kastenfrosch__gotitem_aaoqxv.mp3"
+        playStatus={
+          this.state.playSound && !this.state.mute && this.state.soundID === 4
+            ? Sound.status.PLAYING
+            : Sound.status.STOPPED
+        }
+        autoLoad={true}
+        onFinishedPlaying={this.handleSoundFinishedPlaying}
+      />
+    )
     const width = this.state.currentBoard.length * 35
     return (
       <div>
         {this.state.levelWon ? (
           <div style={{ position: "relative" }}>
+            <div>{this.state.mute ? null : soundEffectWin}</div>
             <Confetti nextLevel={this.nextLevel} />
             <div className={"board blur"}>
               <h1>
@@ -525,6 +541,11 @@ export default class Game extends React.Component {
                   ? this.state.levelName
                   : `${this.state.levelName} (Preview)`}
               </h1>
+              <h4>
+                {!this.state.preview
+                  ? `by ${this.state.creator_name}`
+                  : "COMPLETE LEVEL TO PUBLISH"}
+              </h4>
               <GameBoard
                 board={this.state.currentBoard}
                 width={width}

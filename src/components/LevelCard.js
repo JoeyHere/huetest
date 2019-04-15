@@ -27,8 +27,7 @@ class LevelCard extends React.Component {
         className={"levelPreview"}
         style={{
           height: `${gameBoard.length * 5}px`,
-          width: `${gameBoard[0].length * 5}px`,
-          borderColor: "rgb(206, 206, 206)"
+          width: `${gameBoard[0].length * 5}px`
         }}
       >
         <div style={css} />
@@ -78,26 +77,12 @@ class LevelCard extends React.Component {
       "by HUEman"
     )
 
-    let extraStyle =
-      this.props.completed || this.props.userPublished
-        ? { textAlign: "center" }
-        : { textAlign: "center" }
-
-    // let extraStyle =
-    //   this.props.completed || this.props.userPublished
-    //     ? { backgroundColor: "rgb(229, 255, 224)", textAlign: "center" }
-    //     : { backgroundColor: "rgb(252, 207, 207)", textAlign: "center" }
-
     return (
       <Card
-        color={
-          this.props.completed || this.props.userPublished ? "green" : "red"
-        }
         onClick={() => this.props.handleLevelClick(this.props.id)}
         style={{
           width: "270px",
           height: "190px",
-          backgroundColor: "rgb(255, 255, 255)",
           margin: "25px",
           boxShadow: "0px 0px 10px grey"
         }}
@@ -118,7 +103,7 @@ class LevelCard extends React.Component {
         >
           {userMeta}
         </Card.Content>
-        <Card.Content extra style={extraStyle}>
+        <Card.Content extra>
           <span style={{ float: "left" }}>
             <Icon name="play circle" />
             {this.props.plays}
