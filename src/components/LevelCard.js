@@ -90,7 +90,7 @@ class LevelCard extends React.Component {
         onClick={() => this.props.handleLevelClick(this.props.id)}
         style={{
           width: "270px",
-          height: "180px",
+          height: "182px",
           margin: "25px",
           boxShadow: "0px 0px 10px grey"
         }}
