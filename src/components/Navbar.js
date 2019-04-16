@@ -32,7 +32,7 @@ export default class Navbar extends Component {
           />
           <Image
             className={"hueLogo"}
-            rounded
+            // rounded
             style={{ margin: "10px", width: "153px", height: "27px" }}
             src="https://i.ibb.co/34DXmpm/Hueman-logo.png"
           />

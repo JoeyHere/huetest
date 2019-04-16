@@ -480,7 +480,7 @@ export default class Game extends React.Component {
   render() {
     const soundEffectThrees = (
       <Sound
-        volume={8}
+        volume={10}
         url="https://res.cloudinary.com/dhtz4uflf/video/upload/v1555320898/sound118-2_l6nkr4.wav"
         playStatus={
           this.state.playSound && !this.state.mute && this.state.soundID === 1
@@ -494,7 +494,7 @@ export default class Game extends React.Component {
 
     const soundEffectCombine = (
       <Sound
-        volume={8}
+        volume={10}
         url="https://res.cloudinary.com/dhtz4uflf/video/upload/v1555361189/popp_ly9nob.wav"
         playStatus={
           this.state.playSound && !this.state.mute && this.state.soundID === 2
@@ -508,7 +508,7 @@ export default class Game extends React.Component {
 
     const soundEffectExplode = (
       <Sound
-        volume={8}
+        volume={10}
         url="https://res.cloudinary.com/dhtz4uflf/video/upload/v1555343875/expl_fmgba9.wav"
         playStatus={
           this.state.playSound && !this.state.mute && this.state.soundID === 3
@@ -522,7 +522,7 @@ export default class Game extends React.Component {
 
     const soundEffectWin = (
       <Sound
-        volume={8}
+        volume={10}
         url="https://res.cloudinary.com/dhtz4uflf/video/upload/v1555365788/162476__kastenfrosch__gotitem_aaoqxv.mp3"
         playStatus={
           this.state.playSound && !this.state.mute && this.state.soundID === 4
