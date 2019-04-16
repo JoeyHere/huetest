@@ -111,14 +111,15 @@ export default class LevelEditor extends React.Component {
           onClick={() => this.props.history.push(`/mylevels`)}
         />
         <h3>LEVEL EDITOR</h3>
-        <Form style={{ width: 400 + "px", margin: "auto" }}>
+        <Form style={{ width: 350 + "px", margin: "auto" }}>
+          <label style={{ textAlign: "center" }}>Name Your Level</label>
           <input
             maxLength="30"
             value={this.state.level_name}
             onChange={event => {
               this.setState({ level_name: event.target.value })
             }}
-            placeholder="Name your level"
+            // placeholder="Name your level"
           />
         </Form>
         <GameBoard
@@ -152,7 +153,7 @@ export default class LevelEditor extends React.Component {
           <Button
             primary
             onClick={this.handleSave}
-            style={{ width: 150 + "px" }}
+            style={{ width: 170 + "px" }}
           >
             SAVE / PREVIEW
           </Button>

@@ -321,6 +321,7 @@ button {
 }
 
 .signUpButton {
+  width: 150px;
   align-self: center;
   text-align: center;
   margin: auto;
@@ -328,7 +329,7 @@ button {
 
 .levelPreview {
   float: left;
-  margin-right: 15px;
+  margin-right: 18px;
   margin-top: 3px;
   /* margin-bottom: 3px; */
   position: relative;
@@ -352,7 +353,7 @@ button {
 
 #submitButton {
   width: 150px;
-  margin: 30px;
+  margin: 15px;
 }
 
 .loginButtons {

@@ -13,7 +13,7 @@ export default class Navbar extends Component {
           // style={{ backgroundColor: "rgb(240, 240, 240)" }}
           // stackable={true}
           id="navBar"
-          widths={8}
+          widths={7}
           attached="top"
           tabular
           borderless

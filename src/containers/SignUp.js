@@ -33,44 +33,52 @@ export default class SignUp extends Component {
   render() {
     return (
       <div className="logInForm">
-        <GameBoard board={[[1, 2, 3, 4]]} width={4 * 35} />
+        <GameBoard
+          board={[
+            [8, 10, 10, 8],
+            [10, 1, 2, 10],
+            [10, 4, 3, 10],
+            [8, 10, 10, 8]
+          ]}
+          width={4 * 35}
+        />
         <h2>SIGN UP</h2>
         <Form
           onSubmit={this.signUp}
-          style={{ width: 400 + "px", padding: 20 + "px", margin: "auto" }}
+          style={{ width: 300 + "px", padding: 20 + "px", margin: "auto" }}
         >
           <Form.Field>
-            {/* <label>User Name</label> */}
+            <label style={{ textAlign: "center" }}>User Name</label>
             <input
               maxLength="20"
               onChange={event =>
                 this.setState({ user_name: event.target.value })
               }
               value={this.state.user_name}
-              placeholder="User Name"
+              // placeholder="User Name"
               name="user_name"
             />
           </Form.Field>
           <Form.Field>
-            {/* <label>Password</label> */}
+            <label style={{ textAlign: "center" }}>Password</label>
             <input
               maxLength="30"
               onChange={event =>
                 this.setState({ password: event.target.value })
               }
               value={this.state.password}
-              placeholder="Password"
+              // placeholder="Password"
               name="password"
               type="password"
             />
           </Form.Field>
           <Form.Field>
-            {/* <label>Password</label> */}
+            <label style={{ textAlign: "center" }}>Confirm Password</label>
             <input
               maxLength="30"
               onChange={event => this.setState({ confirm: event.target.value })}
               value={this.state.confirm}
-              placeholder="Confirm Password"
+              // placeholder="Confirm Password"
               name="confirm"
               type="password"
             />
