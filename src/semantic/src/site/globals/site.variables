@@ -3,7 +3,7 @@
 *******************************/
 
 @headerFont   : 'Montserrat';
-@emSize   : 14px;
+@fontSize   : 14px;
 @headerFontWeight : @bold;
 
 @red            : #EB5555;
