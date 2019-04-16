@@ -2,10 +2,9 @@
      User Global Variables
 *******************************/
 
-@headerFont   : 'Comfortaa';
+@headerFont   : 'Montserrat';
 @emSize   : 14px;
-@fontSize : 14px;
-@headerFontWeight : @normal;
+@headerFontWeight : @bold;
 
 @red            : #EB5555;
 @orange         : #ECAD55;
