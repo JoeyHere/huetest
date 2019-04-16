@@ -151,7 +151,7 @@ export default class LevelEditor extends React.Component {
         </Form>
         <h3>
           <Button
-            positive
+            primary
             onClick={this.handleSave}
             style={{ width: 130 + "px" }}
           >
