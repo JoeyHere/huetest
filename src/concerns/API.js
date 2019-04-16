@@ -14,8 +14,10 @@ const PUBLISH_URL = BASE_URL + "/publish"
 const handleError = errorObj => {
   let error = containsError(errorObj)
     ? errorObj
-    : { error: "Something Went Wrong" }
-  alert(`${error.error}`)
+    : { message: "Something Went Wrong" }
+  if (error.error) {
+    alert(`${error.error}`)
+  }
 }
 
 const containsError = data => "error" in data
@@ -29,11 +31,23 @@ const handleApiResponse = data => {
 
 const getLevelFromId = id => {
   const URL = LEVELS_URL + `/${id}`
-  return getterFunction(URL)
+  const options = {
+    method: "GET"
+  }
+  return fetch(URL, options)
+    .then(resp => resp.json())
+    .then(handleApiResponse)
+    .catch(handleError)
 }
 
 const getLevels = () => {
-  return getterFunction(LEVELS_URL)
+  const options = {
+    method: "GET"
+  }
+  return fetch(LEVELS_URL, options)
+    .then(resp => resp.json())
+    .then(handleApiResponse)
+    .catch(handleError)
 }
 
 const getMyLevels = () => {
