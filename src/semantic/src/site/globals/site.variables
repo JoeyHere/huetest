@@ -1,0 +1,17 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@fontName : 'Comfortaa';
+@emSize: 14px;
+@fontSize : 14px;
+
+@red            : rgb(223, 85, 85);
+@orange         : rgb(243, 173, 42);
+@yellow         : rgb(224, 224, 47);
+@green          : rgb(98, 168, 98);
+@blue           : rgb(81, 81, 243);
+@purple         : rgb(170, 101, 170);
+@brown          : rgb(165, 129, 62);
+@grey           : #A0A0A0;
+@black          : #000000;
