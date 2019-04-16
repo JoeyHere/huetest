@@ -12,7 +12,7 @@ class LevelCardList extends React.Component {
           style={{
             marginLeft: "auto",
             marginRight: "auto",
-            marginTop: "50px",
+            marginTop: "30px",
             paddingRight: "15%",
             paddingLeft: "15%"
           }}

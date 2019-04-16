@@ -54,18 +54,18 @@
   margin-top: 50px;
 }
 
-.floor {
+.floorBlock {
   background-color: rgb(206, 206, 206);
   /* transition: background-color 200ms ease-out;
   animation: subtleBurst 0.2s;
   animation-iteration-count: 1; */
 }
 
-.wall {
+.wallBlock {
   background-color: rgb(180, 175, 175);
 }
 
-.bomb {
+.bombBlock {
   background-image: url("./sprites/bombf1.png");
   background-position: center center;
   background-size: 100% 100%;
@@ -74,27 +74,27 @@
   /* background-color: rgb(109, 109, 122); */
 }
 
-.blue {
+.blueBlock {
   background-image: url("./sprites/blue.png");
   background-position: center center;
   background-size: 100% 100%;
   /* background-color: rgb(81, 81, 243); */
 }
 
-.yellow {
+.yellowBlock {
   background-image: url("./sprites/yellow.png");
   background-position: center center;
   background-size: 100% 100%;
   /* background-color: rgb(236, 236, 53); */
 }
-.red {
+.redBlock {
   background-image: url("./sprites/red.png");
   background-position: center center;
   background-size: 100% 100%;
   /* background-color: rgb(223, 85, 85); */
 }
 
-.green {
+.greenBlock {
   background-image: url("./sprites/green.png");
   background-position: center center;
   background-size: 100% 100%;
@@ -103,7 +103,7 @@
   border-color: rgb(98, 168, 98); */
 }
 
-.purple {
+.purpleBlock {
   background-image: url("./sprites/purple.png");
   background-position: center center;
   background-size: 100% 100%;
@@ -112,7 +112,7 @@
   border-color: rgb(161, 89, 161); */
 }
 
-.orange {
+.orangeBlock {
   background-image: url("./sprites/orange.png");
   background-position: center center;
   background-size: 100% 100%;
@@ -121,7 +121,7 @@
   border-color: rgb(218, 162, 58); */
 }
 
-.combineGreen {
+.combineGreenBlock {
   background-image: url("./sprites/green.png");
   background-position: center center;
   background-size: 100% 100%;
@@ -132,7 +132,7 @@
   animation-iteration-count: 1;
 }
 
-.combinePurple {
+.combinePurpleBlock {
   background-image: url("./sprites/purple.png");
   background-position: center center;
   background-size: 100% 100%;
@@ -143,7 +143,7 @@
   animation-iteration-count: 1;
 }
 
-.combineOrange {
+.combineOrangeBlock {
   background-image: url("./sprites/orange.png");
   background-position: center center;
   background-size: 100% 100%;
@@ -154,7 +154,7 @@
   animation-iteration-count: 1;
 }
 
-.player {
+.playerBlock {
   background-image: url("./sprites/hmframe1.png");
   background-position: center center;
   background-size: 100% 100%;
@@ -165,7 +165,7 @@
   border-color: rgb(235, 221, 221); */
 }
 
-.brown {
+.brownBlock {
   background-image: url("./sprites/brown.png");
   background-position: center center;
   background-size: 100% 100%;
@@ -174,13 +174,13 @@
   border-color: rgb(124, 97, 71); */
 }
 
-.flash {
+.flashBlock {
   background-color: rgb(206, 206, 206);
   animation: subtleBurst 0.3s;
   animation-iteration-count: 1;
 }
 
-.explode {
+.explodeBlock {
   background-color: rgb(206, 206, 206);
   animation: explode 0.15s;
   animation-iteration-count: 2;
@@ -311,12 +311,14 @@ button {
 .filterLevels {
   position: absolute;
   right: 20%;
+  margin-top: 15px;
   /* transform: translateX(50%); */
 }
 
 .toggleLevels {
   position: absolute;
   left: 20%;
+  margin-top: 15px;
   /* transform: translateX(-50%); */
 }
 

@@ -48,7 +48,7 @@ export default class SignUp extends Component {
           style={{ width: 300 + "px", padding: 20 + "px", margin: "auto" }}
         >
           <Form.Field>
-            <label style={{ textAlign: "center" }}>User Name</label>
+            <label style={{ textAlign: "center" }}>Username</label>
             <input
               maxLength="20"
               onChange={event =>

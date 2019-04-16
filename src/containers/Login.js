@@ -54,7 +54,7 @@ export default class Login extends Component {
           style={{ width: 300 + "px", padding: 20 + "px", margin: "auto" }}
         >
           <Form.Field>
-            <label style={{ textAlign: "center" }}>User Name</label>
+            <label style={{ textAlign: "center" }}>Username</label>
             <input
               onChange={event =>
                 this.setState({ user_name: event.target.value })

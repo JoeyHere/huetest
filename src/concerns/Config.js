@@ -18,22 +18,22 @@ export const BLOCKS = {
 }
 
 export const BLOCKCLASSES = {
-  [`${BLOCKS.player}`]: "player",
-  [`${BLOCKS.red}`]: "red",
-  [`${BLOCKS.blue}`]: "blue",
-  [`${BLOCKS.yellow}`]: "yellow",
-  [`${BLOCKS.green}`]: "green",
-  [`${BLOCKS.purple}`]: "purple",
-  [`${BLOCKS.orange}`]: "orange",
-  [`${BLOCKS.brown}`]: "brown",
-  [`${BLOCKS.wall}`]: "wall",
-  [`${BLOCKS.floor}`]: "floor",
-  [`${BLOCKS.flash}`]: "flash",
-  [`${BLOCKS.combineGreen}`]: "combineGreen",
-  [`${BLOCKS.combinePurple}`]: "combinePurple",
-  [`${BLOCKS.combineOrange}`]: "combineOrange",
-  [`${BLOCKS.bomb}`]: "bomb",
-  [`${BLOCKS.explode}`]: "explode"
+  [`${BLOCKS.player}`]: "playerBlock",
+  [`${BLOCKS.red}`]: "redBlock",
+  [`${BLOCKS.blue}`]: "blueBlock",
+  [`${BLOCKS.yellow}`]: "yellowBlock",
+  [`${BLOCKS.green}`]: "greenBlock",
+  [`${BLOCKS.purple}`]: "purpleBlock",
+  [`${BLOCKS.orange}`]: "orangeBlock",
+  [`${BLOCKS.brown}`]: "brownBlock",
+  [`${BLOCKS.wall}`]: "wallBlock",
+  [`${BLOCKS.floor}`]: "floorBlock",
+  [`${BLOCKS.flash}`]: "flashBlock",
+  [`${BLOCKS.combineGreen}`]: "combineGreenBlock",
+  [`${BLOCKS.combinePurple}`]: "combinePurpleBlock",
+  [`${BLOCKS.combineOrange}`]: "combineOrangeBlock",
+  [`${BLOCKS.bomb}`]: "bombBlock",
+  [`${BLOCKS.explode}`]: "explodeBlock"
 }
 
 export const BLOCKCOLORS = {
