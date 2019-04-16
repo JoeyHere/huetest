@@ -41,7 +41,7 @@ export default class Navbar extends Component {
             src="https://i.ibb.co/fHMm8Rw/brown.png"
           />
           <Menu.Item
-            color={"yellow"}
+            color={"orange"}
             name={"MY LEVELS"}
             icon={!this.props.currentUser ? "lock" : null}
             as={NavLink}
