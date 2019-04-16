@@ -330,15 +330,27 @@ button {
 }
 
 .levelPreview {
-  float: left;
-  margin-right: 18px;
-  margin-top: 3px;
+  /* float: left; */
+  /* margin-right: 18px; */
   /* margin-bottom: 3px; */
-  position: relative;
+  /* position: relative; */
   /* top: 10%; */
   /* border: solid;
   border-width: 5px; */
   /* box-shadow: 0px 0px 7px rgb(156, 156, 156); */
+}
+
+.levelPreviewContainer {
+  float: left;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+  margin-right: 14px;
+  position: relative;
+  background-color: rgb(206, 206, 206);
 }
 
 .deleteButton {

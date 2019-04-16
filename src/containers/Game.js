@@ -579,7 +579,7 @@ export default class Game extends React.Component {
                   style={{
                     position: "absolute",
                     top: "65%",
-                    left: "45%"
+                    left: "46%"
                   }}
                   onClick={() => {
                     API.upvoteLevel(this.props.id)
@@ -596,7 +596,7 @@ export default class Game extends React.Component {
                   style={{
                     position: "absolute",
                     top: "65%",
-                    left: "55%"
+                    left: "54%"
                   }}
                   onClick={() => {
                     API.downvoteLevel(this.props.id)

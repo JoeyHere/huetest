@@ -24,13 +24,21 @@ class LevelCard extends React.Component {
 
     return (
       <div
-        className={"levelPreview"}
+        className={"levelPreviewContainer"}
         style={{
-          height: `${gameBoard.length * 5}px`,
-          width: `${gameBoard[0].length * 5}px`
+          height: `70px`,
+          width: `70px`
         }}
       >
-        <div style={css} />
+        <div
+          className={"levelPreview"}
+          style={{
+            height: `${gameBoard.length * 5}px`,
+            width: `${gameBoard[0].length * 5}px`
+          }}
+        >
+          <div style={css} />
+        </div>
       </div>
     )
   }
@@ -82,13 +90,13 @@ class LevelCard extends React.Component {
         onClick={() => this.props.handleLevelClick(this.props.id)}
         style={{
           width: "270px",
-          height: "190px",
+          height: "180px",
           margin: "25px",
           boxShadow: "0px 0px 10px grey"
         }}
       >
-        <Card.Content style={{ padding: "16px" }}>
-          <Card.Header style={{ float: "left", padding: "5px" }}>
+        <Card.Content style={{ paddingBottom: "5px", marginTop: "4px" }}>
+          <Card.Header style={{ float: "left" }}>
             {preview}
             <span style={{ margin: "auto" }}>{this.props.name}</span>
           </Card.Header>

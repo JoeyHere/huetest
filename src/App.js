@@ -15,6 +15,7 @@ import Login from "./containers/Login"
 import API from "./concerns/API.js"
 import SignUp from "./containers/SignUp"
 import MyLevels from "./containers/MyLevels"
+import GameBoard from "./containers/GameBoard"
 
 class App extends React.Component {
   state = {
@@ -195,7 +196,27 @@ class App extends React.Component {
                 )
               }}
             />
-            <h1>404 Not Found</h1>
+            <>
+              <GameBoard
+                board={[
+                  [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+                  [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+                  [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+                  [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+                  [10, 9, 9, 8, 9, 9, 15, 15, 9, 9, 9, 8, 9, 10],
+                  [10, 9, 8, 8, 9, 15, 9, 9, 15, 9, 8, 8, 9, 10],
+                  [10, 8, 9, 8, 9, 15, 9, 9, 15, 8, 9, 8, 9, 10],
+                  [10, 8, 8, 8, 8, 15, 9, 9, 15, 8, 8, 8, 8, 10],
+                  [10, 9, 9, 8, 9, 9, 15, 15, 9, 9, 9, 8, 9, 10],
+                  [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+                  [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+                  [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+                  [10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10],
+                  [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+                ]}
+                width={14 * 35}
+              />
+            </>
           </Switch>
         </Router>
       </div>
