@@ -115,10 +115,3 @@ export const blankBoards = {
     [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
   ]
 }
-
-export const sfxThrees = [
-  // "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555320649/sound118_g2duxb.wav",
-  "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555320898/sound118-2_l6nkr4.wav"
-  // "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555321084/sound118-3_p4ke9g.wav"
-  // "https://res.cloudinary.com/dhtz4uflf/video/upload/v1555321088/sound118-4_fw9ice.wav"
-]

@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Button, Form } from "semantic-ui-react"
 import API from "../concerns/API.js"
 import { Link } from "react-router-dom"
+import GameBoard from "./GameBoard"
 
 export default class SignUp extends Component {
   state = {
@@ -32,6 +33,7 @@ export default class SignUp extends Component {
   render() {
     return (
       <div className="logInForm">
+        <GameBoard board={[[1, 2, 3, 4]]} width={4 * 35} />
         <h2>SIGN UP</h2>
         <Form
           onSubmit={this.signUp}
@@ -73,22 +75,14 @@ export default class SignUp extends Component {
               type="password"
             />
           </Form.Field>
-          <Button
-            positive={true}
-            fluid={true}
-            className="ui submitbutton"
-            type="submit"
-          >
-            SIGN UP
-          </Button>
-          <Button
-            className={"signUpButton"}
-            fluid={true}
-            as={Link}
-            to={"/login"}
-          >
-            GO TO LOG IN
-          </Button>
+          <div className={"loginButtons"}>
+            <Button positive={true} id="submitButton" type="submit">
+              SIGN UP
+            </Button>
+            <Button className={"signUpButton"} as={Link} to={"/login"}>
+              GO TO LOG IN
+            </Button>
+          </div>
         </Form>
       </div>
     )

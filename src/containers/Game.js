@@ -1,6 +1,6 @@
 import React from "react"
 import GameBoard from "./GameBoard.js"
-import { BLOCKS, sfxThrees } from "../concerns/Config.js"
+import { BLOCKS } from "../concerns/Config.js"
 import API from "../concerns/API.js"
 import "../confetti.scss"
 import Confetti from "../components/Confetti.js"
@@ -25,7 +25,8 @@ export default class Game extends React.Component {
     playSound: false,
     soundID: undefined,
     rated: false,
-    mute: false
+    mute: false,
+    moves: 0
   }
 
   componentDidMount() {
@@ -43,7 +44,6 @@ export default class Game extends React.Component {
           creator_id: level.user.id,
           mute: this.props.mute
         })
-        API.playedLevel(this.props.id)
       } else {
         this.props.history.push(`/levels`)
       }
@@ -176,8 +176,12 @@ export default class Game extends React.Component {
       this.setState({
         playerPosition: newBlock,
         currentBoard: currentBoard,
-        undoBoard: this.state.currentBoard
+        undoBoard: this.state.currentBoard,
+        moves: this.state.moves + 1
       })
+      if (this.state.moves === 4) {
+        API.playedLevel(this.props.id)
+      }
     }
   }
 
@@ -424,7 +428,8 @@ export default class Game extends React.Component {
     this.setState({
       currentBoard: this.state.originalBoard,
       playerPosition: this.getPlayerPositionFromBoard(this.state.originalBoard),
-      undoBoard: this.state.originalBoard
+      undoBoard: this.state.originalBoard,
+      moves: 0
     })
   }
 

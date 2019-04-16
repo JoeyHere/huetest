@@ -349,3 +349,17 @@ button {
 .statusImage {
   filter: opacity(70%);
 }
+
+#submitButton {
+  width: 150px;
+  margin: 30px;
+}
+
+.loginButtons {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
