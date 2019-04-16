@@ -54,7 +54,7 @@ export default class LevelEditor extends React.Component {
 
   handlePaletteCLick = block =>
     this.setState({
-      selectedColor: BLOCKS[block]
+      selectedColor: block
     })
 
   handleSave = () => {
