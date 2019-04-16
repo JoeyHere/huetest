@@ -559,63 +559,47 @@ export default class Game extends React.Component {
             </div>
             {this.state.preview === false ? (
               <>
-                <Button
-                  size={"large"}
-                  style={{ position: "absolute", top: "48%" }}
-                  primary
-                  // positive={true}
-                  className="winButton"
-                  onClick={this.nextLevel}
-                >
-                  LEVEL COMPLETE
-                </Button>
-                <Button
-                  // basic
-                  size={"large"}
-                  disabled={this.state.rated || !this.props.currentUser}
-                  className="winButton"
-                  icon={"thumbs up"}
-                  color={"green"}
-                  style={{
-                    position: "absolute",
-                    top: "65%",
-                    left: "46%"
-                  }}
-                  onClick={() => {
-                    API.upvoteLevel(this.props.id)
-                    this.setState({ rated: true })
-                  }}
-                />
-                <Button
-                  // basic
-                  size={"large"}
-                  color="red"
-                  disabled={this.state.rated || !this.props.currentUser}
-                  className="winButton"
-                  icon={"thumbs down"}
-                  style={{
-                    position: "absolute",
-                    top: "65%",
-                    left: "54%"
-                  }}
-                  onClick={() => {
-                    API.downvoteLevel(this.props.id)
-                    this.setState({ rated: true })
-                  }}
-                />
+                <div className={"winContainer"}>
+                  <Button
+                    id={"winButton"}
+                    size={"large"}
+                    primary
+                    onClick={this.nextLevel}
+                  >
+                    LEVEL COMPLETE
+                  </Button>
+                  <div>
+                    <Button
+                      id={"winButton"}
+                      size={"large"}
+                      disabled={this.state.rated || !this.props.currentUser}
+                      icon={"thumbs up"}
+                      color={"green"}
+                      onClick={() => {
+                        API.upvoteLevel(this.props.id)
+                        this.setState({ rated: true })
+                      }}
+                    />
+                    <Button
+                      size={"large"}
+                      color="red"
+                      disabled={this.state.rated || !this.props.currentUser}
+                      icon={"thumbs down"}
+                      onClick={() => {
+                        API.downvoteLevel(this.props.id)
+                        this.setState({ rated: true })
+                      }}
+                    />
+                  </div>
+                </div>
               </>
             ) : (
-              <>
-                <Button
-                  primary
-                  style={{ position: "absolute", top: "48%" }}
-                  className="winButton"
-                  onClick={this.nextLevel}
-                >
+              <div className={"winContainer"}>
+                <Button primary id="winButton" onClick={this.nextLevel}>
                   CONTINUE EDITING
                 </Button>
                 <PublishModal handlePublish={this.handlePublish} />
-              </>
+              </div>
             )}
           </div>
         ) : (

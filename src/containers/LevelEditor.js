@@ -112,7 +112,7 @@ export default class LevelEditor extends React.Component {
         />
         <h3>LEVEL EDITOR</h3>
         <Form style={{ width: 350 + "px", margin: "auto" }}>
-          <label style={{ textAlign: "center" }}>Name Your Level</label>
+          <label style={{ textAlign: "center" }}>Level Name</label>
           <input
             maxLength="30"
             value={this.state.level_name}
@@ -134,7 +134,7 @@ export default class LevelEditor extends React.Component {
         <Form style={{ width: 200 + "px", margin: "auto" }}>
           <Form.Group widths="equal">
             <Form.Field
-              label="Level Size"
+              label="Size"
               control="select"
               onChange={event => {
                 this.setState({
@@ -151,11 +151,11 @@ export default class LevelEditor extends React.Component {
         </Form>
         <h3>
           <Button
-            primary
+            positive
             onClick={this.handleSave}
-            style={{ width: 170 + "px" }}
+            style={{ width: 130 + "px" }}
           >
-            SAVE / PREVIEW
+            Save / Test
           </Button>
           {this.props.id ? (
             <DeleteModal
