@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.2 - Loader
+ * # Semantic UI undefined - Loader
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -198,7 +198,7 @@
 .ui.inverted.placeholder .image.header:after,
 .ui.inverted.placeholder .line,
 .ui.inverted.placeholder .line:after {
-  background-color: #000000;
+  background-color: #666666;
 }
 
 

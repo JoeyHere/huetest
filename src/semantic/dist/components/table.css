@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.2 - Table
+ * # Semantic UI undefined - Table
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -24,7 +24,7 @@
           box-shadow: none;
   border-radius: 0.28571429rem;
   text-align: left;
-  color: rgba(0, 0, 0, 0.87);
+  color: #545454;
   border-collapse: separate;
   border-spacing: 0px;
 }
@@ -57,7 +57,7 @@
   cursor: auto;
   background: #F9FAFB;
   text-align: inherit;
-  color: rgba(0, 0, 0, 0.87);
+  color: #545454;
   padding: 0.92857143em 0.78571429em;
   vertical-align: inherit;
   font-style: none;
@@ -89,7 +89,7 @@
   border-top: 1px solid rgba(34, 36, 38, 0.15);
   background: #F9FAFB;
   text-align: inherit;
-  color: rgba(0, 0, 0, 0.87);
+  color: #545454;
   padding: 0.78571429em 0.78571429em;
   vertical-align: middle;
   font-style: normal;
@@ -368,13 +368,13 @@
 
 .ui.table tr.active,
 .ui.table td.active {
-  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.87) inset;
-          box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.87) inset;
+  -webkit-box-shadow: 0px 0px 0px #545454 inset;
+          box-shadow: 0px 0px 0px #545454 inset;
 }
 .ui.table tr.active,
 .ui.table td.active {
   background: #E0E0E0 !important;
-  color: rgba(0, 0, 0, 0.87) !important;
+  color: #545454 !important;
 }
 
 /*--------------
@@ -538,7 +538,7 @@
 .ui.table tr td.selectable.active:hover,
 .ui.selectable.table tr:hover td.active {
   background: #E0E0E0 !important;
-  color: rgba(0, 0, 0, 0.87) !important;
+  color: #545454 !important;
 }
 .ui.selectable.table tr.positive:hover,
 .ui.table tr td.selectable.positive:hover,
@@ -643,28 +643,28 @@
 
 /* Red */
 .ui.red.table {
-  border-top: 0.2em solid #df5555;
+  border-top: 0.2em solid #EB5555;
 }
 .ui.inverted.red.table {
-  background-color: #df5555 !important;
+  background-color: #EB5555 !important;
   color: #FFFFFF !important;
 }
 
 /* Orange */
 .ui.orange.table {
-  border-top: 0.2em solid #f3ad2a;
+  border-top: 0.2em solid #ECAD55;
 }
 .ui.inverted.orange.table {
-  background-color: #f3ad2a !important;
+  background-color: #ECAD55 !important;
   color: #FFFFFF !important;
 }
 
 /* Yellow */
 .ui.yellow.table {
-  border-top: 0.2em solid #e0e02f;
+  border-top: 0.2em solid #ECEC55;
 }
 .ui.inverted.yellow.table {
-  background-color: #e0e02f !important;
+  background-color: #ECEC55 !important;
   color: #FFFFFF !important;
 }
 
@@ -679,10 +679,10 @@
 
 /* Green */
 .ui.green.table {
-  border-top: 0.2em solid #62a862;
+  border-top: 0.2em solid #64C064;
 }
 .ui.inverted.green.table {
-  background-color: #62a862 !important;
+  background-color: #64C064 !important;
   color: #FFFFFF !important;
 }
 
@@ -697,10 +697,10 @@
 
 /* Blue */
 .ui.blue.table {
-  border-top: 0.2em solid #5151f3;
+  border-top: 0.2em solid #5151F3;
 }
 .ui.inverted.blue.table {
-  background-color: #5151f3 !important;
+  background-color: #5151F3 !important;
   color: #FFFFFF !important;
 }
 
@@ -715,10 +715,10 @@
 
 /* Purple */
 .ui.purple.table {
-  border-top: 0.2em solid #aa65aa;
+  border-top: 0.2em solid #AA65AA;
 }
 .ui.inverted.purple.table {
-  background-color: #aa65aa !important;
+  background-color: #AA65AA !important;
   color: #FFFFFF !important;
 }
 
@@ -733,28 +733,28 @@
 
 /* Brown */
 .ui.brown.table {
-  border-top: 0.2em solid #a5813e;
+  border-top: 0.2em solid #A5813E;
 }
 .ui.inverted.brown.table {
-  background-color: #a5813e !important;
+  background-color: #A5813E !important;
   color: #FFFFFF !important;
 }
 
 /* Grey */
 .ui.grey.table {
-  border-top: 0.2em solid #A0A0A0;
+  border-top: 0.2em solid #B4AFAF;
 }
 .ui.inverted.grey.table {
-  background-color: #A0A0A0 !important;
+  background-color: #B4AFAF !important;
   color: #FFFFFF !important;
 }
 
 /* Black */
 .ui.black.table {
-  border-top: 0.2em solid #000000;
+  border-top: 0.2em solid #666666;
 }
 .ui.inverted.black.table {
-  background-color: #000000 !important;
+  background-color: #666666 !important;
   color: #FFFFFF !important;
 }
 
@@ -887,7 +887,7 @@
   cursor: pointer;
   white-space: nowrap;
   border-left: 1px solid rgba(34, 36, 38, 0.15);
-  color: rgba(0, 0, 0, 0.87);
+  color: #545454;
 }
 .ui.sortable.table thead th:first-child {
   border-left: none;

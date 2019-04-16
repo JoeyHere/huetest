@@ -1,3 +1,7 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+/* Menu Item */
+@itemFontWeight: @bold;
+@fontFamily: @headerFont;

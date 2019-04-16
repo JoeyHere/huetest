@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.2 - Accordion
+ * # Semantic UI undefined - Accordion
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -31,9 +31,9 @@
 /* Default Styling */
 .ui.accordion .title:not(.ui) {
   padding: 0.5em 0em;
-  font-family: 'Comfortaa', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: 'Comfortaa';
   font-size: 1em;
-  color: rgba(0, 0, 0, 0.87);
+  color: #545454;
 }
 
 /* Content */
@@ -162,12 +162,12 @@
 .ui.styled.accordion .accordion .title:hover,
 .ui.styled.accordion .accordion .active.title {
   background: transparent;
-  color: rgba(0, 0, 0, 0.87);
+  color: #545454;
 }
 .ui.styled.accordion .accordion .title:hover,
 .ui.styled.accordion .accordion .active.title {
   background: transparent;
-  color: rgba(0, 0, 0, 0.87);
+  color: #545454;
 }
 
 /* Active */

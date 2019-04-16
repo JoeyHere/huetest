@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.2 - Message
+ * # Semantic UI undefined - Message
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -20,7 +20,7 @@
   background: #F8F8F9;
   padding: 1em 1.5em;
   line-height: 1.4285em;
-  color: rgba(0, 0, 0, 0.87);
+  color: #545454;
   -webkit-transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, box-shadow 0.1s ease;
@@ -44,7 +44,7 @@
 /* Header */
 .ui.message .header {
   display: block;
-  font-family: 'Comfortaa', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: 'Comfortaa';
   font-weight: bold;
   margin: -0.14285714em 0em 0rem 0em;
 }
@@ -264,7 +264,7 @@
 ---------------*/
 
 .ui.black.message {
-  background-color: #000000;
+  background-color: #666666;
   color: rgba(255, 255, 255, 0.9);
 }
 
@@ -360,26 +360,26 @@
 /* Colors */
 .ui.inverted.message,
 .ui.black.message {
-  background-color: #000000;
+  background-color: #666666;
   color: rgba(255, 255, 255, 0.9);
 }
 .ui.red.message {
   background-color: #FFE8E6;
-  color: #df5555;
-  -webkit-box-shadow: 0px 0px 0px 1px #df5555 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
-          box-shadow: 0px 0px 0px 1px #df5555 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  color: #EB5555;
+  -webkit-box-shadow: 0px 0px 0px 1px #EB5555 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+          box-shadow: 0px 0px 0px 1px #EB5555 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 .ui.red.message .header {
-  color: #db4040;
+  color: #e83e3e;
 }
 .ui.orange.message {
   background-color: #FFEDDE;
-  color: #f3ad2a;
-  -webkit-box-shadow: 0px 0px 0px 1px #f3ad2a inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
-          box-shadow: 0px 0px 0px 1px #f3ad2a inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  color: #ECAD55;
+  -webkit-box-shadow: 0px 0px 0px 1px #ECAD55 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+          box-shadow: 0px 0px 0px 1px #ECAD55 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 .ui.orange.message .header {
-  color: #f2a412;
+  color: #e9a23e;
 }
 .ui.yellow.message {
   background-color: #FFF8DB;
@@ -419,9 +419,9 @@
 }
 .ui.blue.message {
   background-color: #DFF0FF;
-  color: #5151f3;
-  -webkit-box-shadow: 0px 0px 0px 1px #5151f3 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
-          box-shadow: 0px 0px 0px 1px #5151f3 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  color: #5151F3;
+  -webkit-box-shadow: 0px 0px 0px 1px #5151F3 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+          box-shadow: 0px 0px 0px 1px #5151F3 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 .ui.blue.message .header {
   color: #3939f1;
@@ -437,9 +437,9 @@
 }
 .ui.purple.message {
   background-color: #F6E7FF;
-  color: #aa65aa;
-  -webkit-box-shadow: 0px 0px 0px 1px #aa65aa inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
-          box-shadow: 0px 0px 0px 1px #aa65aa inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  color: #AA65AA;
+  -webkit-box-shadow: 0px 0px 0px 1px #AA65AA inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+          box-shadow: 0px 0px 0px 1px #AA65AA inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 .ui.purple.message .header {
   color: #9e579e;
@@ -455,9 +455,9 @@
 }
 .ui.brown.message {
   background-color: #F1E2D3;
-  color: #a5813e;
-  -webkit-box-shadow: 0px 0px 0px 1px #a5813e inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
-          box-shadow: 0px 0px 0px 1px #a5813e inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  color: #A5813E;
+  -webkit-box-shadow: 0px 0px 0px 1px #A5813E inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+          box-shadow: 0px 0px 0px 1px #A5813E inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 .ui.brown.message .header {
   color: #927337;

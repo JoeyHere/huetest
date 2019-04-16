@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.2 - Popup
+ * # Semantic UI undefined - Popup
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -31,14 +31,14 @@
   padding: 0.833em 1em;
   font-weight: normal;
   font-style: normal;
-  color: rgba(0, 0, 0, 0.87);
+  color: #545454;
   border-radius: 0.28571429rem;
   -webkit-box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
           box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
 }
 .ui.popup > .header {
   padding: 0em;
-  font-family: 'Comfortaa', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: 'Comfortaa';
   font-size: 1.14285714em;
   line-height: 1.2;
   font-weight: bold;
@@ -107,7 +107,7 @@
   padding: 0.833em 1em;
   font-weight: normal;
   font-style: normal;
-  color: rgba(0, 0, 0, 0.87);
+  color: #545454;
   border-radius: 0.28571429rem;
   -webkit-box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
           box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
@@ -215,12 +215,12 @@
 
 /* Arrow Position */
 [data-tooltip][data-inverted]:before {
-  background: #000000;
+  background: #666666;
 }
 
 /* Popup  */
 [data-tooltip][data-inverted]:after {
-  background: #000000;
+  background: #666666;
   color: #FFFFFF;
   border: none;
   -webkit-box-shadow: none;
@@ -391,22 +391,22 @@
 
 /* Inverted Arrow Color */
 [data-inverted][data-position~="bottom"][data-tooltip]:before {
-  background: #000000;
+  background: #666666;
   -webkit-box-shadow: -1px -1px 0px 0px #bababc;
           box-shadow: -1px -1px 0px 0px #bababc;
 }
 [data-inverted][data-position="left center"][data-tooltip]:before {
-  background: #000000;
+  background: #666666;
   -webkit-box-shadow: 1px -1px 0px 0px #bababc;
           box-shadow: 1px -1px 0px 0px #bababc;
 }
 [data-inverted][data-position="right center"][data-tooltip]:before {
-  background: #000000;
+  background: #666666;
   -webkit-box-shadow: -1px 1px 0px 0px #bababc;
           box-shadow: -1px 1px 0px 0px #bababc;
 }
 [data-inverted][data-position~="top"][data-tooltip]:before {
-  background: #000000;
+  background: #666666;
 }
 [data-position~="bottom"][data-tooltip]:before {
   -webkit-transform-origin: center bottom;
@@ -602,14 +602,14 @@
 
 /* Inverted Arrow Color */
 .ui.inverted.bottom.popup:before {
-  background: #000000;
+  background: #666666;
 }
 .ui.inverted.right.center.popup:before,
 .ui.inverted.left.center.popup:before {
-  background: #000000;
+  background: #666666;
 }
 .ui.inverted.top.popup:before {
-  background: #000000;
+  background: #666666;
 }
 
 
@@ -692,7 +692,7 @@
 
 /* Inverted colors  */
 .ui.inverted.popup {
-  background: #000000;
+  background: #666666;
   color: #FFFFFF;
   border: none;
   -webkit-box-shadow: none;
@@ -703,7 +703,7 @@
   color: #FFFFFF;
 }
 .ui.inverted.popup:before {
-  background-color: #000000;
+  background-color: #666666;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
 }
