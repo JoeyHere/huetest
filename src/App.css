@@ -341,17 +341,6 @@ button {
   margin: auto;
 }
 
-.levelPreview {
-  /* float: left; */
-  /* margin-right: 18px; */
-  /* margin-bottom: 3px; */
-  /* position: relative; */
-  /* top: 10%; */
-  /* border: solid;
-  border-width: 5px; */
-  /* box-shadow: 0px 0px 7px rgb(156, 156, 156); */
-}
-
 .levelPreviewContainer {
   float: left;
   display: flex;
@@ -391,4 +380,8 @@ button {
   justify-content: space-between;
   align-items: center;
   align-content: center;
+}
+
+#navBar {
+  margin-top: 15px;
 }

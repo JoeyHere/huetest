@@ -10,11 +10,9 @@ export default class Navbar extends Component {
       <>
         <Menu
           size={"small"}
-          // style={{ backgroundColor: "rgb(206, 206, 206)" }}
           // stackable={true}
           id="navBar"
           widths={7}
-          attached="top"
           tabular
           borderless
         >
