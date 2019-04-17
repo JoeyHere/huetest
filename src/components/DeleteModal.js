@@ -19,11 +19,11 @@ class DeleteModal extends Component {
           onClick={this.show("inverted")}
         />
 
-        <Modal dimmer={dimmer} open={open} onClose={this.close} size="tiny">
+        <Modal dimmer={dimmer} open={open} onClose={this.close} size="mini">
           <Modal.Header>Delete Level - Are You Sure?</Modal.Header>
           <Modal.Content>
             <Modal.Description>
-              <p style={{ textAlign: "center" }}>
+              <p style={{ textAlign: "left" }}>
                 Deleting Levels can't be undone!
               </p>
             </Modal.Description>
