@@ -104,7 +104,7 @@ class LevelCard extends React.Component {
         <Card.Content
           style={
             this.props.completed || this.props.userPublished
-              ? { backgroundColor: "rgb(229, 255, 224)" }
+              ? { backgroundColor: "rgb(220, 255, 214)" }
               : { backgroundColor: "rgb(252, 207, 207)" }
           }
           extra
