@@ -50,10 +50,10 @@ export default class Navbar extends Component {
           {this.props.currentUser ? (
             <>
               <Menu.Item name="LOG-OUT" onClick={this.props.logOut}>
-                LOG OUT {" - "}(
+                LOG OUT {" - "}({" "}
                 {this.props.currentUser
                   ? this.props.currentUser.user_name
-                  : null}
+                  : null}{" "}
                 )
               </Menu.Item>
             </>
