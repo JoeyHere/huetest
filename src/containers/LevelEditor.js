@@ -119,7 +119,6 @@ export default class LevelEditor extends React.Component {
             onChange={event => {
               this.setState({ level_name: event.target.value })
             }}
-            // placeholder="Name your level"
           />
         </Form>
         <GameBoard

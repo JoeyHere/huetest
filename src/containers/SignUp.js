@@ -55,7 +55,6 @@ export default class SignUp extends Component {
                 this.setState({ user_name: event.target.value })
               }
               value={this.state.user_name}
-              // placeholder="User Name"
               name="user_name"
             />
           </Form.Field>
@@ -67,7 +66,6 @@ export default class SignUp extends Component {
                 this.setState({ password: event.target.value })
               }
               value={this.state.password}
-              // placeholder="Password"
               name="password"
               type="password"
             />
@@ -78,7 +76,6 @@ export default class SignUp extends Component {
               maxLength="30"
               onChange={event => this.setState({ confirm: event.target.value })}
               value={this.state.confirm}
-              // placeholder="Confirm Password"
               name="confirm"
               type="password"
             />

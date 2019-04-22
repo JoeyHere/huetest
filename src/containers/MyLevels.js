@@ -26,7 +26,6 @@ class MyLevels extends React.Component {
   render() {
     return (
       <div id="index-div">
-        {/* <h3>{this.props.currentUser.user_name.toUpperCase()}</h3> */}
         <LevelCardList
           handleLevelClick={this.handleLevelClick}
           handlePublishedClick={this.handlePublishedClick}

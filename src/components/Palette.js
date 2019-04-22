@@ -3,9 +3,6 @@ import GameBlock from "./GameBlock.js"
 import { BLOCKCLASSES, paletteColors } from "../concerns/Config.js"
 
 const Palette = props => {
-  // let convertBoardFromIds = board =>
-  //   board.map(row => row.map(block => BLOCKCLASSES[block]))
-
   return (
     <div
       className="grid palette"

@@ -107,7 +107,6 @@ class LevelIndex extends React.Component {
           label={"Hide Completed"}
           checked={this.props.toggleComplete}
           onChange={this.props.handleToggleChange}
-          // toggle
         />
         <DropDownFilter
           handleFilterChange={this.props.handleFilterChange}

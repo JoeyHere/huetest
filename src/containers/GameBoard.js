@@ -17,7 +17,7 @@ const GameBoard = props => {
             handleBlockClick={() =>
               props.handleBlockClick
                 ? props.handleBlockClick(blockIndex, rowIndex)
-                : console.log("hello")
+                : () => null
             }
           />
         ))
