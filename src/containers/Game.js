@@ -9,6 +9,16 @@ import Sound from "react-sound"
 import PublishModal from "../components/PublishModal.js"
 import DeleteModal from "../components/DeleteModal.js"
 import RulesModal from "../components/RulesModal.js"
+import {
+  removeFlashBlocks,
+  checkBlockExists,
+  moveBlocks,
+  getMovingBlocks,
+  combineBlocks,
+  updatePlayerOnBoard,
+  getPlayerPositionFromBoard,
+  clearBoardOfThrees
+} from "./GameLogic"
 
 export default class Game extends React.Component {
   state = {
@@ -34,7 +44,7 @@ export default class Game extends React.Component {
       if (level) {
         let levelData = JSON.parse(level.level_data)
         this.setState({
-          playerPosition: this.getPlayerPositionFromBoard(levelData),
+          playerPosition: getPlayerPositionFromBoard(levelData),
           originalBoard: levelData,
           currentBoard: levelData,
           undoBoard: levelData,
@@ -96,30 +106,6 @@ export default class Game extends React.Component {
     console.log("stop clicking on the blocks and solve the puzzle!")
   }
 
-  removeFlashBlocks = array => {
-    let newArray = array.map(row =>
-      row.map(block => {
-        if (block === BLOCKS.flash) {
-          return BLOCKS.floor
-        }
-        if (block === BLOCKS.explode) {
-          return BLOCKS.floor
-        }
-        if (block === BLOCKS.combineGreen) {
-          return BLOCKS.green
-        }
-        if (block === BLOCKS.combineOrange) {
-          return BLOCKS.orange
-        }
-        if (block === BLOCKS.combinePurple) {
-          return BLOCKS.purple
-        }
-        return block
-      })
-    )
-    return newArray
-  }
-
   winGame = () => {
     API.completedLevel(this.props.id)
     this.setState({
@@ -130,39 +116,35 @@ export default class Game extends React.Component {
 
   movePlayer = (dx, dy) => {
     let currentBoard = [...this.state.currentBoard.map(array => [...array])]
-    currentBoard = this.removeFlashBlocks(currentBoard)
+    currentBoard = removeFlashBlocks(currentBoard)
     const newBlock = {
       x: this.state.playerPosition.x + dx,
       y: this.state.playerPosition.y + dy
     }
-    if (!this.checkBlockExists(newBlock.x, newBlock.y)) {
+    if (!checkBlockExists(newBlock.x, newBlock.y, currentBoard)) {
       this.winGame()
     }
-    let movingBlocks = this.getMovingBlocks(
-      this.state.playerPosition.x,
-      this.state.playerPosition.y,
-      newBlock.x,
-      newBlock.y,
-      [],
+    let movingBlocks = getMovingBlocks(
+      this.state.playerPosition,
+      newBlock,
       currentBoard
     )
     if (movingBlocks) {
-      currentBoard = this.moveBlocks(movingBlocks, dx, dy, currentBoard)
+      currentBoard = moveBlocks(movingBlocks, dx, dy, currentBoard)
     } else {
-      currentBoard = this.combineBlocks(newBlock, dx, dy, [], currentBoard)
+      currentBoard = combineBlocks(newBlock, dx, dy, [], currentBoard)
     }
     if (currentBoard) {
-      currentBoard = this.updatePlayerOnBoard(
+      currentBoard = updatePlayerOnBoard(
         this.state.playerPosition,
         newBlock,
         currentBoard
       )
-      currentBoard = this.clearBoardOfThrees(currentBoard)
+      currentBoard = clearBoardOfThrees(currentBoard)
 
       let boardString = JSON.stringify(currentBoard)
       if (boardString.includes(JSON.stringify(BLOCKS.flash))) {
         this.playSoundEffect(1)
-        // sfxThrees[Math.floor(Math.random() * sfxThrees.length)]
       } else if (boardString.includes(JSON.stringify(BLOCKS.explode))) {
         this.playSoundEffect(3)
       } else if (boardString.includes(JSON.stringify(BLOCKS.combineGreen))) {
@@ -185,234 +167,6 @@ export default class Game extends React.Component {
     }
   }
 
-  combineBlocks = (blockA, dx, dy, movingBlocks = [], inputArray) => {
-    let blockB = { x: blockA.x + dx, y: blockA.y + dy }
-
-    if (!this.checkBlockExists(blockA.x, blockA.y)) {
-      return false
-    }
-    if (!this.checkBlockExists(blockB.x, blockB.y)) {
-      return false
-    }
-    if (this.getBlock(blockA.x, blockA.y) === BLOCKS.wall) {
-      return false
-    }
-    if (this.getBlock(blockB.x, blockB.y) === BLOCKS.wall) {
-      return false
-    }
-
-    if (
-      this.blocksCanCombine(
-        this.getBlock(blockA.x, blockA.y, inputArray),
-        this.getBlock(blockB.x, blockB.y, inputArray)
-      )
-    ) {
-      let color = this.blocksCanCombine(
-        this.getBlock(blockA.x, blockA.y, inputArray),
-        this.getBlock(blockB.x, blockB.y, inputArray)
-      )
-      movingBlocks = [...movingBlocks, { x: blockA.x, y: blockA.y }]
-      let newArray = this.moveBlocks(movingBlocks, dx, dy, inputArray)
-      newArray[blockB.y][blockB.x] = color
-      return newArray
-    } else {
-      movingBlocks = [...movingBlocks, { x: blockA.x, y: blockA.y }]
-    }
-    return this.combineBlocks(blockB, dx, dy, movingBlocks, inputArray)
-  }
-
-  moveBlocks = (array, dx, dy, board) => {
-    array.reverse().forEach(block => {
-      board[block.y + dy][block.x + dx] = board[block.y][block.x]
-    })
-    return board
-  }
-
-  getMovingBlocks = (oldx, oldy, newx, newy, movingBlocks = [], array) => {
-    const dir = {
-      dx: newx - oldx,
-      dy: newy - oldy
-    }
-    if (!this.checkBlockExists(newx, newy, array)) return false
-    if (this.getBlock(newx, newy, array) === BLOCKS.wall) return false
-    if (
-      this.getBlock(newx, newy, array) === BLOCKS.floor ||
-      this.getBlock(newx, newy, array) === BLOCKS.flash
-    )
-      return movingBlocks
-    movingBlocks = [...movingBlocks, { x: newx, y: newy }]
-    return this.getMovingBlocks(
-      newx,
-      newy,
-      newx + dir.dx,
-      newy + dir.dy,
-      movingBlocks,
-      array
-    )
-  }
-
-  blocksCanCombine = (blockA, blockB) => {
-    if (blockA === BLOCKS.floor || blockB === BLOCKS.floor) {
-      return false
-    }
-    if (blockA === BLOCKS.wall || blockB === BLOCKS.wall) {
-      return false
-    }
-    if (blockA === BLOCKS.yellow && blockB === BLOCKS.blue) {
-      return BLOCKS.combineGreen
-    }
-    if (blockA === BLOCKS.blue && blockB === BLOCKS.yellow) {
-      return BLOCKS.combineGreen
-    }
-    if (blockA === BLOCKS.yellow && blockB === BLOCKS.red) {
-      return BLOCKS.combineOrange
-    }
-    if (blockA === BLOCKS.red && blockB === BLOCKS.yellow) {
-      return BLOCKS.combineOrange
-    }
-    if (blockA === BLOCKS.red && blockB === BLOCKS.blue) {
-      return BLOCKS.combinePurple
-    }
-    if (blockA === BLOCKS.blue && blockB === BLOCKS.red) {
-      return BLOCKS.combinePurple
-    }
-    if (blockA === BLOCKS.bomb && blockB !== BLOCKS.wall) {
-      return BLOCKS.explode
-    }
-    if (blockA !== BLOCKS.wall && blockB === BLOCKS.bomb) {
-      return BLOCKS.explode
-    }
-    return false
-  }
-
-  getBlock = (x, y, array = this.state.currentBoard) => array[y][x]
-
-  changeBlockColor = (array, x, y, color) => {
-    array[y][x] = color
-    return array
-  }
-
-  checkBlockExists = (x, y, array = this.state.currentBoard) =>
-    array[y] && array[y][x]
-
-  updatePlayerOnBoard = (oldblock, newblock, array) => {
-    array = this.changeBlockColor(array, newblock.x, newblock.y, BLOCKS.player)
-    array = this.changeBlockColor(array, oldblock.x, oldblock.y, BLOCKS.floor)
-    return array
-  }
-
-  getPlayerPositionFromBoard = array => {
-    let columnIndex = undefined
-    let rowIndex = array.findIndex(row =>
-      row.find(block => block === BLOCKS.player)
-    )
-    if (rowIndex || rowIndex === 0) {
-      columnIndex = array[rowIndex].findIndex(block => block === BLOCKS.player)
-    }
-    return { x: columnIndex, y: rowIndex }
-  }
-
-  clearBoardOfThrees = inputArray => {
-    let threesArray = this.checkArrayForThrees(inputArray)
-
-    let newArray = inputArray.map((row, rowi) => {
-      return row.map((block, columni) =>
-        threesArray[rowi][columni] ? BLOCKS.flash : block
-      )
-    })
-    return newArray
-  }
-
-  checkArrayForThrees = inputArray => {
-    let threesArray = inputArray.map((row, yi, array) => {
-      return row.map((block, i) => {
-        let prevBlock = this.checkBlockExists(i - 1, yi, array)
-          ? this.getBlock(i - 1, yi, array)
-          : undefined
-        let prevPrevBlock = this.checkBlockExists(i - 2, yi, array)
-          ? this.getBlock(i - 2, yi, array)
-          : undefined
-        let nextBlock = this.checkBlockExists(i + 1, yi, array)
-          ? this.getBlock(i + 1, yi, array)
-          : undefined
-        let nextNextBlock = this.checkBlockExists(i + 2, yi, array)
-          ? this.getBlock(i + 2, yi, array)
-          : undefined
-        let downBlock = this.checkBlockExists(i, yi + 1, array)
-          ? this.getBlock(i, yi + 1, array)
-          : undefined
-        let downDownBlock = this.checkBlockExists(i, yi + 2, array)
-          ? this.getBlock(i, yi + 2, array)
-          : undefined
-        let upBlock = this.checkBlockExists(i, yi - 1, array)
-          ? this.getBlock(i, yi - 1, array)
-          : undefined
-        let upUpBlock = this.checkBlockExists(i, yi - 2, array)
-          ? this.getBlock(i, yi - 2, array)
-          : undefined
-        if (block === BLOCKS.wall) return false
-        if (block === BLOCKS.floor) return false
-        if (block === BLOCKS.brown) return false
-        if (block === BLOCKS.bomb) return false
-        if (
-          this.isSame(nextBlock, block) &&
-          this.isSame(nextNextBlock, block)
-        ) {
-          return true
-        }
-        if (this.isSame(prevBlock, block) && this.isSame(nextBlock, block)) {
-          return true
-        }
-        if (
-          this.isSame(prevBlock, block) &&
-          this.isSame(prevPrevBlock, block)
-        ) {
-          return true
-        }
-        if (
-          this.isSame(downBlock, block) &&
-          this.isSame(downDownBlock, block)
-        ) {
-          return true
-        }
-        if (this.isSame(upBlock, block) && this.isSame(downBlock, block)) {
-          return true
-        }
-        if (this.isSame(upBlock, block) && this.isSame(upUpBlock, block)) {
-          return true
-        }
-        return false
-      })
-    })
-    return threesArray
-  }
-
-  isSame = (blockA, blockB) => {
-    if (blockA === blockB) {
-      return true
-    }
-    if (blockA === BLOCKS.green && blockB === BLOCKS.combineGreen) {
-      return true
-    }
-    if (blockA === BLOCKS.combineGreen && blockB === BLOCKS.green) {
-      return true
-    }
-    if (blockA === BLOCKS.purple && blockB === BLOCKS.combinePurple) {
-      return true
-    }
-    if (blockA === BLOCKS.combinePurple && blockB === BLOCKS.purple) {
-      return true
-    }
-    if (blockA === BLOCKS.orange && blockB === BLOCKS.combineOrange) {
-      return true
-    }
-    if (blockA === BLOCKS.combineOrange && blockB === BLOCKS.orange) {
-      return true
-    }
-
-    return false
-  }
-
   nextLevel = () => {
     if (this.state.preview) {
       this.props.history.push(`/create/${this.props.id}/edit`)
@@ -427,7 +181,7 @@ export default class Game extends React.Component {
   resetLevel = () => {
     this.setState({
       currentBoard: this.state.originalBoard,
-      playerPosition: this.getPlayerPositionFromBoard(this.state.originalBoard),
+      playerPosition: getPlayerPositionFromBoard(this.state.originalBoard),
       undoBoard: this.state.originalBoard,
       moves: 0
     })
@@ -436,7 +190,7 @@ export default class Game extends React.Component {
   undoMove = () => {
     this.setState({
       currentBoard: this.state.undoBoard,
-      playerPosition: this.getPlayerPositionFromBoard(this.state.undoBoard)
+      playerPosition: getPlayerPositionFromBoard(this.state.undoBoard)
     })
   }
 
@@ -534,6 +288,7 @@ export default class Game extends React.Component {
       />
     )
     const width = this.state.currentBoard.length * 35
+
     return (
       <div>
         {this.state.levelWon ? (
