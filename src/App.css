@@ -233,37 +233,37 @@
 }
 
 @keyframes burst {
-  from {
+  0% {
     opacity: 1;
     transform: scale(1);
   }
 
-  to {
+  100% {
     opacity: 1;
     transform: scale(1.3);
   }
 }
 
 @keyframes subtleBurst {
-  from {
+  0% {
     background-color: white;
     transform: scale(1);
   }
 
-  to {
+  100% {
     opacity: 0.8;
     transform: scale(1.3);
   }
 }
 
 @keyframes explode {
-  from {
+  0% {
     background-color: rgb(165, 129, 62);
     opacity: 1;
     transform: scale(1);
   }
 
-  to {
+  100% {
     background-color: rgb(255, 255, 255);
     opacity: 0.5;
     transform: scale(1.7);
@@ -276,10 +276,10 @@
 }
 
 @keyframes selectedScale {
-  from {
+  0% {
     transform: scale(1);
   }
-  to {
+  100% {
     transform: scale(1.15);
     outline: solid;
     outline-width: 2px;
