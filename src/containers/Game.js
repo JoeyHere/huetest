@@ -102,7 +102,8 @@ export default class Game extends React.Component {
     this.setState({ keydown: false })
   }
 
-  handleBlockClick = (blockx, blocky, width) => {
+  handleBlockClick = (event, blockx, blocky, width) => {
+    event.preventDefault()
     let roundedThird = Math.floor(width / 3)
     let roundedTwoThird = Math.floor(width / 1.5)
 
