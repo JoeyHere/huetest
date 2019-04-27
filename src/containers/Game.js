@@ -103,18 +103,37 @@ export default class Game extends React.Component {
   }
 
   handleBlockClick = (blockx, blocky, width) => {
+    let roundedThird = Math.ceil(width / 3)
+    let roundedTwoThird = Math.floor(width / 1.5)
+
     if (this.state.levelWon === false) {
       if (!this.state.keydown) {
-        if (blockx < width / 3) {
+        if (
+          blockx < roundedThird &&
+          blocky < roundedTwoThird &&
+          blocky > roundedThird
+        ) {
           this.movePlayer(-1, 0)
         }
-        if (blockx > width / 1.5) {
+        if (
+          blockx >= roundedTwoThird &&
+          blocky < roundedTwoThird &&
+          blocky > roundedThird
+        ) {
           this.movePlayer(1, 0)
         }
-        if (blocky < width / 3) {
+        if (
+          blocky < roundedThird &&
+          blockx < roundedTwoThird &&
+          blockx > roundedThird
+        ) {
           this.movePlayer(0, -1)
         }
-        if (blocky > width / 1.5) {
+        if (
+          blocky >= roundedTwoThird &&
+          blockx < roundedTwoThird &&
+          blockx > roundedThird
+        ) {
           this.movePlayer(0, 1)
         }
         setTimeout(this.handleKeyUp, 50)
