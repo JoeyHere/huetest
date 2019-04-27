@@ -16,12 +16,7 @@ const GameBoard = props => {
             blockColor={block}
             handleBlockClick={event =>
               props.handleBlockClick
-                ? props.handleBlockClick(
-                    event,
-                    blockIndex,
-                    rowIndex,
-                    props.width / 35
-                  )
+                ? props.handleBlockClick(blockIndex, rowIndex, props.width / 35)
                 : () => null
             }
           />
