@@ -102,8 +102,27 @@ export default class Game extends React.Component {
     this.setState({ keydown: false })
   }
 
-  handleBlockClick = (blockx, blocky) => {
-    console.log("stop clicking on the blocks and solve the puzzle!")
+  handleBlockClick = (blockx, blocky, width) => {
+    if (this.state.levelWon === false) {
+      if (!this.state.keydown) {
+        if (blockx < width / 3) {
+          this.movePlayer(-1, 0)
+        }
+        if (blockx > width / 1.5) {
+          this.movePlayer(1, 0)
+        }
+        if (blocky < width / 3) {
+          this.movePlayer(0, -1)
+        }
+        if (blocky > width / 1.5) {
+          this.movePlayer(0, 1)
+        }
+        setTimeout(this.handleKeyUp, 50)
+      }
+      this.setState({
+        keydown: true
+      })
+    }
   }
 
   winGame = () => {

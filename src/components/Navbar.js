@@ -10,7 +10,7 @@ export default class Navbar extends Component {
       <>
         <Menu
           size={"small"}
-          // stackable={true}
+          stackable={true}
           id="navBar"
           widths={7}
           tabular
