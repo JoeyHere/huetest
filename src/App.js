@@ -16,6 +16,9 @@ import API from "./concerns/API.js"
 import SignUp from "./containers/SignUp"
 import MyLevels from "./containers/MyLevels"
 import GameBoard from "./containers/GameBoard"
+import ReactGA from "react-ga"
+ReactGA.initialize("UA-143157687-1")
+ReactGA.pageview(window.location.pathname + window.location.search)
 
 class App extends React.Component {
   state = {
