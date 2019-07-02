@@ -81,10 +81,16 @@ export default class SignUp extends Component {
             />
           </Form.Field>
           <div className={"loginButtons"}>
-            <Button positive={true} id="submitButton" type="submit">
+            <Button compact positive={true} id="submitButton" type="submit">
               SIGN UP
             </Button>
-            <Button className={"signUpButton"} as={Link} to={"/login"}>
+            <Button
+              basic
+              compact
+              className={"signUpButton"}
+              as={Link}
+              to={"/login"}
+            >
               GO TO LOG IN
             </Button>
           </div>

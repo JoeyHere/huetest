@@ -335,7 +335,6 @@ button {
 }
 
 .signUpButton {
-  width: 150px;
   align-self: center;
   text-align: center;
   margin: auto;
@@ -369,7 +368,7 @@ button {
 }
 
 #submitButton {
-  width: 150px;
+  width: "fluid";
   margin: 15px;
 }
 

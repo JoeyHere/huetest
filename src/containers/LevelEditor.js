@@ -105,6 +105,7 @@ export default class LevelEditor extends React.Component {
     return (
       <div className={"editor"}>
         <Button
+          compact
           size={"small"}
           icon={"close"}
           className={"exitButton"}
@@ -149,11 +150,7 @@ export default class LevelEditor extends React.Component {
           </Form.Group>
         </Form>
         <h3>
-          <Button
-            primary
-            onClick={this.handleSave}
-            style={{ width: 110 + "px" }}
-          >
+          <Button compact primary onClick={this.handleSave}>
             Save / Test
           </Button>
           {this.props.id ? (

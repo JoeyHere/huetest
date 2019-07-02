@@ -13,6 +13,7 @@ class DeleteModal extends Component {
     return (
       <>
         <Button
+          compact
           icon="trash alternate outline"
           className={"deleteButton"}
           negative={true}
@@ -29,8 +30,11 @@ class DeleteModal extends Component {
             </Modal.Description>
           </Modal.Content>
           <Modal.Actions>
-            <Button onClick={this.close}>Nope</Button>
+            <Button compact onClick={this.close}>
+              Nope
+            </Button>
             <Button
+              compact
               negative
               icon="checkmark"
               labelPosition="right"

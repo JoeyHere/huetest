@@ -1,6 +1,7 @@
 import React from "react"
 import LevelCardList from "../containers/LevelCardList.js"
 import API from "../concerns/API.js"
+import { Button, Icon } from "semantic-ui-react"
 
 class MyLevels extends React.Component {
   state = {
@@ -38,9 +39,17 @@ class MyLevels extends React.Component {
           }
         />
         <h3>
-          {this.state.levels.length === 0
-            ? "you haven't created any levels yet...."
-            : null}
+          {this.state.levels.length === 0 ? (
+            <>
+              <p>you haven't created any levels yet...</p>
+              <Button
+                compact
+                onClick={() => this.props.history.push(`/create`)}
+              >
+                <Icon name="paint brush" /> Create
+              </Button>
+            </>
+          ) : null}
         </h3>
       </div>
     )

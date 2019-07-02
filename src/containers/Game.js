@@ -4,7 +4,7 @@ import { BLOCKS } from "../concerns/Config.js"
 import API from "../concerns/API.js"
 import "../confetti.scss"
 import Confetti from "../components/Confetti.js"
-import { Button, Icon } from "semantic-ui-react"
+import { Button } from "semantic-ui-react"
 import Sound from "react-sound"
 import PublishModal from "../components/PublishModal.js"
 import DeleteModal from "../components/DeleteModal.js"
@@ -403,6 +403,7 @@ export default class Game extends React.Component {
               <div>{this.state.mute ? null : soundEffectCombine}</div>
               {this.state.preview ? (
                 <Button
+                  compact
                   size={"small"}
                   icon={"close"}
                   className={"exitButton"}
@@ -413,6 +414,7 @@ export default class Game extends React.Component {
                 />
               ) : (
                 <Button
+                  compact
                   size={"small"}
                   icon={"close"}
                   className={"exitButton"}
@@ -440,20 +442,11 @@ export default class Game extends React.Component {
               handleBlockClick={this.handleBlockClick}
             />
             <div className={"resetButton"}>
-              <Button animated="vertical" onClick={this.undoMove}>
-                <Button.Content visible>
-                  <Icon name="backward" />
-                </Button.Content>
-                <Button.Content hidden>Undo</Button.Content>
-              </Button>
-              <Button animated="vertical" onClick={this.resetLevel}>
-                <Button.Content visible>
-                  <Icon name="undo" />
-                </Button.Content>
-                <Button.Content hidden>Reset</Button.Content>
-              </Button>
+              <Button compact icon="backward" onClick={this.undoMove} />
+              <Button compact icon="fast backward" onClick={this.resetLevel} />
               <RulesModal />
               <Button
+                compact
                 icon={!this.state.mute ? "volume up" : "volume off"}
                 onClick={this.muteGame}
               />

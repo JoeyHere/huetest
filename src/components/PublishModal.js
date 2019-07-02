@@ -30,8 +30,11 @@ class PublishModal extends Component {
             </Modal.Description>
           </Modal.Content>
           <Modal.Actions>
-            <Button onClick={this.close}>Nope</Button>
+            <Button compact onClick={this.close}>
+              Nope
+            </Button>
             <Button
+              compact
               positive
               icon="checkmark"
               labelPosition="right"
