@@ -78,13 +78,7 @@ export default class Login extends Component {
             <Button compact positive={true} id="submitButton" type="submit">
               LOG IN
             </Button>
-            <Button
-              basic
-              compact
-              className={"signUpButton"}
-              as={Link}
-              to={"/signup"}
-            >
+            <Button compact className={"signUpButton"} as={Link} to={"/signup"}>
               GO TO SIGN UP
             </Button>
           </div>
