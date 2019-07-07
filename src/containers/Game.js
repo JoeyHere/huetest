@@ -334,12 +334,12 @@ export default class Game extends React.Component {
             <div>{this.state.mute ? null : soundEffectWin}</div>
             <Confetti nextLevel={this.nextLevel} />
             <div className={"board blur"}>
-              <h1>
+              <h1 style={{ marginBottom: "0px" }}>
                 {!this.state.preview
                   ? this.state.levelName
                   : `${this.state.levelName} (Preview)`}
               </h1>
-              <h4>
+              <h4 style={{ marginTop: "10px" }}>
                 {!this.state.preview
                   ? `by ${this.state.creator_name}`
                   : "COMPLETE LEVEL TO PUBLISH"}
@@ -425,12 +425,12 @@ export default class Game extends React.Component {
                   }}
                 />
               )}
-              <h1>
+              <h1 style={{ marginBottom: "0px" }}>
                 {!this.state.preview
                   ? this.state.levelName
                   : `${this.state.levelName} (Preview)`}
               </h1>
-              <h4>
+              <h4 style={{ marginTop: "10px" }}>
                 {!this.state.preview
                   ? `by ${this.state.creator_name}`
                   : "COMPLETE LEVEL TO PUBLISH"}
