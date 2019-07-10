@@ -1,15 +1,5 @@
 import React, { Component } from "react"
-import {
-  Segment,
-  Image,
-  Header,
-  Reveal,
-  Container,
-  Grid,
-  Divider
-} from "semantic-ui-react"
-import { Link } from "react-router-dom"
-import API from "../concerns/API.js"
+import { Segment, Image, Header, Divider } from "semantic-ui-react"
 import GameBoard from "./GameBoard.js"
 
 export default class AboutPage extends Component {

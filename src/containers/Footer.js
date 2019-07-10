@@ -1,14 +1,5 @@
 import React, { Component } from "react"
-import {
-  Segment,
-  Image,
-  Header,
-  Reveal,
-  Container,
-  Grid,
-  Divider,
-  Icon
-} from "semantic-ui-react"
+import { Segment, Icon } from "semantic-ui-react"
 import { Link } from "react-router-dom"
 
 export default class Footer extends Component {
