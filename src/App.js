@@ -17,6 +17,8 @@ import SignUp from "./containers/SignUp"
 import MyLevels from "./containers/MyLevels"
 import GameBoard from "./containers/GameBoard"
 import ReactGA from "react-ga"
+import AboutPage from "./containers/AboutPage"
+import Footer from "./containers/Footer"
 ReactGA.initialize("UA-143157687-1")
 ReactGA.pageview(window.location.pathname + window.location.search)
 
@@ -93,7 +95,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="allApp">
         <Router>
           <Navbar currentUser={this.state.currentUser} logOut={this.logOut} />
           <Switch>
@@ -125,13 +127,21 @@ class App extends React.Component {
                     handleFilterChange={this.handleFilterChange}
                     filterState={this.state.filterLevel}
                     handleOrderChange={this.handleOrderChange}
-                    orderState={this.state.orderLevel}
-                    currentUser={this.state.currentUser}
                     handleToggleChange={this.handleToggleChange}
                     toggleComplete={this.state.toggleComplete}
+                    orderState={this.state.orderLevel}
+                    currentUser={this.state.currentUser}
+                    setUser={this.setUser}
                     {...routerProps}
                   />
                 )
+              }}
+            />
+            <Route
+              exact
+              path="/about"
+              component={routerProps => {
+                return <AboutPage {...routerProps} />
               }}
             />
             <this.PrivateRoute
@@ -221,6 +231,7 @@ class App extends React.Component {
               />
             </>
           </Switch>
+          <Footer />
         </Router>
       </div>
     )

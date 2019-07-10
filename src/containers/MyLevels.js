@@ -41,8 +41,11 @@ class MyLevels extends React.Component {
         <h3>
           {this.state.levels.length === 0 ? (
             <>
-              <p>you haven't created any levels yet...</p>
+              <p style={{ marginTop: "40px" }}>
+                you haven't created any levels yet...
+              </p>
               <Button
+                style={{ marginTop: "10px" }}
                 compact
                 onClick={() => this.props.history.push(`/create`)}
               >

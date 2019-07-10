@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Menu, Image } from "semantic-ui-react"
+import { Menu, Image, Button, Icon } from "semantic-ui-react"
 import { NavLink } from "react-router-dom"
 
 export default class Navbar extends Component {
@@ -9,6 +9,7 @@ export default class Navbar extends Component {
     return (
       <>
         <Menu
+          style={{ backgroundColor: "rgb(245,245,245)" }}
           size={"small"}
           stackable={true}
           id="navBar"
@@ -64,6 +65,10 @@ export default class Navbar extends Component {
               />
             </>
           )}
+          {/* <Button compact basic style={{ marginLeft: "30px" }}>
+            <Icon name="question circle" />
+            About
+          </Button> */}
         </Menu>
         <h4>
           {!this.props.currentUser
