@@ -10,7 +10,7 @@ export default class Footer extends Component {
   render() {
     return (
       <div className={"footer"}>
-        <Segment style={{ backgroundColor: "rgb(245,245,245)" }}>
+        <Segment>
           <h5 style={{ display: "inline-block", marginLeft: "40px" }}>
             HUEman © 2019
           </h5>
