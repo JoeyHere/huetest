@@ -16,7 +16,7 @@ export default class Footer extends Component {
           </h5>
           <Link
             as="h5"
-            to="/about"
+            to="https://www.linkedin.com/in/joseph-odell/"
             style={{
               display: "inline-block",
               float: "right",
