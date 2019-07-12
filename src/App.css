@@ -398,9 +398,9 @@ button {
   align-content: center;
 }
 
-/* #navBar {
+#navBar {
   margin-top: 15px;
-} */
+}
 
 .footer {
   position: fixed;
