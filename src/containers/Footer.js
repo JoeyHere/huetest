@@ -14,9 +14,11 @@ export default class Footer extends Component {
           <h5 style={{ display: "inline-block", marginLeft: "40px" }}>
             HUEman © 2019
           </h5>
-          <Link
+           <a
+            href="https://www.linkedin.com/in/joseph-odell/"
             as="h5"
-            to="https://www.linkedin.com/in/joseph-odell/"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               display: "inline-block",
               float: "right",
@@ -26,7 +28,7 @@ export default class Footer extends Component {
           >
             <Icon name="square outline" />
             About HUEman
-          </Link>
+          </a>
         </Segment>
       </div>
     )
