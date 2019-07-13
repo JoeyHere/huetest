@@ -95,7 +95,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="allApp">
+      <div id="app">
         <Router>
           <Navbar currentUser={this.state.currentUser} logOut={this.logOut} />
           <Switch>

@@ -1,5 +1,17 @@
-.allApp {
+/* .allApp {
   margin-bottom: 70px;
+  min-height: 100vh;
+} */
+
+html,
+body,
+#root,
+#app {
+  height: 100vh;
+}
+
+#app {
+  position: relative;
 }
 
 .block {
@@ -398,15 +410,27 @@ button {
   align-content: center;
 }
 
-/* #navBar {
-  margin-top: 15px;
-} */
+#navBar {
+  /* margin-top: 15px; */
+  position: fixed;
+  top: 0%;
+  z-index: 1000;
+}
 
-.footer {
+/* .footer {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100vw;
   height: 48px;
   z-index: 1000;
+} */
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 48px;
+  width: 100%;
+  overflow: hidden;
 }
