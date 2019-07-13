@@ -10,13 +10,15 @@ export default class Footer extends Component {
   render() {
     return (
       <div className={"footer"}>
-        <Segment style={{ backgroundColor: "rgb(245,245,245)" }}>
+        <Segment>
           <h5 style={{ display: "inline-block", marginLeft: "40px" }}>
             HUEman © 2019
           </h5>
-          <Link
+           <a
+            href="https://www.linkedin.com/in/joseph-odell/"
             as="h5"
-            to="/about"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               display: "inline-block",
               float: "right",
@@ -26,7 +28,7 @@ export default class Footer extends Component {
           >
             <Icon name="square outline" />
             About HUEman
-          </Link>
+          </a>
         </Segment>
       </div>
     )

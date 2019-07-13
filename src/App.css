@@ -3,15 +3,17 @@
   min-height: 100vh;
 } */
 
-html,
+/* html,
 body,
 #root,
 #app {
   height: 100vh;
-}
+} */
 
 #app {
   position: relative;
+  padding-top: 50px;
+  margin-bottom: 70px;
 }
 
 .block {
@@ -414,7 +416,8 @@ button {
   /* margin-top: 15px; */
   position: fixed;
   top: 0%;
-  z-index: 1000;
+  z-index: 1001;
+  background-color: white;
 }
 
 /* .footer {
@@ -433,4 +436,6 @@ button {
   height: 48px;
   width: 100%;
   overflow: hidden;
+  z-index: 1000;
+  background-color: white;
 }

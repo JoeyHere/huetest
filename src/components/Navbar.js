@@ -9,7 +9,6 @@ export default class Navbar extends Component {
     return (
       <>
         <Menu
-          style={{ backgroundColor: "rgb(245,245,245)" }}
           size={"small"}
           stackable={true}
           id="navBar"
