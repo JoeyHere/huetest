@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Segment, Icon } from "semantic-ui-react"
+import { Segment, Icon, Image } from "semantic-ui-react"
 import { Link } from "react-router-dom"
 
 export default class Footer extends Component {
@@ -14,7 +14,7 @@ export default class Footer extends Component {
           <h5 style={{ display: "inline-block", marginLeft: "40px" }}>
             HUEman © 2019
           </h5>
-           <a
+          <a
             href="https://www.linkedin.com/in/joseph-odell/"
             as="h5"
             target="_blank"
@@ -26,8 +26,11 @@ export default class Footer extends Component {
               marginRight: "40px"
             }}
           >
-            <Icon name="square outline" />
-            About HUEman
+            About HUEman{" "}
+            <Image
+              style={{ width: "20px", display: "inline-block" }}
+              src="https://i.ibb.co/HF4Jm1K/hmframe3.png"
+            />
           </a>
         </Segment>
       </div>
