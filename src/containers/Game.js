@@ -1,10 +1,10 @@
 import React from "react"
 import GameBoard from "./GameBoard.js"
-import { BLOCKS } from "../concerns/Config.js"
+import { BLOCKS, blankBoards } from "../concerns/Config.js"
 import API from "../concerns/API.js"
 import "../confetti.scss"
 import Confetti from "../components/Confetti.js"
-import { Button } from "semantic-ui-react"
+import { Button, Dimmer, Loader } from "semantic-ui-react"
 import Sound from "react-sound"
 import PublishModal from "../components/PublishModal.js"
 import DeleteModal from "../components/DeleteModal.js"
@@ -24,11 +24,11 @@ export default class Game extends React.Component {
   state = {
     originalBoard: [[]],
     undoBoard: [[]],
-    currentBoard: [[]],
-    creator_name: undefined,
+    currentBoard: blankBoards.small,
+    creator_name: "HUEman",
     creator_id: undefined,
     playerPosition: { x: undefined, y: undefined },
-    levelName: "",
+    levelName: "HUEman",
     levelWon: false,
     keydown: false,
     preview: false,
@@ -36,7 +36,8 @@ export default class Game extends React.Component {
     soundID: undefined,
     rated: false,
     mute: false,
-    moves: 0
+    moves: 0,
+    loading: true
   }
 
   componentDidMount() {
@@ -52,7 +53,8 @@ export default class Game extends React.Component {
           creator_name: level.user.user_name,
           preview: !level.published,
           creator_id: level.user.id,
-          mute: this.props.mute
+          mute: this.props.mute,
+          loading: false
         })
       } else {
         this.props.history.push(`/levels`)
@@ -329,6 +331,10 @@ export default class Game extends React.Component {
 
     return (
       <div>
+        <Dimmer style={{ height: "100%" }} inverted active={this.state.loading}>
+          <Loader />
+        </Dimmer>
+
         {this.state.levelWon ? (
           <div style={{ position: "relative" }}>
             <div>{this.state.mute ? null : soundEffectWin}</div>

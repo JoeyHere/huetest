@@ -43,12 +43,7 @@ export default class AboutPage extends Component {
             }}
           >
             <Header>About Me</Header>
-            <h5>
-              I created the game a level sharing platform HUEman as my final
-              project at Flatiron School. Since graduating and working as a
-              Full-Stack developer I have continued to improve and maintain
-              HUEman.
-            </h5>
+            <h5>Hi, I'm Joey the creator of HUEman.</h5>
             <h5>
               The original inspiration for this project was arround two games.
               1. The Witness - A hugely complex game created by Jonathon Blow
@@ -85,8 +80,8 @@ export default class AboutPage extends Component {
             <h5>
               I created the game a level sharing platform HUEman as my final
               project at Flatiron School. Since graduating and working as a
-              Full-Stack developer I have continued to improve and maintain
-              HUEman.
+              Full-Stack Developer I have continued to improve and maintain
+              HUEman in my spare time.
             </h5>
             <h5>
               The original inspiration for this project was arround two games.
