@@ -331,10 +331,13 @@ export default class Game extends React.Component {
 
     return (
       <div>
-        <Dimmer style={{ height: "100%" }} inverted active={this.state.loading}>
-          <Loader />
+        <Dimmer
+          style={{ height: "100vh" }}
+          inverted
+          active={this.state.loading}
+        >
+          <Loader size="large" />
         </Dimmer>
-
         {this.state.levelWon ? (
           <div style={{ position: "relative" }}>
             <div>{this.state.mute ? null : soundEffectWin}</div>

@@ -1,11 +1,18 @@
 import React from "react"
 import LevelCard from "../components/LevelCard.js"
-import { Card } from "semantic-ui-react"
+import { Card, Dimmer, Loader } from "semantic-ui-react"
 
 class LevelCardList extends React.Component {
   render() {
     return (
       <div>
+        <Dimmer
+          style={{ height: "100vh" }}
+          inverted
+          active={!this.props.levels.length > 0}
+        >
+          <Loader size="large" />
+        </Dimmer>
         <Card.Group
           itemsPerRow={4}
           centered={true}
