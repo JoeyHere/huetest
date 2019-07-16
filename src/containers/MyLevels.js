@@ -5,13 +5,15 @@ import { Button, Icon } from "semantic-ui-react"
 
 class MyLevels extends React.Component {
   state = {
-    levels: []
+    levels: [],
+    loading: true
   }
 
   componentDidMount() {
     API.getMyLevels().then(levels =>
       this.setState({
-        levels: levels
+        levels: levels,
+        loading: false
       })
     )
   }
@@ -31,6 +33,7 @@ class MyLevels extends React.Component {
           handleLevelClick={this.handleLevelClick}
           handlePublishedClick={this.handlePublishedClick}
           levels={this.state.levels}
+          loading={this.state.loading}
           currentUserId={this.props.currentUser ? this.props.currentUser.id : 0}
           completedLevelIds={
             this.props.currentUser

@@ -6,13 +6,15 @@ import { Checkbox } from "semantic-ui-react"
 
 class LevelIndex extends React.Component {
   state = {
-    levels: []
+    levels: [],
+    loading: true
   }
 
   componentDidMount() {
     API.getLevels().then(levels =>
       this.setState({
-        levels: levels
+        levels: levels,
+        loading: false
       })
     )
   }
@@ -118,6 +120,7 @@ class LevelIndex extends React.Component {
           handleLevelClick={this.handleLevelClick}
           handlePublishedClick={this.handlePublishedClick}
           levels={this.orderLevels(this.filterLevels())}
+          loading={this.state.loading}
           currentUserId={this.props.currentUser ? this.props.currentUser.id : 0}
           completedLevelIds={
             this.props.currentUser

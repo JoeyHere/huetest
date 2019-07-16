@@ -9,7 +9,7 @@ class LevelCardList extends React.Component {
         <Dimmer
           style={{ height: "100vh" }}
           inverted
-          active={!this.props.levels.length > 0}
+          active={this.props.loading}
         >
           <Loader size="large" />
         </Dimmer>
