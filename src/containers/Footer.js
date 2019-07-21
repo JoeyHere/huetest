@@ -10,7 +10,7 @@ export default class Footer extends Component {
   render() {
     return (
       <div className={"footer"}>
-        <Segment>
+        <Segment basic>
           {/* <h5 style={{ display: "inline-block", marginLeft: "40px" }}>
             HUEman © 2019
           </h5> */}
@@ -23,7 +23,7 @@ export default class Footer extends Component {
               display: "inline-block",
               float: "right",
               position: "relative",
-              marginRight: "40px"
+              marginRight: "20px"
             }}
           >
             About HUEman{" "}
