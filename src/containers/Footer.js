@@ -11,9 +11,9 @@ export default class Footer extends Component {
     return (
       <div className={"footer"}>
         <Segment>
-          <h5 style={{ display: "inline-block", marginLeft: "40px" }}>
+          {/* <h5 style={{ display: "inline-block", marginLeft: "40px" }}>
             HUEman © 2019
-          </h5>
+          </h5> */}
           <a
             href="https://www.linkedin.com/in/joseph-odell/"
             as="h5"
