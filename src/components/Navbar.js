@@ -29,7 +29,6 @@ export default class Navbar extends Component {
             className={"hueLogo"}
             style={{
               margin: "10px",
-              marginLeft: "20px",
               width: "27px",
               height: "27px"
             }}
@@ -39,8 +38,8 @@ export default class Navbar extends Component {
             className={"hueLogo"}
             rounded
             style={{
-              marginRight: "10px",
-              marginLeft: "10px",
+              marginRight: "20px",
+              marginLeft: "20px",
               width: "150px",
               height: "40px",
               margin: "4px",
@@ -49,10 +48,9 @@ export default class Navbar extends Component {
             src="https://i.ibb.co/f8mHszP/loogo.png"
           />
           <Image
-            className={"hueLogo"}
+            // className={"hueLogo"}
             style={{
               margin: "10px",
-              marginRight: "20px",
               width: "27px",
               height: "27px"
             }}
