@@ -354,15 +354,11 @@ button {
 .filterLevels {
   position: absolute;
   right: 20%;
-  margin-top: 15px;
-  /* transform: translateX(50%); */
 }
 
 .toggleLevels {
   position: absolute;
   left: 20%;
-  margin-top: 15px;
-  /* transform: translateX(-50%); */
 }
 
 .signUpButton {
@@ -387,10 +383,6 @@ button {
 
 .deleteButton {
   position: relative;
-}
-
-.hueLogo {
-  filter: opacity(90%);
 }
 
 .statusImage {
@@ -438,4 +430,22 @@ button {
   overflow: hidden;
 
   /* background-color: white; */
+}
+
+@media screen and (max-width: 1024px) {
+  .toggleLevels {
+    display: none !important;
+  }
+  /* .filterLevels {
+    display: none !important;
+  } */
+  .hueLogo {
+    display: none !important;
+  }
+  .hideWidth {
+    display: none !important;
+  }
+  .footer {
+    display: none !important;
+  }
 }

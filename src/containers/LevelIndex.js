@@ -2,7 +2,7 @@ import React from "react"
 import LevelCardList from "../containers/LevelCardList.js"
 import API from "../concerns/API.js"
 import DropDownFilter from "../components/DropDownFilter.js"
-import { Checkbox } from "semantic-ui-react"
+import { Checkbox, Segment } from "semantic-ui-react"
 
 class LevelIndex extends React.Component {
   state = {
@@ -104,18 +104,21 @@ class LevelIndex extends React.Component {
   render() {
     return (
       <div id="index-div">
-        <Checkbox
-          className={"toggleLevels"}
-          label={"Hide Completed"}
-          checked={this.props.toggleComplete}
-          onChange={this.props.handleToggleChange}
-        />
-        <DropDownFilter
-          handleFilterChange={this.props.handleFilterChange}
-          filterState={this.props.filterState}
-          handleOrderChange={this.props.handleOrderChange}
-          orderState={this.props.orderState}
-        />
+        <Segment style={{ padding: "0px" }} basic>
+          <Checkbox
+            style={{ padding: "0px" }}
+            className={"toggleLevels"}
+            label={"Hide Completed"}
+            checked={this.props.toggleComplete}
+            onChange={this.props.handleToggleChange}
+          />
+          <DropDownFilter
+            handleFilterChange={this.props.handleFilterChange}
+            filterState={this.props.filterState}
+            handleOrderChange={this.props.handleOrderChange}
+            orderState={this.props.orderState}
+          />
+        </Segment>
         <LevelCardList
           handleLevelClick={this.handleLevelClick}
           handlePublishedClick={this.handlePublishedClick}

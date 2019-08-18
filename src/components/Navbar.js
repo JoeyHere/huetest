@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Menu, Image, Header } from "semantic-ui-react"
+import { Menu, Image } from "semantic-ui-react"
 import { NavLink } from "react-router-dom"
 
 export default class Navbar extends Component {
@@ -11,9 +11,9 @@ export default class Navbar extends Component {
         <Menu
           style={{ height: "48px" }}
           size={"small"}
-          stackable={true}
+          // stackable={true}
           id="navBar"
-          widths={7}
+          widths={5}
           tabular
           borderless
         >
@@ -26,6 +26,7 @@ export default class Navbar extends Component {
             to="/create"
           />
           <Image
+            className={"hueLogo"}
             style={{
               margin: "10px",
               marginLeft: "20px",
@@ -35,10 +36,9 @@ export default class Navbar extends Component {
             src="https://i.ibb.co/fHMm8Rw/brown.png"
           />
           <Image
-            rounded
             className={"hueLogo"}
+            rounded
             style={{
-              margin: "10px",
               marginRight: "10px",
               marginLeft: "10px",
               width: "150px",
@@ -49,6 +49,7 @@ export default class Navbar extends Component {
             src="https://i.ibb.co/f8mHszP/loogo.png"
           />
           <Image
+            className={"hueLogo"}
             style={{
               margin: "10px",
               marginRight: "20px",
@@ -67,7 +68,7 @@ export default class Navbar extends Component {
           {this.props.currentUser ? (
             <>
               <Menu.Item name="LOG-OUT" onClick={this.props.logOut}>
-                LOG OUT {" - "}({" "}
+                LOG OUT ({" "}
                 {this.props.currentUser
                   ? this.props.currentUser.user_name
                   : null}{" "}
