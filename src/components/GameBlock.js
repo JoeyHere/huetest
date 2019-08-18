@@ -12,7 +12,10 @@ const GameBlock = props => {
       x={props.x}
       y={props.y}
       className={className}
-      onClick={props.handleBlockClick}
+      onClick={event => {
+        event.preventDefault()
+        props.handleBlockClick()
+      }}
     />
   )
 }
