@@ -17,8 +17,15 @@ export default class Navbar extends Component {
           tabular
           borderless
         >
-          <Menu.Item color={"green"} name="PLAY" as={NavLink} to="/levels" />
           <Menu.Item
+            style={{ maxWidth: "230px" }}
+            color={"green"}
+            name="PLAY"
+            as={NavLink}
+            to="/levels"
+          />
+          <Menu.Item
+            style={{ maxWidth: "230px" }}
             color={"blue"}
             icon={!this.props.currentUser ? "lock" : null}
             name="CREATE"
@@ -57,6 +64,7 @@ export default class Navbar extends Component {
             src="https://i.ibb.co/fHMm8Rw/brown.png"
           />
           <Menu.Item
+            style={{ maxWidth: "230px" }}
             color={"orange"}
             name={"MY LEVELS"}
             icon={!this.props.currentUser ? "lock" : null}
@@ -65,7 +73,11 @@ export default class Navbar extends Component {
           />
           {this.props.currentUser ? (
             <>
-              <Menu.Item name="LOG-OUT" onClick={this.props.logOut}>
+              <Menu.Item
+                style={{ maxWidth: "230px" }}
+                name="LOG-OUT"
+                onClick={this.props.logOut}
+              >
                 LOG OUT ({" "}
                 {this.props.currentUser
                   ? this.props.currentUser.user_name
@@ -76,6 +88,7 @@ export default class Navbar extends Component {
           ) : (
             <>
               <Menu.Item
+                style={{ maxWidth: "230px" }}
                 color={"red"}
                 name={"LOG IN"}
                 as={NavLink}
