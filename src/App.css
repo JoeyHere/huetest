@@ -10,6 +10,10 @@ body,
   height: 100vh;
 } */
 
+/* body {
+  min-width: 1024px;
+} */
+
 #app {
   position: relative;
   padding-top: 50px;
@@ -70,6 +74,7 @@ body,
 .exitButton {
   position: absolute;
   left: 70%;
+  margin: 0px;
 }
 
 .blur {
@@ -412,15 +417,6 @@ button {
   background-color: white;
 }
 
-/* .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 48px;
-  z-index: 1000;
-} */
-
 .footer {
   position: fixed;
   left: 0;
@@ -428,17 +424,20 @@ button {
   height: 48px;
   width: 100%;
   overflow: hidden;
+  z-index: -10;
 
   /* background-color: white; */
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1100px) {
   .toggleLevels {
     display: none !important;
   }
-  /* .filterLevels {
-    display: none !important;
-  } */
+  .filterLevels {
+    position: relative;
+    margin-bottom: 10px !important;
+    left: 10%;
+  }
   .hueLogo {
     display: none !important;
   }
@@ -447,5 +446,12 @@ button {
   }
   .footer {
     display: none !important;
+  }
+  .exitButton {
+    position: relative !important;
+    left: 80%;
+  }
+  .board {
+    margin-top: 0px;
   }
 }
