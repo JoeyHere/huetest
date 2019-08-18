@@ -10,9 +10,9 @@ body,
   height: 100vh;
 } */
 
-/* body {
+body {
   min-width: 1024px;
-} */
+}
 
 #app {
   position: relative;
