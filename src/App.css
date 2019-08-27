@@ -424,7 +424,7 @@ button {
   height: 48px;
   width: 100%;
   overflow: hidden;
-  z-index: -10;
+  /* z-index: -10; */
 
   /* background-color: white; */
 }
