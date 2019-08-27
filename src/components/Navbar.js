@@ -33,13 +33,13 @@ export default class Navbar extends Component {
             to="/create"
           />
           <Image
-            className={"hueLogo"}
+            // className={"hueLogo"}
             style={{
               margin: "10px",
               width: "27px",
               height: "27px"
             }}
-            src="https://i.ibb.co/fHMm8Rw/brown.png"
+            src="https://i.ibb.co/HF4Jm1K/hmframe3.png"
           />
           <Image
             className={"hueLogo"}
@@ -55,7 +55,7 @@ export default class Navbar extends Component {
             src="https://i.ibb.co/f8mHszP/loogo.png"
           />
           <Image
-            // className={"hueLogo"}
+            className={"hueLogo"}
             style={{
               margin: "10px",
               width: "27px",
