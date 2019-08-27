@@ -111,8 +111,8 @@ export default class LevelEditor extends React.Component {
           className={"exitButton"}
           onClick={() => this.props.history.push(`/mylevels`)}
         />
-        <h3>LEVEL EDITOR</h3>
-        <Form style={{ width: 350 + "px", margin: "auto" }}>
+        {/* <h3>LEVEL EDITOR</h3> */}
+        <Form style={{ width: 350 + "px", margin: "auto", marginTop: "50px" }}>
           <label style={{ textAlign: "center" }}>Level Name</label>
           <input
             maxLength="30"
