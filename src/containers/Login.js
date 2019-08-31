@@ -48,7 +48,7 @@ export default class Login extends Component {
           ]}
           width={4 * 35}
         />
-        <h2>LOG IN</h2>
+        {/* <h2>LOG IN</h2> */}
         <Form
           onSubmit={this.logIn}
           style={{ width: 300 + "px", padding: 20 + "px", margin: "auto" }}

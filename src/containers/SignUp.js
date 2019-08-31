@@ -42,7 +42,7 @@ export default class SignUp extends Component {
           ]}
           width={4 * 35}
         />
-        <h2>SIGN UP</h2>
+        {/* <h2>SIGN UP</h2> */}
         <Form
           onSubmit={this.signUp}
           style={{ width: 300 + "px", padding: 20 + "px", margin: "auto" }}
@@ -82,7 +82,7 @@ export default class SignUp extends Component {
           </Form.Field>
           <div className={"loginButtons"}>
             <Button compact positive={true} id="submitButton" type="submit">
-              SIGN UP
+              CREATE ACCOUNT
             </Button>
             <Button compact className={"signUpButton"} as={Link} to={"/login"}>
               GO TO LOG IN

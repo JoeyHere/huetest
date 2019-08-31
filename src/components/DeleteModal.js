@@ -21,7 +21,7 @@ class DeleteModal extends Component {
         />
 
         <Modal dimmer={dimmer} open={open} onClose={this.close} size="mini">
-          <Modal.Header>Delete Level - Are You Sure?</Modal.Header>
+          <Modal.Header>Are You Sure?</Modal.Header>
           <Modal.Content>
             <Modal.Description>
               <p style={{ textAlign: "left" }}>
@@ -36,7 +36,7 @@ class DeleteModal extends Component {
             <Button
               compact
               negative
-              icon="checkmark"
+              icon="trash alternate outline"
               labelPosition="right"
               content="Delete Level"
               onClick={this.props.handleDelete}

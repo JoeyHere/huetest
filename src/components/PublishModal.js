@@ -21,7 +21,7 @@ class PublishModal extends Component {
         </Button>
 
         <Modal dimmer={dimmer} open={open} onClose={this.close} size="mini">
-          <Modal.Header>Publish Level - Are You Sure?</Modal.Header>
+          <Modal.Header>Are You Sure?</Modal.Header>
           <Modal.Content>
             <Modal.Description>
               <p style={{ textAlign: "left" }}>

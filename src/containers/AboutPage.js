@@ -41,9 +41,9 @@ export default class AboutPage extends Component {
           >
             <Header>About HUEman</Header>
             <h5>
-              HUEman is a simple game based arround pushing arround different
-              colour blocks. You can play levels made by the HUEman team or you
-              can play any of the user generated levels created so far!
+              HUEman is a simple game based arround pushing different colour
+              blocks. You can play levels made by the HUEman team or you can
+              play any of the user generated levels created so far!
             </h5>
             <h5>
               Levels can be created and published for other users to attempt to

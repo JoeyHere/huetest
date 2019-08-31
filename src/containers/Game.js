@@ -4,7 +4,7 @@ import { BLOCKS, blankBoards } from "../concerns/Config.js"
 import API from "../concerns/API.js"
 import "../confetti.scss"
 import Confetti from "../components/Confetti.js"
-import { Button, Dimmer, Loader } from "semantic-ui-react"
+import { Button, Dimmer, Loader, Popup } from "semantic-ui-react"
 import Sound from "react-sound"
 import PublishModal from "../components/PublishModal.js"
 import DeleteModal from "../components/DeleteModal.js"
@@ -451,8 +451,25 @@ export default class Game extends React.Component {
               handleBlockClick={this.handleBlockClick}
             />
             <div className={"resetButton"}>
-              <Button compact icon="backward" onClick={this.undoMove} />
-              <Button compact icon="fast backward" onClick={this.resetLevel} />
+              <Popup
+                position="bottom center"
+                content="Undo ( u )"
+                trigger={
+                  <Button compact icon="backward" onClick={this.undoMove} />
+                }
+              />
+              <Popup
+                position="bottom center"
+                content="Reset ( space )"
+                trigger={
+                  <Button
+                    compact
+                    icon="fast backward"
+                    onClick={this.resetLevel}
+                  />
+                }
+              />
+
               <RulesModal />
               <Button
                 compact

@@ -18,14 +18,14 @@ export default class Navbar extends Component {
           borderless
         >
           <Menu.Item
-            style={{ maxWidth: "230px" }}
+            style={{ maxWidth: "230px", height: "40px", marginTop: "8px" }}
             color={"green"}
             name="PLAY"
             as={NavLink}
             to="/levels"
           />
           <Menu.Item
-            style={{ maxWidth: "230px" }}
+            style={{ maxWidth: "230px", height: "40px", marginTop: "8px" }}
             color={"blue"}
             icon={!this.props.currentUser ? "lock" : null}
             name="CREATE"
@@ -64,7 +64,7 @@ export default class Navbar extends Component {
             src="https://i.ibb.co/fHMm8Rw/brown.png"
           />
           <Menu.Item
-            style={{ maxWidth: "230px" }}
+            style={{ maxWidth: "230px", height: "40px", marginTop: "8px" }}
             color={"orange"}
             name={"MY LEVELS"}
             icon={!this.props.currentUser ? "lock" : null}
@@ -74,7 +74,7 @@ export default class Navbar extends Component {
           {this.props.currentUser ? (
             <>
               <Menu.Item
-                style={{ maxWidth: "230px" }}
+                style={{ maxWidth: "230px", height: "40px", marginTop: "8px" }}
                 name="LOG-OUT"
                 onClick={this.props.logOut}
               >
@@ -88,7 +88,7 @@ export default class Navbar extends Component {
           ) : (
             <>
               <Menu.Item
-                style={{ maxWidth: "230px" }}
+                style={{ maxWidth: "230px", height: "40px", marginTop: "8px" }}
                 color={"red"}
                 name={"LOG IN"}
                 as={NavLink}
