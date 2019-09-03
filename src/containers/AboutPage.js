@@ -105,7 +105,7 @@ export default class AboutPage extends Component {
               suggestions on ways HUEman can be improved please feel free to
               contact me.
             </h5>
-            <h5 style={{ display: "inline-block" }}>I'm here: </h5>{" "}
+            <h5 style={{ display: "inline-block" }}>I'm here </h5>{" "}
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -113,7 +113,7 @@ export default class AboutPage extends Component {
             >
               <Icon size="big" name="linkedin" />
             </a>
-            <h5 style={{ display: "inline-block" }}>and here: </h5>{" "}
+            <h5 style={{ display: "inline-block" }}>here </h5>{" "}
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -121,6 +121,13 @@ export default class AboutPage extends Component {
             >
               <Icon size="big" name="github" />
             </a>
+            <h5 style={{ display: "inline-block" }}>
+              and here{" "}
+              <a href={`mailto:${"joey@playhueman.com"}?subject=HUEman`}>
+                {" "}
+                <u>joey@playhueman.com</u>
+              </a>
+            </h5>
           </Segment>
         </div>
       </>

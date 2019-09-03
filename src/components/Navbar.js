@@ -101,10 +101,16 @@ export default class Navbar extends Component {
             About
           </Button> */}
         </Menu>
+
         <h4>
-          {!this.props.currentUser
-            ? "SIGN UP TO TRACK PROGRESS AND CREATE LEVELS"
-            : null}
+          {!this.props.currentUser ? (
+            <>
+              <a href="/signup">
+                <u>SIGN UP</u>
+              </a>{" "}
+              TO TRACK PROGRESS AND CREATE LEVELS{" "}
+            </>
+          ) : null}
         </h4>
       </>
     )
