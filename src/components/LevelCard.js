@@ -87,13 +87,14 @@ class LevelCard extends React.Component {
 
     return (
       <Card
+        raised
         onClick={() => this.props.handleLevelClick(this.props.id)}
         style={{
           width: "270px",
           minWidth: "270px",
           height: "182px",
-          margin: "25px",
-          boxShadow: "0px 0px 10px grey"
+          margin: "25px"
+          // boxShadow: "0px 0px 10px grey"
         }}
       >
         <Card.Content style={{ paddingBottom: "5px", marginTop: "4px" }}>
