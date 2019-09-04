@@ -87,6 +87,7 @@ class LevelCard extends React.Component {
 
     return (
       <Card
+        link
         raised
         onClick={() => this.props.handleLevelClick(this.props.id)}
         style={{

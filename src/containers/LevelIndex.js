@@ -104,7 +104,7 @@ class LevelIndex extends React.Component {
   render() {
     return (
       <div id="index-div">
-        <Segment style={{ padding: "0px" }} basic>
+        <Segment style={{ padding: "0px", marginTop: "30px" }} basic>
           <Checkbox
             style={{ padding: "0px" }}
             className={"toggleLevels"}
