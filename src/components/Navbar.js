@@ -52,7 +52,7 @@ export default class Navbar extends Component {
               margin: "4px",
               padding: "0px"
             }}
-            src="https://i.ibb.co/5hv8kw3/losgo.png"
+            src="https://i.ibb.co/TKnsHvk/logo-final.png"
           />
           <Image
             className={"hueLogo"}
