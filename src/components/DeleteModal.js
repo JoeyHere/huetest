@@ -25,7 +25,7 @@ class DeleteModal extends Component {
           <Modal.Content>
             <Modal.Description>
               <p style={{ textAlign: "left" }}>
-                Deleting Levels can't be undone!
+                Deleting Levels can not be undone!
               </p>
             </Modal.Description>
           </Modal.Content>
