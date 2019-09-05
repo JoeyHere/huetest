@@ -51,7 +51,12 @@ export default class Login extends Component {
         {/* <h2>LOG IN</h2> */}
         <Form
           onSubmit={this.logIn}
-          style={{ width: 300 + "px", padding: 20 + "px", margin: "auto" }}
+          style={{
+            width: 300 + "px",
+            padding: 20 + "px",
+            paddingTop: 0 + "px",
+            margin: "auto"
+          }}
         >
           <Form.Field>
             <label style={{ textAlign: "center" }}>Username</label>

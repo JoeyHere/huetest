@@ -33,13 +33,23 @@ export default class Navbar extends Component {
             to="/create"
           />
           <Image
-            // className={"hueLogo"}
+            className={"huePhoneLogo"}
             style={{
               margin: "10px",
-              width: "27px",
-              height: "27px"
+              width: "28px",
+              height: "28px",
+              display: "none"
             }}
             src="https://i.ibb.co/HF4Jm1K/hmframe3.png"
+          />
+          <Image
+            className={"hueLogo"}
+            style={{
+              margin: "10px",
+              width: "28px",
+              height: "28px"
+            }}
+            src="https://i.ibb.co/fHMm8Rw/brown.png"
           />
           <Image
             className={"hueLogo"}
@@ -58,8 +68,8 @@ export default class Navbar extends Component {
             className={"hueLogo"}
             style={{
               margin: "10px",
-              width: "27px",
-              height: "27px"
+              width: "28px",
+              height: "28px"
             }}
             src="https://i.ibb.co/fHMm8Rw/brown.png"
           />

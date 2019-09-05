@@ -45,7 +45,12 @@ export default class SignUp extends Component {
         {/* <h2>SIGN UP</h2> */}
         <Form
           onSubmit={this.signUp}
-          style={{ width: 300 + "px", padding: 20 + "px", margin: "auto" }}
+          style={{
+            width: 300 + "px",
+            padding: 20 + "px",
+            paddingTop: 0 + "px",
+            margin: "auto"
+          }}
         >
           <Form.Field>
             <label style={{ textAlign: "center" }}>Username</label>
