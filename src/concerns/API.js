@@ -1,5 +1,10 @@
-const BASE_URL = "https://hueman-server-eu.herokuapp.com"
-// const BASE_URL = "http://localhost:3000"
+const getBaseEndpoint = () => {
+  return process.env.NODE_ENV === "development"
+    ? "http://localhost:3000/"
+    : "https://hueman-server-eu.herokuapp.com"
+}
+
+const BASE_URL = getBaseEndpoint()
 const LEVELS_URL = BASE_URL + "/levels"
 const LOGIN_URL = BASE_URL + "/login"
 const SIGNUP_URL = BASE_URL + "/signup"
@@ -184,7 +189,7 @@ const loginPost = (user_name, password) => {
     .catch(handleError)
 }
 
-const signUpPost = (user_name, password) => {
+const signUpPost = (user_name, password, email) => {
   const options = {
     method: "POST",
     headers: {
@@ -193,7 +198,8 @@ const signUpPost = (user_name, password) => {
     body: JSON.stringify({
       user: {
         user_name: user_name,
-        password: password
+        password: password,
+        email: email
       }
     })
   }

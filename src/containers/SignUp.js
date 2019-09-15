@@ -8,19 +8,22 @@ export default class SignUp extends Component {
   state = {
     user_name: "",
     password: "",
-    confirm: ""
+    confirm: "",
+    email: ""
   }
 
   signUp = event => {
     if (this.state.password === this.state.confirm) {
       event.preventDefault()
-      API.signUpPost(this.state.user_name, this.state.password).then(
-        userObject => {
-          if (userObject) {
-            loginSetUser(userObject)
-          }
+      API.signUpPost(
+        this.state.user_name,
+        this.state.password,
+        this.state.email
+      ).then(userObject => {
+        if (userObject) {
+          loginSetUser(userObject)
         }
-      )
+      })
       const loginSetUser = userObject => {
         let token = userObject.token
         localStorage.setItem("token", token)
@@ -61,6 +64,15 @@ export default class SignUp extends Component {
               }
               value={this.state.user_name}
               name="user_name"
+            />
+          </Form.Field>
+          <Form.Field>
+            <label style={{ textAlign: "center" }}>Email</label>
+            <input
+              maxLength="50"
+              onChange={event => this.setState({ email: event.target.value })}
+              value={this.state.email}
+              name="email"
             />
           </Form.Field>
           <Form.Field>

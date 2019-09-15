@@ -45,7 +45,7 @@ class MyLevels extends React.Component {
           {this.state.levels.length === 0 ? (
             <>
               <p style={{ marginTop: "40px" }}>
-                you haven't created any levels yet...
+                You haven't created any levels yet...
               </p>
               <Button
                 style={{ marginTop: "10px" }}
