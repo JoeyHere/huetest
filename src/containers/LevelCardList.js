@@ -20,8 +20,8 @@ class LevelCardList extends React.Component {
             marginLeft: "auto",
             marginRight: "auto",
             marginTop: "0px",
-            paddingRight: "15%",
-            paddingLeft: "15%",
+            paddingRight: "10%",
+            paddingLeft: "10%",
             width: "auto"
           }}
         >
