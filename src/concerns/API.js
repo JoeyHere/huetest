@@ -1,7 +1,7 @@
 const getBaseEndpoint = () => {
   return process.env.NODE_ENV === "development"
     ? "http://localhost:3000/"
-    : "https://hueman-server-eu.herokuapp.com"
+    : "https://api.playhueman.com"
 }
 
 const BASE_URL = getBaseEndpoint()
