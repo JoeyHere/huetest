@@ -82,7 +82,7 @@ export default class AboutPage extends Component {
                 marginRight: "35px"
               }}
               circular
-              src="https://i.ibb.co/4gHVn0z/profile.jpg"
+              src="https://i.ibb.co/qyy8b9c/profile-low.jpg"
             />
           </Segment>
           <Segment
